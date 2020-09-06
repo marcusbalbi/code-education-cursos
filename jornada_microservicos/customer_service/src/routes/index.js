@@ -1,12 +1,9 @@
 var express = require("express");
 var router = express.Router();
-var connection = require("../common/connection");
-var uuid = require("uuid");
-
+var Customer = require("../models/Customer");
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  connection("customers")
-    .select()
+  Customer.listAll()
     .then((data) => {
       res.json(data);
     })
@@ -16,15 +13,7 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/", (req, res, next) => {
-  const customer = {
-    id: uuid.v4(),
-    name: req.body.name,
-    birth: req.body.birth,
-    level: req.body.level,
-  };
-  connection("customers")
-    .returning("*")
-    .insert(customer)
+  Customer.create(req.body)
     .then((data) => {
       res.status(201).json(data);
     })
@@ -34,15 +23,7 @@ router.post("/", (req, res, next) => {
 });
 
 router.put("/:id", (req, res, next) => {
-  const customer = {
-    name: req.body.name,
-    birth: req.body.birth,
-    level: req.body.level,
-  };
-  connection("customers")
-    .returning("*")
-    .where({ id: req.param("id") })
-    .update(customer)
+  Customer.update(req.param("id"), req.body)
     .then((data) => {
       res.status(200).json(data);
     })
@@ -52,10 +33,7 @@ router.put("/:id", (req, res, next) => {
 });
 
 router.delete("/:id", (req, res, next) => {
-  connection("customers")
-    .returning("*")
-    .where({ id: req.param("id") })
-    .del()
+  Customer.remove(req.param("id"))
     .then((data) => {
       res.status(200).json(data);
     })

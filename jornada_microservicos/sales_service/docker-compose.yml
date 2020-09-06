@@ -1,35 +1,40 @@
-version: '3.7'
-services: 
+version: "3.7"
+services:
   salesapp:
     build: .
     volumes:
       - ./:/var/www/app
       - ./node_modules:/var/www/app/node_modules
-    depends_on: 
+    depends_on:
       - salesapp-mysql
     #   - salesapp-redis
   salesapp-mysql:
     image: mysql:5.7.29
     command: --innodb-use-native-aio=0
     restart: always
-    ports: 
+    ports:
       - "3306"
     volumes:
       - ./.docker/dbdata:/var/lib/mysql
-    environment: 
+    environment:
       MYSQL_DATABASE: salesapp
       MYSQL_ROOT_PASSWORD: root
   # salesapp-redis:
   #   image: redis:latest
   #   restart: always
-  #   ports: 
+  #   ports:
   #     - "6379"
   salesapp-nginx:
     build: ./.docker/nginx
     restart: always
     ports:
       - "8003:80"
-    volumes: 
+    volumes:
       - ./:/var/www
     depends_on:
       - salesapp
+
+networks:
+  default:
+    external:
+      name: jornada-network
