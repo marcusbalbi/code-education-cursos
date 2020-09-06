@@ -33,3 +33,9 @@ services:
       - ./:/var/www
     depends_on:
       - productapp
+
+networks:
+  default:
+    external:
+      name: jornada-network
+      

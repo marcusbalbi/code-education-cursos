@@ -1,12 +1,10 @@
 var express = require("express");
 var router = express.Router();
-var connection = require("../common/connection");
-var uuid = require("uuid");
+var Product = require("../models/Product");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  connection("products")
-    .select()
+  Product.listAll()
     .then((data) => {
       res.json(data);
     })
@@ -16,14 +14,7 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/", (req, res, next) => {
-  const product = {
-    id: uuid.v4(),
-    price: req.body.price,
-    name: req.body.name,
-  };
-  connection("products")
-    .returning("*")
-    .insert(product)
+  Product.create(req.body)
     .then((data) => {
       res.status(201).json(data);
     })
@@ -33,14 +24,7 @@ router.post("/", (req, res, next) => {
 });
 
 router.put("/:id", (req, res, next) => {
-  const product = {
-    price: req.body.price,
-    name: req.body.name,
-  };
-  connection("products")
-    .returning("*")
-    .where({ id: req.param("id") })
-    .update(product)
+  Product.update(req.param("id", req.body))
     .then((data) => {
       res.status(200).json(data);
     })
@@ -50,10 +34,7 @@ router.put("/:id", (req, res, next) => {
 });
 
 router.delete("/:id", (req, res, next) => {
-  connection("products")
-    .returning("*")
-    .where({ id: req.param("id") })
-    .del()
+  Product.remove(req.param("id"))
     .then((data) => {
       res.status(200).json(data);
     })

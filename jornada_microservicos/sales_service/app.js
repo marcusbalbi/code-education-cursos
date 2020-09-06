@@ -5,64 +5,9 @@ var logger = require("morgan");
 var clientsRouter = require("./src/routes/clients");
 var productsRouter = require("./src/routes/products");
 var salesRouter = require("./src/routes/sales");
-var connection = require("./src/common/connection");
-const { Kafka } = require("kafkajs");
+var kafkaConsumer = require("./src/kafka/consumers");
 
-const kafka = new Kafka({
-  clientId: "my-app",
-  brokers: ["kafka:9082"],
-});
-const consumer = kafka.consumer({ groupId: "customers-group" });
-// Consuming
-consumer.connect().then(() => {
-  consumer.subscribe({ topic: "customers", fromBeginning: true }).then(() => {
-    consumer.run({
-      eachBatchAutoResolve: false,
-      eachBatch: async ({
-        batch,
-        resolveOffset,
-        heartbeat,
-        isRunning,
-        isStale,
-      }) => {
-        console.log(batch.messages.length, '***************');
-        for (let message of batch.messages) {
-          if (!isRunning() || isStale()) break;
-          const { id, name, level } = JSON.parse(message.value.toString());
-          const client = {
-            id,
-            name,
-            level,
-          };
-          console.log(
-            {
-              offset: message.offset,
-              value: client,
-            },
-            "-------------------------------------------------------"
-          );
-          let result = await connection("clients")
-            .insert(client)
-          if (result !== undefined) {
-            await resolveOffset(message.offset);
-          }
-          await heartbeat();
-        }
-      },
-      /*eachMessage: async ({ topic, partition, message }) => {
-        connection("clients").insert(client).catch(console.log);
-        console.log(
-          {
-            partition,
-            offset: message.offset,
-            value: client,
-          },
-          "-------------------------------------------------------"
-        );
-      },*/
-    });
-  });
-});
+kafkaConsumer.consume();
 
 var app = express();
 
