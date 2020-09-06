@@ -17,16 +17,40 @@ const consumer = kafka.consumer({ groupId: "customers-group" });
 consumer.connect().then(() => {
   consumer.subscribe({ topic: "customers", fromBeginning: true }).then(() => {
     consumer.run({
-      eachMessage: async ({ topic, partition, message }) => {
-        const { id, name, level } = JSON.parse(message.value.toString());
-        const client = {
-          id,
-          name,
-          level,
-        };
-        connection("clients")
-          .insert(client)
-          .catch(console.log)
+      eachBatchAutoResolve: false,
+      eachBatch: async ({
+        batch,
+        resolveOffset,
+        heartbeat,
+        isRunning,
+        isStale,
+      }) => {
+        console.log(batch.messages.length, '***************');
+        for (let message of batch.messages) {
+          if (!isRunning() || isStale()) break;
+          const { id, name, level } = JSON.parse(message.value.toString());
+          const client = {
+            id,
+            name,
+            level,
+          };
+          console.log(
+            {
+              offset: message.offset,
+              value: client,
+            },
+            "-------------------------------------------------------"
+          );
+          let result = await connection("clients")
+            .insert(client)
+          if (result !== undefined) {
+            await resolveOffset(message.offset);
+          }
+          await heartbeat();
+        }
+      },
+      /*eachMessage: async ({ topic, partition, message }) => {
+        connection("clients").insert(client).catch(console.log);
         console.log(
           {
             partition,
@@ -35,7 +59,7 @@ consumer.connect().then(() => {
           },
           "-------------------------------------------------------"
         );
-      },
+      },*/
     });
   });
 });
