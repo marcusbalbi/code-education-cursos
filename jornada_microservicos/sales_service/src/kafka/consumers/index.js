@@ -68,7 +68,7 @@ module.exports = {
             }) => {
               for (let message of batch.messages) {
                 if (!isRunning() || isStale()) break;
-                const { id, name, level } = JSON.parse(
+                const { id, name, price } = JSON.parse(
                   message.value.toString()
                 );
                 const product = {

@@ -1,5 +1,13 @@
 var connection = require("../common/connection");
 var uuid = require("uuid");
+const { Kafka } = require("kafkajs");
+
+const kafka = new Kafka({
+  clientId: "my-app",
+  brokers: ["kafka:9082"],
+});
+
+const producer = kafka.producer();
 
 module.exports = {
   listAll() {
@@ -11,7 +19,17 @@ module.exports = {
       price: price,
       name: name,
     };
-    return connection("products").insert(product);
+    return connection("products")
+      .insert(product)
+      .then(() => {
+        producer.connect().then(() => {
+          producer.send({
+            topic: "products",
+            messages: [{ value: JSON.stringify(product) }],
+          });
+        });
+        return product;
+      });
   },
   update(productID, { price, name }) {
     const product = {
