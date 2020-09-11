@@ -35,17 +35,6 @@ module.exports = {
                 await heartbeat();
               }
             },
-            /*eachMessage: async ({ topic, partition, message }) => {
-        connection("clients").insert(client).catch(console.log);
-        console.log(
-          {
-            partition,
-            offset: message.offset,
-            value: client,
-          },
-          "-------------------------------------------------------"
-        );
-      },*/
           });
         });
     });
@@ -89,6 +78,6 @@ module.exports = {
   },
   consume() {
     this.customer();
-    this.product()
+    this.product();
   },
 };
