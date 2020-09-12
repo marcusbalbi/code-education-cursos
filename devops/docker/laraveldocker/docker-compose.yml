@@ -8,6 +8,9 @@ services:
       - ./:/var/www
     networks:
       - code_education_app_networks
+    depends_on: 
+      - db
+      - redis
   nginx:
     build: .docker/nginx
     container_name: nginx_code_education
@@ -19,6 +22,8 @@ services:
       - ./:/var/www
     networks:
       - code_education_app_networks
+    depends_on:
+      - app
   redis:
     image: redis:alpine
     expose:
