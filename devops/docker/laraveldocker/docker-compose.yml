@@ -1,32 +1,47 @@
-version: '3.7'
+version: "3.7"
 
 services:
   app:
     build: .
     container_name: app_laravel_code_education
-    volumes: 
+    volumes:
       - ./:/var/www
-    networks: 
+    networks:
       - code_education_app_networks
   nginx:
     build: .docker/nginx
     container_name: nginx_code_education
     restart: always
     tty: true
-    ports: 
+    ports:
       - "8000:80"
-    volumes: 
+    volumes:
       - ./:/var/www
-    networks: 
+    networks:
       - code_education_app_networks
-
   redis:
     image: redis:alpine
-    expose: 
+    expose:
       - 6379
-    networks: 
+    networks:
+      - code_education_app_networks
+  db:
+    build: .docker/mysql
+    command: --innodb-use-native-aio=0
+    container_name: mysql_code_education
+    restart: always
+    tty: true
+    ports: 
+      - "3306:3306"
+    volumes: 
+      - ./.docker/mysql/dbdata:/var/lib/mysql
+    environment: 
+      - MYSQL_DATABASE=laravel
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=root
+    networks:
       - code_education_app_networks
 
-networks: 
+networks:
   code_education_app_networks:
     driver: bridge
