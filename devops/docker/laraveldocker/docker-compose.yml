@@ -4,7 +4,12 @@ services:
   app:
     build: .
     container_name: app_laravel_code_education
-    entrypoint: dockerize -wait tcp://db:3306 -timeout 60s ./.docker/entrypoint.sh
+    entrypoint: dockerize -template ./.docker/app/.env:.env  -wait tcp://db:3306 -timeout 120s ./.docker/app/entrypoint.sh
+    environment: 
+      - DB_HOST=db
+      - DB_DATABASE=laravel
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
     volumes:
       - ./:/var/www
     networks:
