@@ -18,7 +18,11 @@ services:
       - db
       - redis
   nginx:
-    build: .docker/nginx
+    build:
+      context: .docker/nginx
+      args:
+      - HOST=app
+      - PORT=9000
     container_name: nginx_code_education
     restart: always
     tty: true
