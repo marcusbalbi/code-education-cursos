@@ -21,6 +21,10 @@ spec:
             - mountPath: /etc/nginx/conf.d
               name: nginx-conf
               readOnly: true
+
+          resources:
+            requests:
+              cpu: "200m"
       volumes:
         - name: nginx-conf
           configMap:
