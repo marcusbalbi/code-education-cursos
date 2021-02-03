@@ -52,3 +52,7 @@
   - Consumer ack
   - publish confirm
   - Filas e Mensagens duraveis/persistidas
+
+## Simular
+
+- http://tryrabbitmq.com/
