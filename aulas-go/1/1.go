@@ -15,5 +15,6 @@ func main() {
 	go greetings("BALBI 1")
 	go greetings("BALBI 2")
 	go greetings("BALBI 3")
-	time.Sleep(3 * time.Second)
+	time.Sleep(1 * time.Second)
+	fmt.Println(time.Now().Format(time.StampMilli))
 }
