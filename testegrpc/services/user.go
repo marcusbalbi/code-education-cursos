@@ -75,7 +75,7 @@ func (*UserService) AddUserVerbose(req *pb.User, stream pb.UserService_AddUserVe
 	return nil
 }
 
-func (*UserService) AddUSers(stream pb.UserService_AddUsersServer) (err error) {
+func (*UserService) AddUsers(stream pb.UserService_AddUsersServer) (err error) {
 	users := []*pb.User{}
 
 	for {
@@ -95,6 +95,4 @@ func (*UserService) AddUSers(stream pb.UserService_AddUsersServer) (err error) {
 		})
 		fmt.Println("Adding", req.GetName())
 	}
-
-	return nil
 }
