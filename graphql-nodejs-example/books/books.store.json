@@ -1,0 +1,17 @@
+[
+  {
+    "id": "1",
+    "name": "O iluminado",
+    "categories": ["1", "3"]
+  },
+  {
+    "id": "2",
+    "name": "Cemitério Maldido",
+    "categories": ["1"]
+  },
+  {
+    "id": "3",
+    "name": "Dracula",
+    "categories": ["1", "2"]
+  }
+]
