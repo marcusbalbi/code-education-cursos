@@ -28,11 +28,12 @@ describe('Product.ts', () => {
     }).toThrowError('The price must be zero  in order to disable the product');
   });
 
-  it('validate', () => {
+  it('should validate to false if incorrect product', () => {
     const product = new Product('');
     product.setID('TESTE');
     product.setPrice(-10);
     const result = product.isValid();
-    console.log(result);
+    expect(result.valid).toBe(false);
+    expect(result.errors.length).toBeGreaterThan(0);
   });
 });
