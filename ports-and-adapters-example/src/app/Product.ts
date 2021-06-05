@@ -24,7 +24,11 @@ export class Product implements ProductInterface {
     this.status = 'enabled';
   }
   disable(): void {
-    this.status = 'disabled';
+    if (this.price === 0) {
+      this.status = 'disabled';
+    } else {
+      throw new Error('The price must be zero  in order to disable the product');
+    }
   }
   getID(): String {
     return this.id;
