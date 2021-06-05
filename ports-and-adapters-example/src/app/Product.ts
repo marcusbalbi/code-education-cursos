@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-interface ProductInterface {
+export interface ProductInterface {
   isValid(): ProductValidationResult;
   enable(): void;
   disable(): void;
@@ -9,19 +9,30 @@ interface ProductInterface {
   getPrice(): Number;
 }
 
-interface ProductValidationResult {
+export interface ProductValidationResult {
   errors: Array<String>;
   valid: Boolean;
 }
 
+export enum ProductStatus {
+  ENABLED = 'enabled',
+  DISABLED = 'disabled',
+}
+
 export class Product implements ProductInterface {
   private id: String;
-  private status: 'enabled' | 'disabled' = 'disabled';
-  private price = 0;
+  private name: String;
+  private status: ProductStatus;
+  private price: Number;
   private validationSchema: yup.AnySchema;
 
-  constructor(private name: String) {
-    this.validationSchema = yup.object().shape({
+  constructor(name: String = '') {
+    this.name = name;
+    this.validationSchema = this.defineValidationSchema();
+  }
+
+  private defineValidationSchema() {
+    return yup.object().shape({
       name: yup.string().required(),
       id: yup.string().uuid().required(),
       price: yup.number().required(),
@@ -51,14 +62,14 @@ export class Product implements ProductInterface {
     return validationResult;
   }
   enable(): void {
-    if (this.price <= 0) {
+    if (!this.price || this.price <= 0) {
       throw new Error('The price must be greater than 0 to enable the product');
     }
-    this.status = 'enabled';
+    this.status = ProductStatus.ENABLED;
   }
   disable(): void {
     if (this.price === 0) {
-      this.status = 'disabled';
+      this.status = ProductStatus.DISABLED;
     } else {
       throw new Error('The price must be zero  in order to disable the product');
     }
