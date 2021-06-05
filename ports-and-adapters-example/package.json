@@ -13,7 +13,8 @@
     "dotenv": "^6.2.0",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
-    "ts-node-dev": "^1.0.0-pre.56"
+    "ts-node-dev": "^1.0.0-pre.56",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@types/crypto-js": "^4.0.1",

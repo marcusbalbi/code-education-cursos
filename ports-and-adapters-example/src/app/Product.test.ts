@@ -27,4 +27,12 @@ describe('Product.ts', () => {
       product.disable();
     }).toThrowError('The price must be zero  in order to disable the product');
   });
+
+  it('validate', () => {
+    const product = new Product('');
+    product.setID('TESTE');
+    product.setPrice(-10);
+    const result = product.isValid();
+    console.log(result);
+  });
 });
