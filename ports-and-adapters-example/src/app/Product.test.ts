@@ -1,4 +1,5 @@
 import { Product } from './Product';
+import { v4 as uuidV4 } from 'uuid';
 
 describe('Product.ts', () => {
   it('should enable the product if greater than zero', () => {
@@ -35,5 +36,13 @@ describe('Product.ts', () => {
     const result = product.isValid();
     expect(result.valid).toBe(false);
     expect(result.errors.length).toBeGreaterThan(0);
+  });
+  it('should validate to true if correct product', () => {
+    const product = new Product('Test Product');
+    product.setID(uuidV4());
+    product.setPrice(2.8);
+    const result = product.isValid();
+    expect(result.valid).toBe(true);
+    expect(result.errors.length).toBe(0);
   });
 });
