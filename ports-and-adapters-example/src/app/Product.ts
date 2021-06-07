@@ -1,4 +1,5 @@
 import * as yup from 'yup';
+import { v4 as uuidV4 } from 'uuid';
 export interface ProductInterface {
   isValid(): ProductValidationResult;
   enable(): void;
@@ -8,6 +9,23 @@ export interface ProductInterface {
   getStatus(): String;
   getPrice(): Number;
 }
+
+export interface ProductServiceInterface {
+  get(id: String): ProductInterface;
+  create(name: String, price: Number): ProductInterface;
+  enable(product: ProductInterface): ProductInterface;
+  disable(product: ProductInterface): ProductInterface;
+}
+
+export interface ProductReader {
+  get(id: String): ProductInterface;
+}
+
+export interface ProductWriter {
+  save(product: ProductInterface): ProductInterface;
+}
+
+export interface ProductPersistenceInterface extends ProductReader, ProductWriter {}
 
 export interface ProductValidationResult {
   errors: Array<String>;
@@ -100,5 +118,15 @@ export class Product implements ProductInterface {
 
   setPrice(value): void {
     this.price = value;
+  }
+}
+
+export class ProductFactory {
+  public static createNewProduct(): Product {
+    const product = new Product();
+    product.setID(uuidV4());
+    product.setPrice(0);
+    product.disable();
+    return product;
   }
 }
