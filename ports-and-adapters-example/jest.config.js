@@ -6,8 +6,8 @@ module.exports = {
   testEnvironment: 'node',
   // globalSetup: './common/tests/globalSetup.ts',
   // setupFilesAfterEnv: ['./common/tests/setup.ts'],
-  coverageDirectory: '../tests/coverage',
-  collectCoverage: true,
+  // coverageDirectory: '../tests/coverage',
+  // collectCoverage: true,
   coverageReporters: ['html'],
   preset: 'ts-jest',
   moduleNameMapper: {

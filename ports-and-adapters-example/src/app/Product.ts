@@ -11,18 +11,18 @@ export interface ProductInterface {
 }
 
 export interface ProductServiceInterface {
-  get(id: String): ProductInterface;
-  create(name: String, price: Number): ProductInterface;
-  enable(product: ProductInterface): ProductInterface;
-  disable(product: ProductInterface): ProductInterface;
+  get(id: String): Promise<ProductInterface>;
+  create(name: String, price: Number): Promise<ProductInterface>;
+  enable(product: ProductInterface): Promise<ProductInterface>;
+  disable(product: ProductInterface): Promise<ProductInterface>;
 }
 
 export interface ProductReader {
-  get(id: String): ProductInterface;
+  get(id: String): Promise<ProductInterface>;
 }
 
 export interface ProductWriter {
-  save(product: ProductInterface): ProductInterface;
+  save(product: ProductInterface): Promise<ProductInterface>;
 }
 
 export interface ProductPersistenceInterface extends ProductReader, ProductWriter {}
