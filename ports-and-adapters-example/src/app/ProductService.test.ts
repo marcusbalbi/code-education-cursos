@@ -11,15 +11,15 @@ const createPersistenceMockFactory = () => {
 describe('ProductService.ts', () => {
   it('get should return a ProductInterface', async (done) => {
     const persistence = createPersistenceMockFactory();
+    const product = ProductFactory.createNewProduct();
     persistence.get = jest.fn(() => {
-      const product = ProductFactory.createNewProduct();
       return Promise.resolve(product);
     });
     const service = new ProductService(persistence);
 
     const result = await service.get('some valid id');
     expect(result).not.toBeNull();
-    expect(result.getID().length).toBe(36);
+    expect(result).toBe(product);
     expect(persistence.get).toHaveBeenCalledTimes(1);
     done();
   });
