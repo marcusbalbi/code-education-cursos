@@ -33,4 +33,28 @@ describe('ProductService.ts', () => {
     expect(persistence.get).toHaveBeenCalledTimes(1);
     done();
   });
+
+  it('should save a product', async () => {
+    const persistence = createPersistenceMockFactory();
+    persistence.save = jest.fn((product) => Promise.resolve(product));
+    const service = new ProductService(persistence);
+
+    const result = await service.create('Product test', 25.9);
+
+    expect(persistence.save).toHaveBeenCalledTimes(1);
+    expect(result).not.toBe(null);
+    expect(result.getName()).toBe('Product test');
+    expect(result.getPrice()).toBe(25.9);
+  });
+
+  it('should not save a product', async () => {
+    const persistence = createPersistenceMockFactory();
+    persistence.save = jest.fn(() => null);
+    const service = new ProductService(persistence);
+
+    const result = await service.create('Product test', 25.9);
+
+    expect(persistence.save).toHaveBeenCalledTimes(1);
+    expect(result).toBe(null);
+  });
 });

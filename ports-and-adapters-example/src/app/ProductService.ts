@@ -1,4 +1,9 @@
-import { ProductInterface, ProductPersistenceInterface, ProductServiceInterface } from './Product';
+import {
+  ProductFactory,
+  ProductInterface,
+  ProductPersistenceInterface,
+  ProductServiceInterface,
+} from './Product';
 
 export class ProductService implements ProductServiceInterface {
   constructor(private persistence: ProductPersistenceInterface) {}
@@ -11,12 +16,23 @@ export class ProductService implements ProductServiceInterface {
     }
     return product;
   }
-  create(name: String, price: Number): Promise<ProductInterface> {
-    throw new Error('Method not implemented.');
+
+  async create(name: String, price: Number): Promise<ProductInterface> {
+    const product = ProductFactory.createNewProduct();
+    product.setName(name);
+    product.setPrice(price);
+
+    if (product.isValid()) {
+      return this.persistence.save(product);
+    }
+
+    return null;
   }
+
   enable(product: ProductInterface): Promise<ProductInterface> {
     throw new Error('Method not implemented.');
   }
+
   disable(product: ProductInterface): Promise<ProductInterface> {
     throw new Error('Method not implemented.');
   }
