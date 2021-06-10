@@ -1,5 +1,5 @@
 import { ProductFactory, ProductStatus } from './Product';
-import { ProductService } from './ProductService';
+import { ProductService, ProductCreationError } from './ProductService';
 
 const createPersistenceMockFactory = () => {
   return {
@@ -24,14 +24,20 @@ describe('ProductService.ts', () => {
     done();
   });
 
-  it('get should return null if Product not found', async (done) => {
+  it('get should throw error if Product not found', async (done) => {
     const persistence = createPersistenceMockFactory();
     const service = new ProductService(persistence);
 
-    const result = await service.get('some invalid id');
-    expect(result).toBeNull();
-    expect(persistence.get).toHaveBeenCalledTimes(1);
-    done();
+    const result = await service.get('some invalid id').catch((e) => {
+      expect(e).toBeDefined();
+      expect(result).toBeUndefined();
+      expect(persistence.get).toHaveBeenCalledTimes(1);
+      done();
+    });
+
+    if (result !== undefined) {
+      done('FAILED');
+    }
   });
 
   it('should save a product', async () => {
@@ -57,14 +63,21 @@ describe('ProductService.ts', () => {
     expect(result).toBe(null);
   });
 
-  it('should not save a product if invalid', async () => {
+  it('should not save a product if invalid', async (done) => {
     const persistence = createPersistenceMockFactory();
     const service = new ProductService(persistence);
 
-    const result = await service.create('Product test', -25.9);
+    const result = await service.create('Product test', -25.9).catch((e: ProductCreationError) => {
+      expect(persistence.save).toHaveBeenCalledTimes(0);
+      expect(result).toBe(undefined);
+      expect(e.getErrors().length).toBeGreaterThan(0);
+      expect(e).toBeInstanceOf(ProductCreationError);
+      done();
+    });
 
-    expect(persistence.save).toHaveBeenCalledTimes(0);
-    expect(result).toBe(null);
+    if (result !== undefined) {
+      done('FAILED');
+    }
   });
 
   it('should enable a product', async (done) => {

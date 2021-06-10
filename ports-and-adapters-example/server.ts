@@ -10,16 +10,24 @@ connection.then(() => console.log('connected'));
 app.use(morgan(':method :url :status :response-time ms'));
 
 app.get('/get/:id', async (req: Request, res: Response) => {
-  const persistense = new ProductPersistenceSqliteAdapter();
-  const service = new ProductService(persistense);
-  const product = await service.get(req.params.id);
-  res.json(product);
+  try {
+    const persistense = new ProductPersistenceSqliteAdapter();
+    const service = new ProductService(persistense);
+    const product = await service.get(req.params.id);
+    res.json(product);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 app.get('/save', async (req: Request, res: Response) => {
-  const persistense = new ProductPersistenceSqliteAdapter();
-  const service = new ProductService(persistense);
-  const data = await service.create('Random PRoduct', 25.4);
-  res.json({ message: 'ok!', data });
+  try {
+    const persistense = new ProductPersistenceSqliteAdapter();
+    const service = new ProductService(persistense);
+    const data = await service.create('Random PRoduct', -25.4);
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message, extras: error.getErrors() });
+  }
 });
 
 app.listen(3000);

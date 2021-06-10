@@ -112,12 +112,8 @@ export class Product implements ProductInterface {
     } else if (value === ProductStatus.DISABLED) {
       this.disable();
     } else {
-      throw new Error('Status Invalido!');
+      throw new Error('Invalid Status!');
     }
-  }
-
-  serialize() {
-    return 'aaaa';
   }
 
   getStatus(): string {

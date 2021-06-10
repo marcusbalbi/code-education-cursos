@@ -3,7 +3,20 @@ import {
   ProductInterface,
   ProductPersistenceInterface,
   ProductServiceInterface,
+  ProductValidationResult,
 } from './Product';
+
+export class ProductCreationError extends Error {
+  constructor(msg, private validationResult: ProductValidationResult) {
+    super(msg);
+    this.name = 'ProductCreationError';
+    Object.setPrototypeOf(this, ProductCreationError.prototype);
+  }
+
+  getErrors() {
+    return this.validationResult.errors;
+  }
+}
 
 export class ProductService implements ProductServiceInterface {
   constructor(private persistence: ProductPersistenceInterface) {}
@@ -12,7 +25,7 @@ export class ProductService implements ProductServiceInterface {
     const product = await this.persistence.get(id);
 
     if (!product) {
-      return null;
+      throw new Error('Product not Found!');
     }
     return product;
   }
@@ -22,11 +35,15 @@ export class ProductService implements ProductServiceInterface {
     product.setName(name);
     product.setPrice(price);
 
-    if (product.isValid().valid) {
-      return this.persistence.save(product);
+    const validationResult = product.isValid();
+    if (!validationResult.valid) {
+      throw new ProductCreationError(
+        'The product you are trying to create is not valid',
+        validationResult,
+      );
     }
 
-    return null;
+    return this.persistence.save(product);
   }
 
   async enable(product: ProductInterface): Promise<ProductInterface> {
