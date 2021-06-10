@@ -1,10 +1,10 @@
-import { ProductFactory } from './Product';
+import { ProductFactory, ProductStatus } from './Product';
 import { ProductService } from './ProductService';
 
 const createPersistenceMockFactory = () => {
   return {
     get: jest.fn(),
-    save: jest.fn(),
+    save: jest.fn((product) => Promise.resolve(product)),
   };
 };
 
@@ -36,7 +36,6 @@ describe('ProductService.ts', () => {
 
   it('should save a product', async () => {
     const persistence = createPersistenceMockFactory();
-    persistence.save = jest.fn((product) => Promise.resolve(product));
     const service = new ProductService(persistence);
 
     const result = await service.create('Product test', 25.9);
@@ -49,12 +48,45 @@ describe('ProductService.ts', () => {
 
   it('should not save a product', async () => {
     const persistence = createPersistenceMockFactory();
-    persistence.save = jest.fn(() => null);
+    persistence.save = jest.fn((product) => null);
     const service = new ProductService(persistence);
 
     const result = await service.create('Product test', 25.9);
 
     expect(persistence.save).toHaveBeenCalledTimes(1);
     expect(result).toBe(null);
+  });
+
+  it('should not save a product if invalid', async () => {
+    const persistence = createPersistenceMockFactory();
+    const service = new ProductService(persistence);
+
+    const result = await service.create('Product test', -25.9);
+
+    expect(persistence.save).toHaveBeenCalledTimes(0);
+    expect(result).toBe(null);
+  });
+
+  it('should enable a product', async (done) => {
+    const persistence = createPersistenceMockFactory();
+    const service = new ProductService(persistence);
+    const product = ProductFactory.createNewProduct();
+    product.setPrice(22.9);
+    const result = await service.enable(product);
+
+    expect(persistence.save).toHaveBeenCalledTimes(1);
+    expect(result).not.toBe(null);
+    expect(result.getStatus()).toBe(ProductStatus.ENABLED);
+    done();
+  });
+  it('should not enable a product if invalid', async (done) => {
+    const persistence = createPersistenceMockFactory();
+    const service = new ProductService(persistence);
+    const product = ProductFactory.createNewProduct();
+    const result = await service.enable(product);
+
+    expect(persistence.save).toHaveBeenCalledTimes(0);
+    expect(result).toBe(null);
+    done();
   });
 });

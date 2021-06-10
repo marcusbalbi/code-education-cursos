@@ -22,18 +22,30 @@ export class ProductService implements ProductServiceInterface {
     product.setName(name);
     product.setPrice(price);
 
-    if (product.isValid()) {
+    if (product.isValid().valid) {
       return this.persistence.save(product);
     }
 
     return null;
   }
 
-  enable(product: ProductInterface): Promise<ProductInterface> {
-    throw new Error('Method not implemented.');
+  async enable(product: ProductInterface): Promise<ProductInterface> {
+    try {
+      product.enable();
+
+      return this.persistence.save(product);
+    } catch (e) {
+      return null;
+    }
   }
 
   disable(product: ProductInterface): Promise<ProductInterface> {
-    throw new Error('Method not implemented.');
+    try {
+      product.disable();
+
+      return this.persistence.save(product);
+    } catch (e) {
+      return null;
+    }
   }
 }
