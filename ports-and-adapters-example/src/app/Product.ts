@@ -4,21 +4,21 @@ export interface ProductInterface {
   isValid(): ProductValidationResult;
   enable(): void;
   disable(): void;
-  getID(): String;
-  getName(): String;
-  getStatus(): String;
-  getPrice(): Number;
+  getID(): string;
+  getName(): string;
+  getStatus(): string;
+  getPrice(): number;
 }
 
 export interface ProductServiceInterface {
-  get(id: String): Promise<ProductInterface>;
-  create(name: String, price: Number): Promise<ProductInterface>;
+  get(id: string): Promise<ProductInterface>;
+  create(name: string, price: number): Promise<ProductInterface>;
   enable(product: ProductInterface): Promise<ProductInterface>;
   disable(product: ProductInterface): Promise<ProductInterface>;
 }
 
 export interface ProductReader {
-  get(id: String): Promise<ProductInterface>;
+  get(id: string): Promise<ProductInterface>;
 }
 
 export interface ProductWriter {
@@ -28,7 +28,7 @@ export interface ProductWriter {
 export interface ProductPersistenceInterface extends ProductReader, ProductWriter {}
 
 export interface ProductValidationResult {
-  errors: Array<String>;
+  errors: Array<string>;
   valid: Boolean;
 }
 
@@ -38,13 +38,13 @@ export enum ProductStatus {
 }
 
 export class Product implements ProductInterface {
-  private id: String;
-  private name: String;
+  private id: string;
+  private name: string;
   private status: ProductStatus;
-  private price: Number;
+  private price: number;
   private validationSchema: yup.AnySchema;
 
-  constructor(name: String = '') {
+  constructor(name: string = '') {
     this.name = name;
     this.validationSchema = this.defineValidationSchema();
   }
@@ -92,7 +92,7 @@ export class Product implements ProductInterface {
       throw new Error('The price must be zero  in order to disable the product');
     }
   }
-  getID(): String {
+  getID(): string {
     return this.id;
   }
 
@@ -100,7 +100,7 @@ export class Product implements ProductInterface {
     this.id = value;
   }
 
-  getName(): String {
+  getName(): string {
     return this.name;
   }
 
@@ -108,11 +108,11 @@ export class Product implements ProductInterface {
     this.name = value;
   }
 
-  getStatus(): String {
+  getStatus(): string {
     return this.status;
   }
 
-  getPrice(): Number {
+  getPrice(): number {
     return this.price;
   }
 

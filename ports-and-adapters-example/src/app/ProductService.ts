@@ -8,7 +8,7 @@ import {
 export class ProductService implements ProductServiceInterface {
   constructor(private persistence: ProductPersistenceInterface) {}
 
-  async get(id: String): Promise<ProductInterface> {
+  async get(id: string): Promise<ProductInterface> {
     const product = await this.persistence.get(id);
 
     if (!product) {
@@ -17,7 +17,7 @@ export class ProductService implements ProductServiceInterface {
     return product;
   }
 
-  async create(name: String, price: Number): Promise<ProductInterface> {
+  async create(name: string, price: number): Promise<ProductInterface> {
     const product = ProductFactory.createNewProduct();
     product.setName(name);
     product.setPrice(price);
