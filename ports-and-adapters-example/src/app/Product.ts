@@ -42,11 +42,9 @@ export class Product implements ProductInterface {
   private name: string;
   private status: ProductStatus;
   private price: number;
-  private validationSchema: yup.AnySchema;
 
   constructor(name: string = '') {
     this.name = name;
-    this.validationSchema = this.defineValidationSchema();
   }
 
   private defineValidationSchema() {
@@ -59,6 +57,7 @@ export class Product implements ProductInterface {
   }
 
   isValid(): ProductValidationResult {
+    const validationSchema = this.defineValidationSchema();
     const validationResult: ProductValidationResult = { valid: true, errors: [] };
     if (this.price < 0) {
       validationResult.errors.push('Price must be a positive value or zero');
@@ -71,7 +70,7 @@ export class Product implements ProductInterface {
     }
 
     try {
-      this.validationSchema.validateSync(this, { abortEarly: false });
+      validationSchema.validateSync(this, { abortEarly: false });
     } catch (err) {
       validationResult.valid = false;
       validationResult.errors = validationResult.errors.concat(err.errors);
@@ -107,6 +106,19 @@ export class Product implements ProductInterface {
   setName(value): void {
     this.name = value;
   }
+  setStatus(value): void {
+    if (value === ProductStatus.ENABLED) {
+      this.enable();
+    } else if (value === ProductStatus.DISABLED) {
+      this.disable();
+    } else {
+      throw new Error('Status Invalido!');
+    }
+  }
+
+  serialize() {
+    return 'aaaa';
+  }
 
   getStatus(): string {
     return this.status;
@@ -127,6 +139,25 @@ export class ProductFactory {
     product.setID(uuidV4());
     product.setPrice(0);
     product.disable();
+    return product;
+  }
+  public static create({
+    id,
+    name,
+    price,
+    status,
+  }: {
+    id: string;
+    name: string;
+    price: number;
+    status: string;
+  }): Product {
+    const product = new Product();
+    product.setID(id);
+    product.setName(name);
+    product.setPrice(price);
+    product.setStatus(status);
+
     return product;
   }
 }

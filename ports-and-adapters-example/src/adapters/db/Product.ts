@@ -1,5 +1,6 @@
 import {
   Product,
+  ProductFactory,
   ProductInterface,
   ProductPersistenceInterface,
   ProductStatus,
@@ -29,7 +30,7 @@ export class ProductDBEntity {
   @Column({
     type: 'double',
   })
-  price: Number;
+  price: number;
 }
 
 export class ProductPersistenceSqliteAdapter implements ProductPersistenceInterface {
@@ -42,14 +43,7 @@ export class ProductPersistenceSqliteAdapter implements ProductPersistenceInterf
     if (dbData.length <= 0) {
       return null;
     }
-    const product = new Product();
-    product.setID(dbData[0].id);
-    product.setName(dbData[0].name);
-    product.setPrice(dbData[0].price);
-    if (dbData[0].status === ProductStatus.ENABLED) {
-      product.enable();
-    }
-    return product;
+    return ProductFactory.create(dbData[0]);
   }
   async save(product: ProductInterface): Promise<ProductInterface> {
     const data = {

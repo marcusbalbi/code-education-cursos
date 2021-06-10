@@ -9,8 +9,11 @@ const app = express();
 connection.then(() => console.log('connected'));
 app.use(morgan(':method :url :status :response-time ms'));
 
-app.get('/', (req: Request, res: Response) => {
-  res.json({ message: 'ok!' });
+app.get('/get/:id', async (req: Request, res: Response) => {
+  const persistense = new ProductPersistenceSqliteAdapter();
+  const service = new ProductService(persistense);
+  const product = await service.get(req.params.id);
+  res.json(product);
 });
 app.get('/save', async (req: Request, res: Response) => {
   const persistense = new ProductPersistenceSqliteAdapter();
