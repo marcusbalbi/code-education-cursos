@@ -89,4 +89,31 @@ describe('ProductService.ts', () => {
     expect(result).toBe(null);
     done();
   });
+
+  it('should disable a product', async (done) => {
+    const persistence = createPersistenceMockFactory();
+    const service = new ProductService(persistence);
+    const product = ProductFactory.createNewProduct();
+    product.setPrice(22.9);
+    product.enable();
+    product.setPrice(0);
+    const result = await service.disable(product);
+
+    expect(persistence.save).toHaveBeenCalledTimes(1);
+    expect(result).not.toBe(null);
+    expect(result.getStatus()).toBe(ProductStatus.DISABLED);
+    done();
+  });
+  it('should not disable a product if invalid', async (done) => {
+    const persistence = createPersistenceMockFactory();
+    const service = new ProductService(persistence);
+    const product = ProductFactory.createNewProduct();
+    product.setPrice(22.9);
+    product.enable();
+    const result = await service.disable(product);
+
+    expect(persistence.save).toHaveBeenCalledTimes(0);
+    expect(result).toBe(null);
+    done();
+  });
 });

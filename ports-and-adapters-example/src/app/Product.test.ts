@@ -2,6 +2,12 @@ import { Product } from './Product';
 import { v4 as uuidV4 } from 'uuid';
 
 describe('Product.ts', () => {
+  it('should get/set id', () => {
+    const product = new Product();
+    const uuid = uuidV4();
+    product.setID(uuid);
+    expect(product.getID()).toBe(uuid);
+  });
   it('should enable the product if greater than zero', () => {
     const product = new Product();
     product.setPrice(2.5);
