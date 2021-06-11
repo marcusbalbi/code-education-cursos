@@ -1,10 +1,4 @@
-import {
-  Product,
-  ProductFactory,
-  ProductInterface,
-  ProductPersistenceInterface,
-  ProductStatus,
-} from '@src/app/Product';
+import { ProductFactory, ProductInterface, ProductPersistenceInterface } from '@src/app/Product';
 import { Column, Entity, getConnection, PrimaryColumn, Repository } from 'typeorm';
 
 @Entity({

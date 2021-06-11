@@ -11,6 +11,6 @@ module.exports = {
   coverageReporters: ['html'],
   preset: 'ts-jest',
   moduleNameMapper: {
-    '^@root(.*)$': '<rootDir>/$1',
+    '^@src(.*)$': '<rootDir>/$1',
   },
 };
