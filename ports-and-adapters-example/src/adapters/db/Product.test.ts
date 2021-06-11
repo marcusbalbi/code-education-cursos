@@ -5,7 +5,7 @@ import { ProductPersistenceSqliteAdapter } from './Product';
 
 describe('DB Product.test', () => {
   beforeAll(async (done) => {
-    connectionFactory('app_test').then(async () => {
+    connectionFactory(':memory:').then(async () => {
       await getConnection().dropDatabase();
       // use migration instead
       await getConnection().query(`CREATE TABLE "products" (
