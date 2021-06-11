@@ -130,10 +130,10 @@ export class Product implements ProductInterface {
 }
 
 export class ProductFactory {
-  public static createNewProduct(): Product {
-    const product = new Product();
+  public static createNewProduct(name: string = '', price: number = 0): Product {
+    const product = new Product(name);
     product.setID(uuidV4());
-    product.setPrice(0);
+    product.setPrice(price);
     product.disable();
     return product;
   }

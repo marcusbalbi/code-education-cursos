@@ -96,11 +96,13 @@ describe('ProductService.ts', () => {
     const persistence = createPersistenceMockFactory();
     const service = new ProductService(persistence);
     const product = ProductFactory.createNewProduct();
-    const result = await service.enable(product);
-
-    expect(persistence.save).toHaveBeenCalledTimes(0);
-    expect(result).toBe(null);
-    done();
+    const result = await service.enable(product).catch(() => {
+      expect(persistence.save).toHaveBeenCalledTimes(0);
+      done();
+    });
+    if (result) {
+      done('failed');
+    }
   });
 
   it('should disable a product', async (done) => {
@@ -123,10 +125,10 @@ describe('ProductService.ts', () => {
     const product = ProductFactory.createNewProduct();
     product.setPrice(22.9);
     product.enable();
-    const result = await service.disable(product);
-
+    expect(() => {
+      service.disable(product);
+    }).toThrow();
     expect(persistence.save).toHaveBeenCalledTimes(0);
-    expect(result).toBe(null);
     done();
   });
 });

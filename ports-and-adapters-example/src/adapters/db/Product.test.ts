@@ -26,6 +26,13 @@ describe('DB Product.test', () => {
     product.setName('test save');
     const result = await persistance.save(product);
     expect(result.getID()).toEqual(product.getID());
+    expect(result.getName()).toEqual(product.getName());
+
+    product.setName('new name');
+    const result2 = await persistance.save(product);
+    expect(result2.getName()).toEqual(product.getName());
+    expect(result2.getID()).toEqual(product.getID());
+
     done();
   });
 });

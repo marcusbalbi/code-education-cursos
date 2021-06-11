@@ -49,20 +49,18 @@ export class ProductService implements ProductServiceInterface {
   async enable(product: ProductInterface): Promise<ProductInterface> {
     try {
       product.enable();
-
       return this.persistence.save(product);
     } catch (e) {
-      return null;
+      throw e;
     }
   }
 
   disable(product: ProductInterface): Promise<ProductInterface> {
     try {
       product.disable();
-
       return this.persistence.save(product);
     } catch (e) {
-      return null;
+      throw e;
     }
   }
 }
