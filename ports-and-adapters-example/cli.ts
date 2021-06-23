@@ -5,7 +5,7 @@ import connectionFactory from './src/infra/db/connection';
 const prompts = require('prompts');
 
 const init = async () => {
-  await connectionFactory('app');
+  await connectionFactory('app.db');
   console.log('database connected!');
 };
 

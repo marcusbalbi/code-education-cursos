@@ -6,7 +6,7 @@ import connectionFactory from './src/infra/db/connection';
 
 const app = express();
 
-connectionFactory('app').then(() => console.log('connected'));
+connectionFactory('app.db').then(() => console.log('connected'));
 app.use(morgan(':method :url :status :response-time ms'));
 
 app.get('/get/:id', async (req: Request, res: Response) => {
