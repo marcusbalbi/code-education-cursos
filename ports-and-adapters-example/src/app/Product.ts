@@ -89,7 +89,7 @@ export class Product implements ProductInterface {
     if (this.price === 0) {
       this.status = ProductStatus.DISABLED;
     } else {
-      throw new Error('The price must be zero  in order to disable the product');
+      throw new Error('The price must be zero in order to disable the product');
     }
   }
   getID(): string {
@@ -135,7 +135,14 @@ export class ProductFactory {
     const product = new Product(name);
     product.setID(uuidV4());
     product.setPrice(price);
-    product.disable();
+    // try to correct set status
+    try {
+      if (price > 0) {
+        product.enable();
+      } else {
+        product.disable();
+      }
+    } catch (e) {}
     return product;
   }
   public static create({

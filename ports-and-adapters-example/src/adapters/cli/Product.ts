@@ -1,6 +1,6 @@
 import { ProductServiceInterface } from '@src/app/Product';
 
-async function run(
+async function runProductCli(
   productService: ProductServiceInterface,
   action: string,
   productid: string,
@@ -35,4 +35,4 @@ Status: ${product.getStatus()}`;
   }
 }
 
-export default run;
+export default runProductCli;

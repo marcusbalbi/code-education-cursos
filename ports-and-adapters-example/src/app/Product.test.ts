@@ -32,7 +32,7 @@ describe('Product.ts', () => {
     product.setPrice(2.5);
     expect(() => {
       product.disable();
-    }).toThrowError('The price must be zero  in order to disable the product');
+    }).toThrowError('The price must be zero in order to disable the product');
   });
 
   it('should validate to false if incorrect product', () => {

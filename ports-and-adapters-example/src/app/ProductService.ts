@@ -32,13 +32,7 @@ export class ProductService implements ProductServiceInterface {
   }
 
   async create(name: string, price: number): Promise<ProductInterface> {
-    const product = ProductFactory.createNewProduct();
-    product.setName(name);
-    product.setPrice(price);
-
-    if (price > 0) {
-      product.setStatus(ProductStatus.ENABLED);
-    }
+    const product = ProductFactory.createNewProduct(name, price);
 
     const validationResult = product.isValid();
     if (!validationResult.valid) {
