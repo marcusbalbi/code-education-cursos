@@ -3,6 +3,7 @@ import {
   ProductInterface,
   ProductPersistenceInterface,
   ProductServiceInterface,
+  ProductStatus,
   ProductValidationResult,
 } from './Product';
 
@@ -34,6 +35,10 @@ export class ProductService implements ProductServiceInterface {
     const product = ProductFactory.createNewProduct();
     product.setName(name);
     product.setPrice(price);
+
+    if (price > 0) {
+      product.setStatus(ProductStatus.ENABLED);
+    }
 
     const validationResult = product.isValid();
     if (!validationResult.valid) {
