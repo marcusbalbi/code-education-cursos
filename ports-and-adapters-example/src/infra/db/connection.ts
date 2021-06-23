@@ -1,12 +1,12 @@
 import { createConnection } from 'typeorm';
 import { ProductDBEntity } from '../../adapters/db/Product';
 
-const connectionFactory = (dbname) => {
+const connectionFactory = (dbname, logging = false) => {
   return createConnection({
     type: 'sqlite',
     database: `${dbname}.db`,
     entities: [ProductDBEntity],
-    logging: true,
+    logging,
   });
 };
 
