@@ -8,6 +8,7 @@ export interface ProductInterface {
   getName(): string;
   getStatus(): string;
   getPrice(): number;
+  setPrice(newPrice: number): void;
 }
 
 export interface ProductServiceInterface {
@@ -29,7 +30,7 @@ export interface ProductPersistenceInterface extends ProductReader, ProductWrite
 
 export interface ProductValidationResult {
   errors: Array<string>;
-  valid: Boolean;
+  valid: boolean;
 }
 
 export enum ProductStatus {
