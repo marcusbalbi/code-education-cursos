@@ -44,7 +44,7 @@ export class ProductPersistenceSqliteAdapter implements ProductPersistenceInterf
       id: product.getID(),
       name: product.getName(),
       status: product.getStatus(),
-      price: 0,
+      price: product.getPrice(),
     };
     await this.con.save(data);
     return product;
