@@ -5,6 +5,7 @@
   "scripts": {
     "start": "ts-node-dev -r tsconfig-paths/register server.ts --respawn --transpalyOnly",
     "test": "jest",
+    "cli": "ts-node-dev -r tsconfig-paths/register cli.ts --respawn --transpalyOnly",
     "typeorm": "ts-node --transpile-only ./node_modules/typeorm/cli.js ",
     "lint": "eslint ./src"
   },
@@ -14,6 +15,7 @@
     "dotenv": "^6.2.0",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
+    "prompts": "^2.4.1",
     "sqlite3": "^5.0.2",
     "ts-node-dev": "^1.0.0-pre.56",
     "typeorm": "^0.2.34",
