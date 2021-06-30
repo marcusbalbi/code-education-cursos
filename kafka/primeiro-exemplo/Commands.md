@@ -16,3 +16,7 @@
 ### Producer
 
 - kafka-console-producer --bootstrap-server=localhost:9092 --topic=teste
+
+### groups
+
+- kafka-consumer-groups --bootstrap-server=localhost:9092 --group=x --describe
