@@ -11,7 +11,7 @@
 
 #### consumers no mesmo group dividem a leitura dos eventos
 
-- afka-console-consumer --bootstrap-server=localhost:9092 --topic=teste --group=x
+- kafka-console-consumer --bootstrap-server=localhost:9092 --topic=teste --group=x
 
 ### Producer
 

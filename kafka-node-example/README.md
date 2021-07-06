@@ -1,0 +1,1 @@
+# Kafka Example with Typescript
