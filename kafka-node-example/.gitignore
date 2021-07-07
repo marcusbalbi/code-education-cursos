@@ -2,3 +2,5 @@
 dist/
 .env
 *.db
+.docker/dbdata
+.docker/mongo
