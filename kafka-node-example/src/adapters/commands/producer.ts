@@ -27,7 +27,8 @@ producer.on('ready', () => {
       const payload = Buffer.from(JSON.stringify({ message: argv.message, time: i }));
       const topic = 'teste';
       const partition = null;
-      const key = null;
+      // mensagens com a mesma key são enviadas a mesma partition, garantindo uma ordem de leitura consistente
+      const key = 'BALBI2';
       producer.produce(
         // Topic to send the message to
         topic,

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "ts-node-dev -r tsconfig-paths/register server.ts --respawn --transpalyOnly",
-    "cli": "ts-node-script ./src/adapters/commands/producer.ts ",
+    "producer": "ts-node-script ./src/adapters/commands/producer.ts ",
+    "consumer": "ts-node-script ./src/adapters/commands/consumer.ts ",
     "test": "jest",
     "typeorm": "ts-node --transpile-only ./node_modules/typeorm/cli.js ",
     "lint": "eslint ./src"
