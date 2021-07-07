@@ -26,6 +26,8 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
     extra_hosts:
       - "host.docker.internal:172.17.0.1"
+    networks:
+      - kafka_example_network
   kafka:
     image: confluentinc/cp-kafka:latest
     depends_on:
@@ -43,6 +45,8 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,OUTSIDE:PLAINTEXT
     extra_hosts:
       - "host.docker.internal:172.17.0.1"
+    networks:
+      - kafka_example_network
 networks:
   kafka_example_network:
     driver: bridge

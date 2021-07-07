@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "ts-node-dev -r tsconfig-paths/register server.ts --respawn --transpalyOnly",
+    "cli": "ts-node-script ./src/adapters/commands/producer.ts ",
     "test": "jest",
     "typeorm": "ts-node --transpile-only ./node_modules/typeorm/cli.js ",
     "lint": "eslint ./src"
@@ -20,6 +21,7 @@
     "ts-node-dev": "^1.0.0-pre.56",
     "typeorm": "^0.2.34",
     "uuid": "^8.3.2",
+    "yargs": "^17.0.1",
     "yup": "^0.32.9"
   },
   "devDependencies": {
