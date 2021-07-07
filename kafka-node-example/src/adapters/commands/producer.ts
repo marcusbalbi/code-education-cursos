@@ -4,8 +4,14 @@ const { hideBin } = require('yargs/helpers');
 const argv = yargs(hideBin(process.argv)).argv;
 
 function createProducer() {
+  // https://github.com/edenhill/librdkafka/blob/v1.6.1/CONFIGURATION.md
   return new Kafka.Producer({
     'metadata.broker.list': 'kafka:9092',
+    // tempo para esperar resposta
+    'delivery.timeout.ms': 0,
+    // 0= nao aguarda, 1=ledaer retorna, all=espera leader e todos
+    acks: 'all',
+    'enable.idempotence': 'true',
     dr_cb: true,
   });
 }
@@ -39,6 +45,7 @@ producer.on('ready', () => {
         // to your delivery reports
       );
     }
+    console.log('======================================', 'FINISHED!');
   } catch (err) {
     console.log('Error:' + err.message);
   }
