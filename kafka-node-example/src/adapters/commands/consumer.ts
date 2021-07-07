@@ -1,38 +1,19 @@
-const Kafka = require('node-rdkafka');
+const { Kafka } = require('kafkajs');
 const fs = require('fs');
-// const argv = yargs(hideBin(process.argv)).argv;
-
-function createConsumer() {
-  // https://github.com/edenhill/librdkafka/blob/v1.6.1/CONFIGURATION.md
-  return new Kafka.KafkaConsumer(
-    {
-      'metadata.broker.list': 'kafka:9092',
-      'client.id': 'typescript-consumer-client-example',
-      'group.id': 'typescript-consumer-client-group-example',
-    },
-    {
-      'auto.offset.reset': 'earliest',
-    },
-  );
-}
-
-const consumer = createConsumer();
-// Flowing mode
-consumer.connect();
-
-consumer
-  .on('ready', () => {
-    consumer.subscribe(['teste']);
-
-    consumer.consume();
-  })
-  .on('data', (data) => {
-    // Output the actual message contents
-    // fs.writeFileSync('teste.log', data.value.toString() + '\n', { mode: 0o777, flag: 'a+' });
-    console.log(data.value.toString());
-  });
-
-consumer.on('event.error', function (err) {
-  console.error('Error from consumer');
-  console.error(err);
+const kafka = new Kafka({
+  clientId: 'typescript-consumer-example',
+  brokers: ['kafka:9092'],
 });
+
+const consumer = kafka.consumer({ groupId: 'teste-group3' });
+
+(async function () {
+  await consumer.connect();
+  await consumer.subscribe({ topic: 'teste', fromBeginning: true });
+
+  await consumer.run({
+    eachMessage: async ({ topic, partition, message }) => {
+      fs.writeFileSync('teste.log', message.value.toString() + '\n', { mode: 0o777, flag: 'a+' });
+    },
+  });
+})();
