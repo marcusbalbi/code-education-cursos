@@ -129,7 +129,7 @@ services:
         #
         sleep infinity
     networks:
-    - kafka_example_network
+      - kafka_example_network
     extra_hosts:
       - "host.docker.internal:172.17.0.1"
 
@@ -143,6 +143,8 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=root
       - MONGO_INITDB_DATABASE=fullcycle
+    networks:
+      - kafka_example_network
     extra_hosts:
       - "host.docker.internal:172.17.0.1"
 
@@ -157,6 +159,8 @@ services:
       - ME_CONFIG_MONGODB_AUTH_PASSWORD=root
       - ME_CONFIG_MONGODB_ADMINUSERNAME=root
       - ME_CONFIG_MONGODB_ADMINPASSWORD=root
+    networks:
+      - kafka_example_network
     depends_on:
       - mongodb
 
