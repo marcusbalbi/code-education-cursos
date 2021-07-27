@@ -2,3 +2,5 @@
 *  kind get clusters
 * kubectl get nodes
 * kind delete clusters kind
+* kubectl config get-clusters
+* kubectl config use-context contextname
