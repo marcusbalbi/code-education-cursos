@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nodeserver
+  labels:
+    app: nodeserver
+spec:
+  selector:
+    matchLabels:
+      app: nodeserver
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: "nodeserver"
+    spec:
+      containers:
+        - name: "nodeserver"
+          image: "marcusbalbi/primeiro-exemplo-kubernetes"
