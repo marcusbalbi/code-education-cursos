@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeserver-service
+spec:
+  selector:
+      app: nodeserver
+  type: ClusterIP
+  ports:
+  - name: nodeserver-service
+    #port é a porta do service
+    port: 80
+    protocol: TCP
+    # targetPort é aporta do container
+    targetPort: 3000

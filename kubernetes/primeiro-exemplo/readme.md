@@ -10,5 +10,7 @@
 * kubectl delete replicasetname
 * kubectl describe 
 * kubectl rollout history deployment nodeserver
+* kubectl port-forward service/nodeserver-service 3000:80
+* kubectl proxy --port=4000
 
 
