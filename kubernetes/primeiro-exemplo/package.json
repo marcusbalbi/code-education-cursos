@@ -1,0 +1,17 @@
+{
+  "name": "primeiro-exemplo-k8s",
+  "private": true,
+  "version": "1.0.0",
+  "description": "* kind create cluster --config=./k8s/Kind.yml --name=fullcycle *  kind get clusters * kubectl get nodes * kind delete clusters kind * kubectl config get-clusters * kubectl config use-context contextname",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
