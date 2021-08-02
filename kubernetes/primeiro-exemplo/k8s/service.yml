@@ -5,7 +5,9 @@ metadata:
 spec:
   selector:
       app: nodeserver
-  type: ClusterIP
+  #type: ClusterIP
+  #type: NodePort
+  type: LoadBalancer
   ports:
   - name: nodeserver-service
     #port é a porta do service
@@ -13,3 +15,4 @@ spec:
     protocol: TCP
     # targetPort é aporta do container
     targetPort: 3000
+    # nodePort: 3000
