@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: "nodeserver"
-          image: "marcusbalbi/primeiro-exemplo-kubernetes:v6.1"
+          image: "marcusbalbi/primeiro-exemplo-kubernetes:v6.2"
           envFrom:
             - configMapRef:
                 name: nodeserver-env
