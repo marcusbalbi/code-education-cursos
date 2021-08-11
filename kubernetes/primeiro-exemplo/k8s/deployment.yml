@@ -16,18 +16,17 @@ spec:
     spec:
       containers:
         - name: "nodeserver"
-          image: "marcusbalbi/primeiro-exemplo-kubernetes:v3"
+          image: "marcusbalbi/primeiro-exemplo-kubernetes:v6"
           envFrom:
             - configMapRef:
                 name: "nodeserver-env"
-          # env:
-          #   - name: APP_NAME
-          #     valueFrom:
-          #       configMapKeyRef:
-          #         name: "nodeserver-env"
-          #         key: APP_NAME
-          #   - name: APP_VERSION
-          #     valueFrom:
-          #       configMapKeyRef:
-          #         name: "nodeserver-env"
-          #         key: APP_VERSION
+          volumeMounts:
+            - mountPath: "/var/www/app/myfamily"
+              name: config
+      volumes:
+        - name: config
+          configMap:
+            name: "configmap-family"
+            items:
+              - key: members
+                path: myfamily.txt

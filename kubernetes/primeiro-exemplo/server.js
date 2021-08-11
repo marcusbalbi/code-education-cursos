@@ -16,10 +16,10 @@ app.get("/configmap", (req, res) => {
   const fs = require('fs');
 
   try {
-    const buff = fs.readFileSync("./myfamily.txt");
+    const buff = fs.readFileSync("./myfamily/myfamily.txt");
     res.send(buff.toString());
   } catch(err) {
-    res.send("Falha ao ler o arquivo ./myfamily.txt");
+    res.send("Falha ao ler o arquivo ./myfamily/myfamily.txt");
   }
   
 });
