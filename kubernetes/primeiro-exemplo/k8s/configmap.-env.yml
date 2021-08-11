@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nodeserver-env
+data:
+  APP_NAME: "Balbi3"
+  APP_VERSION: "0.1.3"

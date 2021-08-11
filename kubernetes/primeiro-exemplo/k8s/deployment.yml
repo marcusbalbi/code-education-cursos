@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: nodeserver
-  replicas: 2
+  replicas: 3
   template:
     metadata:
       labels:
@@ -16,9 +16,18 @@ spec:
     spec:
       containers:
         - name: "nodeserver"
-          image: "marcusbalbi/primeiro-exemplo-kubernetes:v2"
-          env:
-            - name: APP_NAME
-              value: "balbi"
-            - name: APP_VERSION
-              value: "0.1.1"
+          image: "marcusbalbi/primeiro-exemplo-kubernetes:v3"
+          envFrom:
+            - configMapRef:
+                name: "nodeserver-env"
+          # env:
+          #   - name: APP_NAME
+          #     valueFrom:
+          #       configMapKeyRef:
+          #         name: "nodeserver-env"
+          #         key: APP_NAME
+          #   - name: APP_VERSION
+          #     valueFrom:
+          #       configMapKeyRef:
+          #         name: "nodeserver-env"
+          #         key: APP_VERSION
