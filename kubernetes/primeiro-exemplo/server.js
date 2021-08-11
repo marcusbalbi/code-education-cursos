@@ -1,7 +1,7 @@
 const express = require("express");
 
 const app = express();
-
+const startedAt = Date.now();
 app.get("/", (req, res) => {
   res.json({ message: "Hello from Full Cycle" });
 });
@@ -13,24 +13,32 @@ app.get("/info", (req, res) => {
 });
 
 app.get("/configmap", (req, res) => {
-  const fs = require('fs');
+  const fs = require("fs");
 
   try {
     const buff = fs.readFileSync("./myfamily/myfamily.txt");
     res.send(buff.toString());
-  } catch(err) {
+  } catch (err) {
     res.send("Falha ao ler o arquivo ./myfamily/myfamily.txt");
   }
-  
 });
 
-app.get("/servre", (req, res) => {
+app.get("/server", (req, res) => {
   res.json({
     app_user: process.env.APP_USER,
     app_password: process.env.APP_PASSWORD,
   });
 });
 
+app.get("/helthz", (req, res) => {
+  const seconds = Math.floor((Date.now() - startedAt) / 1000);
+
+  if (seconds > 25) {
+    return res.status(500).json({ message: "Error!!", seconds });
+  } else {
+    return res.status(200).json({ message: "OK!", seconds });
+  }
+});
 
 app.listen(3000, () => {
   console.log("Servidor iniciado na porta 3000");
