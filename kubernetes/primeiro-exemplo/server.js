@@ -12,6 +12,18 @@ app.get("/info", (req, res) => {
   });
 });
 
+app.get("/configmap", (req, res) => {
+  const fs = require('fs');
+
+  try {
+    const buff = fs.readFileSync("./myfamily.txt");
+    res.send(buff.toString());
+  } catch(err) {
+    res.send("Falha ao ler o arquivo ./myfamily.txt");
+  }
+  
+});
+
 app.listen(3000, () => {
   console.log("Servidor iniciado na porta 3000");
 });
