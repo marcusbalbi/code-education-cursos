@@ -30,7 +30,7 @@ app.get("/server", (req, res) => {
   });
 });
 
-app.get("/helthz", (req, res) => {
+app.get("/healthz", (req, res) => {
   const seconds = Math.floor((Date.now() - startedAt) / 1000);
 
   if (seconds > 25) {

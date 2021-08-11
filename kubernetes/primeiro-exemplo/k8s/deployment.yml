@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: nodeserver
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
@@ -16,7 +16,15 @@ spec:
     spec:
       containers:
         - name: "nodeserver"
-          image: "marcusbalbi/primeiro-exemplo-kubernetes:v6.2"
+          image: "marcusbalbi/primeiro-exemplo-kubernetes:v6.3"
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+            periodSeconds: 5
+            failureThreshold: 3
+            timeoutSeconds: 10
+            successThreshold: 1
           envFrom:
             - configMapRef:
                 name: nodeserver-env
