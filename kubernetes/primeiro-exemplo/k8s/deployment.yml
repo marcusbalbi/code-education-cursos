@@ -16,4 +16,9 @@ spec:
     spec:
       containers:
         - name: "nodeserver"
-          image: "marcusbalbi/primeiro-exemplo-kubernetes"
+          image: "marcusbalbi/primeiro-exemplo-kubernetes:v2"
+          env:
+            - name: APP_NAME
+              value: "balbi"
+            - name: APP_VERSION
+              value: "0.1.1"
