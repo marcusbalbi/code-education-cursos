@@ -24,14 +24,15 @@ spec:
             periodSeconds: 3
             failureThreshold: 1
             initialDelaySeconds: 10
-          # livenessProbe:
-          #   httpGet:
-          #     path: /healthz
-          #     port: 3000
-          #   periodSeconds: 5
-          #   failureThreshold: 3
-          #   timeoutSeconds: 10
-          #   successThreshold: 1
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+            periodSeconds: 5
+            failureThreshold: 3
+            timeoutSeconds: 10
+            successThreshold: 1
+            initialDelaySeconds: 15
           envFrom:
             - configMapRef:
                 name: nodeserver-env
