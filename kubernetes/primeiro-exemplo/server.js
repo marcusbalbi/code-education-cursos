@@ -33,11 +33,12 @@ app.get("/server", (req, res) => {
 app.get("/healthz", (req, res) => {
   const seconds = Math.floor((Date.now() - startedAt) / 1000);
 
-  if (seconds > 25) {
-    return res.status(500).json({ message: "Error!!", seconds });
-  } else {
-    return res.status(200).json({ message: "OK!", seconds });
+  if (seconds < 10) {
+    return res.status(500).json({ message: "app not ready!!!", seconds });
+  } else if (seconds > 200) {
+    return res.status(500).json({ message: "Fail!!", seconds });
   }
+  return res.status(200).json({ message: "OK!", seconds });
 });
 
 app.listen(3000, () => {

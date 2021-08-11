@@ -16,15 +16,22 @@ spec:
     spec:
       containers:
         - name: "nodeserver"
-          image: "marcusbalbi/primeiro-exemplo-kubernetes:v6.3"
-          livenessProbe:
+          image: "marcusbalbi/primeiro-exemplo-kubernetes:v6.4"
+          readinessProbe:
             httpGet:
               path: /healthz
               port: 3000
-            periodSeconds: 5
-            failureThreshold: 3
-            timeoutSeconds: 10
-            successThreshold: 1
+            periodSeconds: 3
+            failureThreshold: 1
+            initialDelaySeconds: 10
+          # livenessProbe:
+          #   httpGet:
+          #     path: /healthz
+          #     port: 3000
+          #   periodSeconds: 5
+          #   failureThreshold: 3
+          #   timeoutSeconds: 10
+          #   successThreshold: 1
           envFrom:
             - configMapRef:
                 name: nodeserver-env
