@@ -16,10 +16,12 @@ spec:
     spec:
       containers:
         - name: "nodeserver"
-          image: "marcusbalbi/primeiro-exemplo-kubernetes:v6"
+          image: "marcusbalbi/primeiro-exemplo-kubernetes:v6.1"
           envFrom:
             - configMapRef:
-                name: "nodeserver-env"
+                name: nodeserver-env
+            - secretRef:
+                name: "nodeserver-secret"
           volumeMounts:
             - mountPath: "/var/www/app/myfamily"
               name: config

@@ -24,6 +24,14 @@ app.get("/configmap", (req, res) => {
   
 });
 
+app.get("/servre", (req, res) => {
+  res.json({
+    app_user: process.env.APP_USER,
+    app_password: process.env.APP_PASSWORD,
+  });
+});
+
+
 app.listen(3000, () => {
   console.log("Servidor iniciado na porta 3000");
 });
