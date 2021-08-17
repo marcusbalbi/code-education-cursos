@@ -35,9 +35,11 @@ app.get("/healthz", (req, res) => {
 
   if (seconds < 10) {
     return res.status(500).json({ message: "app not ready!!!", seconds });
-  } else if (seconds > 200) {
-    return res.status(500).json({ message: "Fail!!", seconds });
   }
+  // utilizado para restartar o pode quando o app falha
+  // if (seconds > 60 * 30) {
+  //   return res.status(500).json({ message: "Fail!!", seconds });
+  // }
   return res.status(200).json({ message: "OK!", seconds });
 });
 
