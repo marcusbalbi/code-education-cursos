@@ -14,3 +14,4 @@
 * kubectl proxy --port=4000
 
 
+* kubectl top pod 

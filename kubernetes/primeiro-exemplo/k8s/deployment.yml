@@ -17,6 +17,15 @@ spec:
       containers:
         - name: "nodeserver"
           image: "marcusbalbi/primeiro-exemplo-kubernetes:v6.4"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 20Mi
+            limits:
+              cpu: 500m
+              memory: 25Mi
+              
+
           startupProbe:
             httpGet:
               path: /healthz
