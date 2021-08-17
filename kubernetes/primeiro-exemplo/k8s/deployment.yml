@@ -19,10 +19,10 @@ spec:
           image: "marcusbalbi/primeiro-exemplo-kubernetes:v6.5"
           resources:
             requests:
-              cpu: 100m
+              cpu: 50m
               memory: 20Mi
             limits:
-              cpu: 500m
+              cpu: 100m
               memory: 25Mi
               
 
