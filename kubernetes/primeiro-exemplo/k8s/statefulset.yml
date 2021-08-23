@@ -5,7 +5,7 @@ metadata:
   labels:
     app: mysql
 spec:
-  replicas: 2
+  replicas: 3
   serviceName: mysql
   selector:
     matchLabels:
