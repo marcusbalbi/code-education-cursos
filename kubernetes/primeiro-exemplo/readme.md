@@ -17,3 +17,9 @@
 * kubectl top pod 
 * kubectl run -it  fortio --rm --image=fortio/fortio -- load -qps 800 -t 120s -c 70 "http://nodeserver-service/healthz"
 * kubectl get pvc
+
+
+* kubectl config view
+* kubectl config current-context
+* kubectl config set-context dev --namespace=dev --cluster=kind-balbi --user=kind-balbi
+* kubectl config use-context dev
