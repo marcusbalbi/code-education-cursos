@@ -5,7 +5,6 @@ metadata:
   labels:
     app: nodeserver
 spec:
-  namespace: "dev"
   selector:
     matchLabels:
       app: nodeserver

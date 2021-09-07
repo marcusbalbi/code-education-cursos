@@ -11,6 +11,7 @@ spec:
       labels:
         app: server
     spec:
+      serviceAccount: server
       containers:
       - name: server
         image: marcusbalbi/go-hpa:latest
