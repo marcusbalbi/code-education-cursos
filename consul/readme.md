@@ -38,3 +38,5 @@
 * nginx
 * mkdir /usr/share/nginx/html -p
 * edit nginx so it returns something different of 404
+* consul agent -config-dir=/etc/consul.d
+* nginx -s reload
