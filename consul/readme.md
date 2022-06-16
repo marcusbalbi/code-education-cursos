@@ -32,3 +32,9 @@
 * curl localhost:8500/v1/catalog/services
 * consul catalog nodes -service nginx
 * consul catalog nodes -detailed
+* consul agent -bind=172.19.0.6 -data-dir=/var/lib/consul -config-dir=/etc/consul.d --retry-join=172.19.0.4
+* apk add nginx
+* mkdir /run/nginx
+* nginx
+* mkdir /usr/share/nginx/html -p
+* edit nginx so it returns something different of 404
