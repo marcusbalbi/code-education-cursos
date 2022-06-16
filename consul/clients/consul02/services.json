@@ -1,5 +1,6 @@
 {
   "bind_addr": "172.19.0.4",
   "data_dir": "/tmp",
-  "retry_join": ["172.19.0.2", "172.19.0.6"]
+  "retry_join": ["172.19.0.2", "172.19.0.6"],
+  "encrypt": "CRtRSZ8CebEQ7mM1LZWqKGm8vQ2mS2wRexFTkPlWAus="
 }

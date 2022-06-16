@@ -3,5 +3,10 @@
   "bind_addr": "172.19.0.2",
   "bootstrap_expect": 3,
   "data_dir": "/tmp",
-  "retry_join": ["172.19.0.5", "172.19.0.6"]
+  "node_name": "consulserver01",
+  "encrypt": "CRtRSZ8CebEQ7mM1LZWqKGm8vQ2mS2wRexFTkPlWAus=",
+  "client_addr": "0.0.0.0",
+  "ui_config": {
+    "enabled": true
+  }
 }
