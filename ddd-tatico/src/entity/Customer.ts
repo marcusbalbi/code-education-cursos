@@ -1,3 +1,9 @@
+/**
+ * Entidade deve representar o estado correto e atual
+ * Construtor deve proteger e garantir que os dados estão corretos
+ * metódos que alteram o estado interno da Entidade devem garantir que os dados estão em um estado consistente
+ * Na Modelagem esquecer completamente "banco de dados"
+ */
 export class Customer {
   _id: string;
   _name: string;
