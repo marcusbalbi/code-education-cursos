@@ -4,7 +4,22 @@
  * metódos que alteram o estado interno da Entidade devem garantir que os dados estão em um estado consistente
  * Na Modelagem esquecer completamente "banco de dados"
  * Uma entidade deve se auto-validar para garantir sua consistencia interna
+ * ORMs pedem uma entidade, mas essa é focada em persistencia
+ * a Entidade do DDD é focada em Regras de Negócio, podemos dar outro nome na entidade do ORM para não gerar confusão
  */
+
+/**
+ *  Complexidade de Negócio
+ * Domain
+ *  - Entity
+ *      Customer ( Regras de Negocio)
+ * 
+ * Complexidade Acidental
+ * Infra
+ *  - Entity/Model
+ *      Customer (getters e setters)
+ */
+
 export class Customer {
   _id: string;
   _name: string;
