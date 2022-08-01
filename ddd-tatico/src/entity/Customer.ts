@@ -1,10 +1,8 @@
-/**
- * Entidade Anêmica <> Classe que carrega regras de negocio
- */
 export class Customer {
   _id: string;
   _name: string;
   _address: string;
+  _active: boolean = true;
 
   constructor (id: string, name: string, address: string) {
     this._id = id;
@@ -12,23 +10,17 @@ export class Customer {
     this._address = address;
   }
 
-  get id() {
-    return this._id;
-  }
-  get name() {
-    return this._name;
-  }
-  get address() {
-    return this._address;
+  // maior expressividade no nome do metodo
+  // indica uma intensão de negócio
+  changeName(name: string): void {
+    this._name = name;
   }
 
-  set name(v: string) {
-    this._name = v;
+  activate() {
+    this._active = true;
   }
-  set id(v: string) {
-    this._id = v;
-  }
-  set address(v: string) {
-    this._address = v;
+
+  deactivate() {
+    this._active = false;
   }
 }
