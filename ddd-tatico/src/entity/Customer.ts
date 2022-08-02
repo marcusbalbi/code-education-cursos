@@ -1,3 +1,5 @@
+import { Address } from "./Address";
+
 /**
  * Entidade deve representar o estado correto e atual
  * Construtor deve proteger e garantir que os dados estão corretos
@@ -7,6 +9,7 @@
  * ORMs pedem uma entidade, mas essa é focada em persistencia
  * a Entidade do DDD é focada em Regras de Negócio, podemos dar outro nome na entidade do ORM para não gerar confusão
  */
+
 
 /**
  *  Complexidade de Negócio
@@ -23,13 +26,17 @@
 export class Customer {
   _id: string;
   _name: string;
-  _address: string = "";
+  _address: Address | null = null;
   _active: boolean = false;
 
   constructor (id: string, name: string) {
     this._id = id;
     this._name = name;
     this.validate();
+  }
+
+  defineAddress(addr: Address) {
+    this._address = addr;
   }
 
   validate () {
@@ -50,7 +57,7 @@ export class Customer {
 
   // expressando a regra de negócio
   activate() {
-    if (this._address.length === 0) {
+    if (!this._address) {
       throw new Error("Address is mandatory to activate customer")
     }
     this._active = true;
