@@ -29,7 +29,7 @@ export class Customer {
   private _address: Address | null = null;
   private _active: boolean = false;
 
-  constructor (id: string, name: string) {
+  constructor(id: string, name: string) {
     this._id = id;
     this._name = name;
     this.validate();
@@ -39,8 +39,8 @@ export class Customer {
     this._address = addr;
   }
 
-  validate () {
-    if(this._name.length === 0) {
+  validate() {
+    if (this._name.length === 0) {
       throw new Error("Invalid Name");
     }
     if (this._id.length === 0) {
@@ -58,12 +58,20 @@ export class Customer {
   // expressando a regra de negócio
   activate() {
     if (!this._address) {
-      throw new Error("Address is mandatory to activate customer")
+      throw new Error("Address is mandatory to activate customer");
     }
     this._active = true;
   }
 
   deactivate() {
     this._active = false;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  isActive() {
+    return this._active;
   }
 }
