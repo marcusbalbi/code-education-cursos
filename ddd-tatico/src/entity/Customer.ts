@@ -24,10 +24,10 @@ import { Address } from "./Address";
  */
 
 export class Customer {
-  _id: string;
-  _name: string;
-  _address: Address | null = null;
-  _active: boolean = false;
+  private _id: string;
+  private _name: string;
+  private _address: Address | null = null;
+  private _active: boolean = false;
 
   constructor (id: string, name: string) {
     this._id = id;
