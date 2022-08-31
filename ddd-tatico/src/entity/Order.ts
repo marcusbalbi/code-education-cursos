@@ -24,9 +24,12 @@ export default class Order {
     if (this._items.length === 0) {
       throw new Error("Items list can not be empty");
     }
+    if (this._items.some((item) => item.quantity <= 0)) {
+      throw new Error("Items quantity should be greater than zero");
+    }
   }
 
   total(): number {
-    return this._items.reduce((acc, item) => acc + item._price, 0);
+    return this._items.reduce((acc, item) => acc + item.price, 0);
   }
 }
