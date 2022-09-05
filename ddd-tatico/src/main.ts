@@ -8,7 +8,7 @@ const address = new Address("Alameda bla bla", 12, "28625000", "Nova Friburgo");
 customer.defineAddress(address);
 
 
-const item1 = new OrderItem("1", "Caneta Azul", 0.5);
-const item2 = new OrderItem("2", "Caneta Rosa", 0.7);
-const order = new Order('1', customer._id, [item1, item2]);
+const item1 = new OrderItem("1", "Caneta Azul", 0.5, "p1", 2);
+const item2 = new OrderItem("2", "Caneta Rosa", 0.7, "p2", 1);
+const order = new Order('1', customer.id, [item1, item2]);
 

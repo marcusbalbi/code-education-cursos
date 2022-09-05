@@ -35,6 +35,10 @@ export class Customer {
     this.validate();
   }
 
+  get id () {
+    return this._id;
+  }
+
   defineAddress(addr: Address) {
     this._address = addr;
   }
