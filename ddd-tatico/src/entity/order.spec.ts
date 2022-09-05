@@ -27,7 +27,7 @@ describe("Order unit tests", () => {
     expect(() => {
       const orderItem1 = new OrderItem("456", "Pizza", 25.0, "p1", 0);
       const orderItem2 = new OrderItem("745", "Coca", 12.0, "p2", 2);
-      const order = new Order("123", "46", [orderItem1, orderItem2]);
+      new Order("123", "46", [orderItem1, orderItem2]);
     }).toThrowError()
   });
 });
