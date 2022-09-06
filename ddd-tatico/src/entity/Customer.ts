@@ -10,13 +10,12 @@ import { Address } from "./Address";
  * a Entidade do DDD é focada em Regras de Negócio, podemos dar outro nome na entidade do ORM para não gerar confusão
  */
 
-
 /**
  *  Complexidade de Negócio
  * Domain
  *  - Entity
  *      Customer ( Regras de Negocio)
- * 
+ *
  * Complexidade Acidental
  * Infra
  *  - Entity/Model
@@ -28,6 +27,7 @@ export class Customer {
   private _name: string;
   private _address: Address | null = null;
   private _active: boolean = false;
+  private _rewardPoints: number = 0;
 
   constructor(id: string, name: string) {
     this._id = id;
@@ -35,7 +35,7 @@ export class Customer {
     this.validate();
   }
 
-  get id () {
+  get id() {
     return this._id;
   }
 
@@ -77,5 +77,16 @@ export class Customer {
 
   isActive() {
     return this._active;
+  }
+
+  get rewardPoints(): number {
+    return this._rewardPoints;
+  }
+
+  addRewardPoints(points: number) {
+    if (points <= 0) {
+      throw new Error("points should be a positive value");
+    }
+    this._rewardPoints += points;
   }
 }
