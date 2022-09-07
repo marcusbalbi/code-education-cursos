@@ -1,8 +1,8 @@
 export class Address {
-  readonly _street: string;
-  readonly _number: number;
-  readonly _zip: string;
-  readonly _city: string;
+  private readonly _street: string;
+  private readonly _number: number;
+  private readonly _zip: string;
+  private readonly _city: string;
 
   constructor(street: string, number: number, zip: string, city: string) {
     this._street = street;
@@ -11,6 +11,19 @@ export class Address {
     this._city = city;
 
     this.validate();
+  }
+
+  get street() {
+    return this._street;
+  }
+  get number() {
+    return this._number;
+  }
+  get zip() {
+    return this._zip;
+  }
+  get city() {
+    return this._city;
   }
 
   validate() {

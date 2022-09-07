@@ -39,6 +39,10 @@ export class Customer {
     return this._id;
   }
 
+  get address(): Address | null {
+    return this._address;
+  }
+
   defineAddress(addr: Address) {
     this._address = addr;
   }
