@@ -1,5 +1,5 @@
 export default class Product {
-  readonly _id: string;
+  private _id: string;
   private _name: string;
   private _price: number;
 
@@ -17,6 +17,10 @@ export default class Product {
   public changePrice(newPrice: number) {
     this._price = newPrice;
     this.validate();
+  }
+
+  get id () {
+    return this._id;
   }
 
   get name () {
