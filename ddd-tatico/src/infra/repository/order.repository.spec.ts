@@ -9,6 +9,7 @@ import OrderItemModel from "../db/sequelize/model/order-item.model";
 import OrderModel from "../db/sequelize/model/order.model";
 import ProductModel from "../db/sequelize/model/product.model";
 import CustomerRepository from "./customer.repository";
+import OrderRepository from "./order.repository";
 import ProductRepository from "./product.repository";
 
 describe("Order Repository test", () => {
@@ -52,7 +53,7 @@ describe("Order Repository test", () => {
     const orderRepository = new OrderRepository();
     await orderRepository.create(order);
 
-    const orderModel = OrderModel.findOne({ where: { id: order.id }, include: ["items"] });
+    const orderModel = await OrderModel.findOne({ where: { id: order.id }, include: ["items"] });
 
     expect(orderModel?.toJSON()).toStrictEqual({
       id: order.id,
@@ -65,25 +66,24 @@ describe("Order Repository test", () => {
           price: orderItem1.price,
           quantity: orderItem1.quantity,
           order_id: order.id,
+          product_id: "p1",
         },
         {
           id: orderItem2.id,
-          name: orderItem1.name,
+          name: orderItem2.name,
           price: orderItem2.price,
           quantity: orderItem2.quantity,
           order_id: order.id,
+          product_id: "p2",
         },
       ],
     });
-
-
-
   });
 
-  it("should update a Order", async () => {
+  // it("should update a Order", async () => {
     
-  });
+  // });
 
-  it("should find a Order", async () => {});
-  it("should findAll Orders", async () => {});
+  // it("should find a Order", async () => {});
+  // it("should findAll Orders", async () => {});
 });
