@@ -29,6 +29,29 @@ export default class Order {
     }
   }
 
+  addItem(orderItem: OrderItem) {
+    // this mehtod updates the obejct direclty maybe we could recreate it to prevent future bugs
+    // should we check the other properties too?
+    const itemFound = this._items.find(item => item.id === orderItem.id);
+
+    if (!itemFound) {
+      this._items.push(orderItem);
+      return;
+    }
+    itemFound.quantity += orderItem.quantity;
+  }
+
+  removeItem(orderItemId: string, quantity: number) {
+    const itemFound = this._items.find((item) => item.id === orderItemId);
+
+    if (!itemFound || quantity <= 0) {
+      throw new Error('Fail trying to remove item, item not found or invalid quantity')
+    }
+    if (itemFound.quantity <= quantity) {
+      throw new Error(`Fail trying to remove quantity (${ quantity }) from item ${ itemFound.id }, item quantity is lower or equal: ${ itemFound.quantity }`)
+    }
+    itemFound.quantity -= quantity;
+  }
 
   get id() {
     return this._id;
@@ -43,6 +66,6 @@ export default class Order {
   }
 
   total(): number {
-    return this._items.reduce((acc, item) => acc + item.price, 0);
+    return this._items.reduce((acc, item) => acc + item.total(), 0);
   }
 }
