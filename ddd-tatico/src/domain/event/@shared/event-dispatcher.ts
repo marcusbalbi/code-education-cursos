@@ -4,6 +4,15 @@ import eventInterface from "./event.interface";
 
 export default class EventDispatcher implements EventDispatcherInterface {
   private eventHandlers: { [eventName: string]: EventHandlerInterface[] } = {};
+  private static instance: EventDispatcher;
+  private constructor() {}
+
+  public static getInstance() {
+    if (!this.instance) {
+      this.instance = new EventDispatcher();
+    }
+    return this.instance;
+  }
 
   notify(event: eventInterface): void {
     const eventName = event.constructor.name;
