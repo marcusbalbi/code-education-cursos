@@ -1,5 +1,6 @@
 import EventDispatcher from "../event/@shared/event-dispatcher";
 import CustomerChangedAddressEvent from "../event/event/customer/customer-changed-address.event";
+import CustomerCreatedEvent from "../event/event/customer/customer-created.event";
 import { Address } from "./Address";
 
 /**
@@ -35,6 +36,7 @@ export class Customer {
     this._id = id;
     this._name = name;
     this.validate();
+    EventDispatcher.getInstance().notify(new CustomerCreatedEvent({ id: this._id }));
   }
 
   get id() {
