@@ -2,6 +2,7 @@ import EventDispatcher from "../../@shared/event/event-dispatcher";
 import CustomerChangedAddressEvent from "../event/customer-changed-address.event";
 import CustomerCreatedEvent from "../event/customer-created.event";
 import { Address } from "./Address";
+import CustomerInterface from "./customer.interface";
 
 /**
  * Entidade deve representar o estado correto e atual
@@ -25,7 +26,7 @@ import { Address } from "./Address";
  *      Customer (getters e setters)
  */
 
-export class Customer {
+export class Customer implements CustomerInterface {
   private _id: string;
   private _name: string;
   private _address: Address | null = null;
@@ -36,7 +37,9 @@ export class Customer {
     this._id = id;
     this._name = name;
     this.validate();
-    EventDispatcher.getInstance().notify(new CustomerCreatedEvent({ id: this._id }));
+    EventDispatcher.getInstance().notify(
+      new CustomerCreatedEvent({ id: this._id })
+    );
   }
 
   get id() {
