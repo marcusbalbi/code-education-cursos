@@ -13,6 +13,11 @@ message CreateCategoryRequest {
   string name = 1;
   string description = 2;
 }
+message UpdateCategoryRequest {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
 
 message CategoryResponse {
   Category category = 1;
@@ -20,4 +25,5 @@ message CategoryResponse {
 
 service CategoryService {
   rpc createCategory(CreateCategoryRequest) returns (CategoryResponse) {}
+  rpc updateCategory(UpdateCategoryRequest) returns (CategoryResponse) {}
 }
