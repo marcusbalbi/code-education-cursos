@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import repository from "./database/repository/category";
-import { blank, CategoryList, CategoryResponse, CreateCategoryRequest, GetCategoryRequest, UpdateCategoryRequest } from './proto/category';
+import { blank, CategoryList, CategoryResponse, CategoryServiceServer, CreateCategoryRequest, GetCategoryRequest, UpdateCategoryRequest } from './proto/category';
 
 const { load } = require('@grpc/proto-loader');
 const grpc = require('@grpc/grpc-js');
@@ -20,6 +20,30 @@ const createCategory = (
       console.log(err);
       callback(err, { category: undefined });
     });
+};
+const createCategoryStream = (
+  call: any,
+  callback: (err: any) => void
+) => {
+  call.on('data', (d: CreateCategoryRequest) => {
+    if (!d || d.name === '') callback(null);
+    repository.createCategory(d)
+  });
+
+  call.on("end", function () {
+    console.log("================STREAM END====================")
+  });
+  call.on("error", function (e: any) {
+    console.log("================STREAM ERROR====================");
+    console.log(e);
+    console.log("================STREAM ERROR====================");
+  });
+  call.on("status", function (status: any) {
+    console.log("================STREAM STATUS====================");
+    console.log(status);
+    console.log("================STREAM STATUS====================");
+
+  });
 };
 
 const updateCategory = (
@@ -76,6 +100,7 @@ async function main() {
     updateCategory,
     listCategories,
     getCategory,
+    createCategoryStream,
   });
   server.bindAsync(
     "0.0.0.0:50051",

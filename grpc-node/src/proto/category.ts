@@ -3,8 +3,12 @@ import {
   CallOptions,
   ChannelCredentials,
   Client,
+  ClientDuplexStream,
   ClientOptions,
   ClientUnaryCall,
+  ClientWritableStream,
+  handleBidiStreamingCall,
+  handleClientStreamingCall,
   handleUnaryCall,
   makeGenericClientConstructor,
   Metadata,
@@ -464,6 +468,24 @@ export const CategoryServiceService = {
     responseSerialize: (value: CategoryResponse) => Buffer.from(CategoryResponse.encode(value).finish()),
     responseDeserialize: (value: Buffer) => CategoryResponse.decode(value),
   },
+  createCategoryStream: {
+    path: "/pb.CategoryService/createCategoryStream",
+    requestStream: true,
+    responseStream: false,
+    requestSerialize: (value: CreateCategoryRequest) => Buffer.from(CreateCategoryRequest.encode(value).finish()),
+    requestDeserialize: (value: Buffer) => CreateCategoryRequest.decode(value),
+    responseSerialize: (value: CategoryResponse) => Buffer.from(CategoryResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => CategoryResponse.decode(value),
+  },
+  createCategoryStreamBidirecional: {
+    path: "/pb.CategoryService/createCategoryStreamBidirecional",
+    requestStream: true,
+    responseStream: true,
+    requestSerialize: (value: CreateCategoryRequest) => Buffer.from(CreateCategoryRequest.encode(value).finish()),
+    requestDeserialize: (value: Buffer) => CreateCategoryRequest.decode(value),
+    responseSerialize: (value: CategoryResponse) => Buffer.from(CategoryResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => CategoryResponse.decode(value),
+  },
   updateCategory: {
     path: "/pb.CategoryService/updateCategory",
     requestStream: false,
@@ -495,6 +517,8 @@ export const CategoryServiceService = {
 
 export interface CategoryServiceServer extends UntypedServiceImplementation {
   createCategory: handleUnaryCall<CreateCategoryRequest, CategoryResponse>;
+  createCategoryStream: handleClientStreamingCall<CreateCategoryRequest, CategoryResponse>;
+  createCategoryStreamBidirecional: handleBidiStreamingCall<CreateCategoryRequest, CategoryResponse>;
   updateCategory: handleUnaryCall<UpdateCategoryRequest, CategoryResponse>;
   listCategories: handleUnaryCall<blank, CategoryList>;
   getCategory: handleUnaryCall<GetCategoryRequest, CategoryResponse>;
@@ -516,6 +540,30 @@ export interface CategoryServiceClient extends Client {
     options: Partial<CallOptions>,
     callback: (error: ServiceError | null, response: CategoryResponse) => void,
   ): ClientUnaryCall;
+  createCategoryStream(
+    callback: (error: ServiceError | null, response: CategoryResponse) => void,
+  ): ClientWritableStream<CreateCategoryRequest>;
+  createCategoryStream(
+    metadata: Metadata,
+    callback: (error: ServiceError | null, response: CategoryResponse) => void,
+  ): ClientWritableStream<CreateCategoryRequest>;
+  createCategoryStream(
+    options: Partial<CallOptions>,
+    callback: (error: ServiceError | null, response: CategoryResponse) => void,
+  ): ClientWritableStream<CreateCategoryRequest>;
+  createCategoryStream(
+    metadata: Metadata,
+    options: Partial<CallOptions>,
+    callback: (error: ServiceError | null, response: CategoryResponse) => void,
+  ): ClientWritableStream<CreateCategoryRequest>;
+  createCategoryStreamBidirecional(): ClientDuplexStream<CreateCategoryRequest, CategoryResponse>;
+  createCategoryStreamBidirecional(
+    options: Partial<CallOptions>,
+  ): ClientDuplexStream<CreateCategoryRequest, CategoryResponse>;
+  createCategoryStreamBidirecional(
+    metadata: Metadata,
+    options?: Partial<CallOptions>,
+  ): ClientDuplexStream<CreateCategoryRequest, CategoryResponse>;
   updateCategory(
     request: UpdateCategoryRequest,
     callback: (error: ServiceError | null, response: CategoryResponse) => void,
