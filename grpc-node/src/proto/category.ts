@@ -15,6 +15,9 @@ import * as _m0 from "protobufjs/minimal";
 
 export const protobufPackage = "pb";
 
+export interface blank {
+}
+
 export interface Category {
   id: string;
   name: string;
@@ -35,6 +38,57 @@ export interface UpdateCategoryRequest {
 export interface CategoryResponse {
   category: Category | undefined;
 }
+
+export interface CategoryList {
+  category: Category[];
+}
+
+export interface GetCategoryRequest {
+  id: string;
+}
+
+function createBaseblank(): blank {
+  return {};
+}
+
+export const blank = {
+  encode(_: blank, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): blank {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseblank();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): blank {
+    return {};
+  },
+
+  toJSON(_: blank): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<blank>, I>>(base?: I): blank {
+    return blank.fromPartial(base ?? {});
+  },
+
+  fromPartial<I extends Exact<DeepPartial<blank>, I>>(_: I): blank {
+    const message = createBaseblank();
+    return message;
+  },
+};
 
 function createBaseCategory(): Category {
   return { id: "", name: "", description: "" };
@@ -293,6 +347,112 @@ export const CategoryResponse = {
   },
 };
 
+function createBaseCategoryList(): CategoryList {
+  return { category: [] };
+}
+
+export const CategoryList = {
+  encode(message: CategoryList, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.category) {
+      Category.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CategoryList {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCategoryList();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.category.push(Category.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CategoryList {
+    return { category: Array.isArray(object?.category) ? object.category.map((e: any) => Category.fromJSON(e)) : [] };
+  },
+
+  toJSON(message: CategoryList): unknown {
+    const obj: any = {};
+    if (message.category) {
+      obj.category = message.category.map((e) => e ? Category.toJSON(e) : undefined);
+    } else {
+      obj.category = [];
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<CategoryList>, I>>(base?: I): CategoryList {
+    return CategoryList.fromPartial(base ?? {});
+  },
+
+  fromPartial<I extends Exact<DeepPartial<CategoryList>, I>>(object: I): CategoryList {
+    const message = createBaseCategoryList();
+    message.category = object.category?.map((e) => Category.fromPartial(e)) || [];
+    return message;
+  },
+};
+
+function createBaseGetCategoryRequest(): GetCategoryRequest {
+  return { id: "" };
+}
+
+export const GetCategoryRequest = {
+  encode(message: GetCategoryRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): GetCategoryRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGetCategoryRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.id = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): GetCategoryRequest {
+    return { id: isSet(object.id) ? String(object.id) : "" };
+  },
+
+  toJSON(message: GetCategoryRequest): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<GetCategoryRequest>, I>>(base?: I): GetCategoryRequest {
+    return GetCategoryRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial<I extends Exact<DeepPartial<GetCategoryRequest>, I>>(object: I): GetCategoryRequest {
+    const message = createBaseGetCategoryRequest();
+    message.id = object.id ?? "";
+    return message;
+  },
+};
+
 export type CategoryServiceService = typeof CategoryServiceService;
 export const CategoryServiceService = {
   createCategory: {
@@ -313,11 +473,31 @@ export const CategoryServiceService = {
     responseSerialize: (value: CategoryResponse) => Buffer.from(CategoryResponse.encode(value).finish()),
     responseDeserialize: (value: Buffer) => CategoryResponse.decode(value),
   },
+  listCategories: {
+    path: "/pb.CategoryService/listCategories",
+    requestStream: false,
+    responseStream: false,
+    requestSerialize: (value: blank) => Buffer.from(blank.encode(value).finish()),
+    requestDeserialize: (value: Buffer) => blank.decode(value),
+    responseSerialize: (value: CategoryList) => Buffer.from(CategoryList.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => CategoryList.decode(value),
+  },
+  getCategory: {
+    path: "/pb.CategoryService/getCategory",
+    requestStream: false,
+    responseStream: false,
+    requestSerialize: (value: GetCategoryRequest) => Buffer.from(GetCategoryRequest.encode(value).finish()),
+    requestDeserialize: (value: Buffer) => GetCategoryRequest.decode(value),
+    responseSerialize: (value: CategoryResponse) => Buffer.from(CategoryResponse.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => CategoryResponse.decode(value),
+  },
 } as const;
 
 export interface CategoryServiceServer extends UntypedServiceImplementation {
   createCategory: handleUnaryCall<CreateCategoryRequest, CategoryResponse>;
   updateCategory: handleUnaryCall<UpdateCategoryRequest, CategoryResponse>;
+  listCategories: handleUnaryCall<blank, CategoryList>;
+  getCategory: handleUnaryCall<GetCategoryRequest, CategoryResponse>;
 }
 
 export interface CategoryServiceClient extends Client {
@@ -347,6 +527,36 @@ export interface CategoryServiceClient extends Client {
   ): ClientUnaryCall;
   updateCategory(
     request: UpdateCategoryRequest,
+    metadata: Metadata,
+    options: Partial<CallOptions>,
+    callback: (error: ServiceError | null, response: CategoryResponse) => void,
+  ): ClientUnaryCall;
+  listCategories(
+    request: blank,
+    callback: (error: ServiceError | null, response: CategoryList) => void,
+  ): ClientUnaryCall;
+  listCategories(
+    request: blank,
+    metadata: Metadata,
+    callback: (error: ServiceError | null, response: CategoryList) => void,
+  ): ClientUnaryCall;
+  listCategories(
+    request: blank,
+    metadata: Metadata,
+    options: Partial<CallOptions>,
+    callback: (error: ServiceError | null, response: CategoryList) => void,
+  ): ClientUnaryCall;
+  getCategory(
+    request: GetCategoryRequest,
+    callback: (error: ServiceError | null, response: CategoryResponse) => void,
+  ): ClientUnaryCall;
+  getCategory(
+    request: GetCategoryRequest,
+    metadata: Metadata,
+    callback: (error: ServiceError | null, response: CategoryResponse) => void,
+  ): ClientUnaryCall;
+  getCategory(
+    request: GetCategoryRequest,
     metadata: Metadata,
     options: Partial<CallOptions>,
     callback: (error: ServiceError | null, response: CategoryResponse) => void,

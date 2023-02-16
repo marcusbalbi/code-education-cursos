@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import repository from "./database/repository/category";
-import { CategoryResponse, CreateCategoryRequest, UpdateCategoryRequest } from './proto/category';
+import { blank, CategoryList, CategoryResponse, CreateCategoryRequest, GetCategoryRequest, UpdateCategoryRequest } from './proto/category';
 
 const { load } = require('@grpc/proto-loader');
 const grpc = require('@grpc/grpc-js');
@@ -37,6 +37,36 @@ const updateCategory = (
     });
 };
 
+const listCategories = (
+  call: { request: blank },
+  callback: (err: any, response: CategoryList) => void
+) => {
+  repository
+    .listCategories()
+    .then((res) => {
+      callback(null, { category: res });
+    })
+    .catch((err) => {
+      console.log(err);
+      callback(err, { category: [] });
+    });
+};
+
+const getCategory = (
+  call: { request: GetCategoryRequest },
+  callback: (err: any, response: CategoryResponse) => void
+) => {
+  repository
+    .getCategory(call.request.id)
+    .then((res) => {
+      callback(null, { category: res });
+    })
+    .catch((err) => {
+      console.log(err);
+      callback(err, { category: undefined });
+    });
+};
+
 async function main() {
   const packageDef = await load("./src/proto/category.proto");
   const categoryProto = grpc.loadPackageDefinition(packageDef);
@@ -44,6 +74,8 @@ async function main() {
   server.addService(categoryProto.pb.CategoryService.service, {
     createCategory,
     updateCategory,
+    listCategories,
+    getCategory,
   });
   server.bindAsync(
     "0.0.0.0:50051",

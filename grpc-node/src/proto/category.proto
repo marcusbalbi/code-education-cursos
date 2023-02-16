@@ -3,6 +3,8 @@ syntax = "proto3";
 
 package pb;
 
+message blank {}
+
 message Category {
   string id = 1;
   string name = 2;
@@ -23,7 +25,17 @@ message CategoryResponse {
   Category category = 1;
 }
 
+message CategoryList {
+  repeated Category category = 1;
+}
+
+message GetCategoryRequest {
+  string id = 1;
+}
+
 service CategoryService {
   rpc createCategory(CreateCategoryRequest) returns (CategoryResponse) {}
   rpc updateCategory(UpdateCategoryRequest) returns (CategoryResponse) {}
+  rpc listCategories(blank) returns (CategoryList) {}
+  rpc getCategory(GetCategoryRequest) returns (CategoryResponse) {}
 }

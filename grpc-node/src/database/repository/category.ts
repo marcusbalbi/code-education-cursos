@@ -16,7 +16,7 @@ export const createCategory = (category: Category): Promise<SavedCategory> => {
     const stmt = db.prepare(`INSERT INTO category values(?,?,?)`);
     stmt.run(
       [id, category.name, category.description],
-      (result: any, err: Error) => {
+      (err: any, result: any) => {
         if (err) {
           return reject(err);
         }
@@ -31,7 +31,7 @@ export const updateCategory = (id: string, category: Category): Promise<SavedCat
     const stmt = db.prepare(`UPDATE category SET name = ?, description = ? WHERE id = ?`);
     stmt.run(
       [category.name, category.description, id],
-      (result: any, err: Error) => {
+      (err: any, result: any) => {
         if (err) {
           return reject(err);
         }
@@ -40,8 +40,32 @@ export const updateCategory = (id: string, category: Category): Promise<SavedCat
     );
   });
 };
+export const getCategory = (
+  id: string
+): Promise<SavedCategory> => {
+  return new Promise((resolve, reject) => {
+    const stmt = db.prepare(
+      `SELECT * FROM category WHERE id = ?`
+    );
+    stmt.get([id], (err: any, result: any) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(result);
+    });
+  });
+};
+export const listCategories = (): Promise<SavedCategory[]> => {
+  return new Promise((resolve, reject) => {
+    db.all(`SELECT * FROM category`, (err: any, result: any) => {
+      resolve(result);
+    });
+  });
+};
 
 export default {
   createCategory,
-  updateCategory
-}
+  updateCategory,
+  listCategories,
+  getCategory,
+};
