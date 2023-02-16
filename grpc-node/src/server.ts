@@ -25,13 +25,14 @@ const createCategoryStream = (
   call: any,
   callback: (err: any) => void
 ) => {
+  const categories: CategoryList = { category: [] };
   call.on('data', (d: CreateCategoryRequest) => {
-    if (!d || d.name === '') callback(null);
-    repository.createCategory(d)
+    repository.createCategory(d).then((res) => {
+      categories.category.push(res);
+    })
   });
-
   call.on("end", function () {
-    console.log("================STREAM END====================")
+    callback(categories);
   });
   call.on("error", function (e: any) {
     console.log("================STREAM ERROR====================");

@@ -474,8 +474,8 @@ export const CategoryServiceService = {
     responseStream: false,
     requestSerialize: (value: CreateCategoryRequest) => Buffer.from(CreateCategoryRequest.encode(value).finish()),
     requestDeserialize: (value: Buffer) => CreateCategoryRequest.decode(value),
-    responseSerialize: (value: CategoryResponse) => Buffer.from(CategoryResponse.encode(value).finish()),
-    responseDeserialize: (value: Buffer) => CategoryResponse.decode(value),
+    responseSerialize: (value: CategoryList) => Buffer.from(CategoryList.encode(value).finish()),
+    responseDeserialize: (value: Buffer) => CategoryList.decode(value),
   },
   createCategoryStreamBidirecional: {
     path: "/pb.CategoryService/createCategoryStreamBidirecional",
@@ -517,7 +517,7 @@ export const CategoryServiceService = {
 
 export interface CategoryServiceServer extends UntypedServiceImplementation {
   createCategory: handleUnaryCall<CreateCategoryRequest, CategoryResponse>;
-  createCategoryStream: handleClientStreamingCall<CreateCategoryRequest, CategoryResponse>;
+  createCategoryStream: handleClientStreamingCall<CreateCategoryRequest, CategoryList>;
   createCategoryStreamBidirecional: handleBidiStreamingCall<CreateCategoryRequest, CategoryResponse>;
   updateCategory: handleUnaryCall<UpdateCategoryRequest, CategoryResponse>;
   listCategories: handleUnaryCall<blank, CategoryList>;
@@ -541,20 +541,20 @@ export interface CategoryServiceClient extends Client {
     callback: (error: ServiceError | null, response: CategoryResponse) => void,
   ): ClientUnaryCall;
   createCategoryStream(
-    callback: (error: ServiceError | null, response: CategoryResponse) => void,
+    callback: (error: ServiceError | null, response: CategoryList) => void,
   ): ClientWritableStream<CreateCategoryRequest>;
   createCategoryStream(
     metadata: Metadata,
-    callback: (error: ServiceError | null, response: CategoryResponse) => void,
+    callback: (error: ServiceError | null, response: CategoryList) => void,
   ): ClientWritableStream<CreateCategoryRequest>;
   createCategoryStream(
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: CategoryResponse) => void,
+    callback: (error: ServiceError | null, response: CategoryList) => void,
   ): ClientWritableStream<CreateCategoryRequest>;
   createCategoryStream(
     metadata: Metadata,
     options: Partial<CallOptions>,
-    callback: (error: ServiceError | null, response: CategoryResponse) => void,
+    callback: (error: ServiceError | null, response: CategoryList) => void,
   ): ClientWritableStream<CreateCategoryRequest>;
   createCategoryStreamBidirecional(): ClientDuplexStream<CreateCategoryRequest, CategoryResponse>;
   createCategoryStreamBidirecional(
