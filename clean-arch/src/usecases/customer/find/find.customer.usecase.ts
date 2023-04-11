@@ -15,8 +15,8 @@ export class FindCustomerUseCase {
         street: customer.address?.street,
         city: customer.address?.city,
         number: customer.address?.number,
-        zipcode: customer.address?.zip,
+        zip: customer.address?.zip,
       },
-    };;
+    };
   }
 }

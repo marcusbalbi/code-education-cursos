@@ -43,7 +43,7 @@ describe("test Find customer Usecase", () => {
         street: "Rua x",
         city: "Rio de Janeiro",
         number: 12,
-        zipcode: "28999888",
+        zip: "28999888",
       },
     };
 

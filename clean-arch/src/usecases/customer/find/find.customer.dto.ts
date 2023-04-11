@@ -9,6 +9,6 @@ export interface OutputFindCustomerDto {
     street?: string;
     city?: string;
     number?: number;
-    zipcode?: string;
+    zip?: string;
   }
 }
