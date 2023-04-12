@@ -37,7 +37,7 @@ export default class Product implements ProductInterface {
       throw new Error("Invalid ID");
     }
     if (this._name.length === 0) {
-      throw new Error("Invalid ID");
+      throw new Error("Invalid Name");
     }
     if (this._price <= 0) {
       throw new Error("Price should be a positive number");
