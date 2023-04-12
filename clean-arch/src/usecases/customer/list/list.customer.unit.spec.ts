@@ -1,8 +1,6 @@
-import { cloneDeep } from "lodash";
 import { Address } from "../../../domain/customer/entity/Address";
 import CustomerFactory from "../../../domain/customer/factory/customer.factory";
 import { ListCustomerUseCase } from "./list.customer.usecase";
-import { UpdateCustomerUseCase } from "./update.customer.usecase";
 
 const customer1 = CustomerFactory.createWithAddress(
   "Jhon Doe",
