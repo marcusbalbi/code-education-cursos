@@ -15,7 +15,7 @@ const MockRepository = () => {
 };
 
 describe("unit test listing products use case", () => {
-  it("should list customers", async () => {
+  it("should list products", async () => {
     const usecase = new ListProductUseCase(MockRepository());
 
     const output = await usecase.execute({});

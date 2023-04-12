@@ -3,9 +3,9 @@ import { Address } from "../../../domain/customer/entity/Address";
 import { Customer } from "../../../domain/customer/entity/Customer";
 import CustomerRepository from "../../../infra/customer/repository/customer.repository";
 import CustomerModel from "../../../infra/customer/sequelize/customer.model";
-import { FindCustomerUseCase } from "./find.customer.usecase";
+import { UpdateCustomerUseCase } from "./update.customer.usecase";
 
-describe("test Find customer Usecase Integration", () => {
+describe("test Update customer Usecase", () => {
   let sequelize: Sequelize;
 
   beforeEach(async () => {
@@ -23,34 +23,28 @@ describe("test Find customer Usecase Integration", () => {
   afterEach(async () => {
     await sequelize.close();
   });
-  it("should find a customer", async () => {
-    const customer = new Customer("123", "Jhon Doe");
-    customer.defineAddress(
-      new Address("Rua x", 12, "28999888", "Rio de Janeiro")
-    );
-    customer.addRewardPoints(1)
+  it("should update a customer Integration", async () => {
+    const customer = new Customer("123", "Jhon Doe")
+    customer.defineAddress(new Address("Rua Galvão", 22, "28777654", "Rio de Janeiro"));
+    customer.addRewardPoints(1);
     const repository = new CustomerRepository();
     await repository.create(customer);
 
     const input = {
       id: "123",
-    };
-
-    const expected = {
-      id: "123",
       name: "Jhon Doe",
       address: {
-        street: "Rua x",
-        city: "Rio de Janeiro",
-        number: 12,
-        zip: "28999888",
+        street: "Rua Zac Mand",
+        number: 21,
+        zip: "2299887766",
+        city: "Niteroi",
       },
     };
 
-    const usecase = new FindCustomerUseCase(repository);
+    const usecase = new UpdateCustomerUseCase(repository);
 
     const output = await usecase.execute(input);
 
-    expect(output).toEqual(expected)
+    expect(output).toEqual(input);
   });
 });

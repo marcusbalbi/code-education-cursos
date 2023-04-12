@@ -7,7 +7,7 @@ const input = {
   name: "Pizza",
   price: 29.9,
 };
-describe("test Create product Usecase", () => {
+describe("test Create product Usecase Integration", () => {
   let sequelize: Sequelize;
 
   beforeEach(async () => {

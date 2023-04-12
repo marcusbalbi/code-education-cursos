@@ -4,7 +4,7 @@ import ProductRepository from "../../../infra/product/repository/product.reposit
 import ProductModel from "../../../infra/product/sequelize/product.model";
 import { UpdateProductUseCase } from "./update.product.usecase";
 
-describe("test Update product Usecase", () => {
+describe("test Update product Usecase Integration", () => {
   let sequelize: Sequelize;
 
   beforeEach(async () => {
