@@ -6,7 +6,7 @@ describe("E2E test for customer", () => {
     await sequelize.sync({ force: true });
   });
 
-  afterEach(async () => {
+  afterAll(async () => {
     await sequelize.close();
   });
 
@@ -40,4 +40,23 @@ describe("E2E test for customer", () => {
       });
     expect(response.status).toBe(500);
   });
+
+  it("should list customers", async () => {
+    await request(app)
+      .post("/customer")
+      .send({
+        name: "Jhon Doe",
+        address: {
+          street: "Rua Souza Cardozo",
+          number: 23,
+          zip: "28777666",
+          city: "Rio de Janeiro",
+        },
+      });
+
+    const response = await request(app).get("/customer").send();
+    expect(response.status).toBe(200);
+    expect(response.body.customers.length).toBe(1)
+    expect(response.body.customers[0].name).toBe("Jhon Doe")
+  })
 });

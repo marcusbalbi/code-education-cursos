@@ -55,7 +55,9 @@ export default class CustomerRepository implements CustomerRepositoryInterface {
       customer.defineAddress(
         new Address(model.street, model.number, model.zip, model.city)
       );
-      customer.addRewardPoints(model.rewardPoints);
+      if (model.rewardPoints > 0) {
+        customer.addRewardPoints(model.rewardPoints);
+      }
       return customer;
     });
   }

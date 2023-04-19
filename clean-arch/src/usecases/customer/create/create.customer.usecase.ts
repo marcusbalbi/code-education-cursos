@@ -12,7 +12,7 @@ export class CreateCustomerUseCase {
   ): Promise<OutputCreateCustomerDto | null> {
     const id = uuid()
     const customer = new Customer(id, input.name);
-    customer.defineAddress(new Address(input.address.street, input.address.number, input.address.zip, input.address.city))
+    customer.defineAddress(new Address(input.address.street, input.address.number, input.address.zip, input.address.city));
     await this.repository.create(customer)
 
     return {
