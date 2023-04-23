@@ -1,4 +1,6 @@
+import { BaseEntity } from "../../@shared/entity/entity.abstract";
 import EventDispatcher from "../../@shared/event/event-dispatcher";
+import { NotificationError } from "../../@shared/notification/notification.error";
 import CustomerChangedAddressEvent from "../event/customer-changed-address.event";
 import CustomerCreatedEvent from "../event/customer-created.event";
 import { Address } from "./Address";
@@ -26,7 +28,7 @@ import CustomerInterface from "./customer.interface";
  *      Customer (getters e setters)
  */
 
-export class Customer implements CustomerInterface {
+export class Customer extends BaseEntity implements CustomerInterface {
   private _id: string;
   private _name: string;
   private _address: Address | null = null;
@@ -34,16 +36,13 @@ export class Customer implements CustomerInterface {
   private _rewardPoints: number = 0;
 
   constructor(id: string, name: string) {
+    super();
     this._id = id;
     this._name = name;
     this.validate();
     EventDispatcher.getInstance().notify(
       new CustomerCreatedEvent({ id: this._id })
     );
-  }
-
-  get id() {
-    return this._id;
   }
 
   get address(): Address | null {
@@ -54,7 +53,7 @@ export class Customer implements CustomerInterface {
     this._address = addr;
     EventDispatcher.getInstance().notify(
       new CustomerChangedAddressEvent({
-        id: this.id,
+        id: this._id,
         name: this.name,
         address: this.address,
       })
@@ -63,10 +62,19 @@ export class Customer implements CustomerInterface {
 
   validate() {
     if (this._name.length === 0) {
-      throw new Error("Invalid Name");
+      this.notification.addError({
+        context: "customer",
+        message: "Invalid Name",
+      });
     }
     if (this._id.length === 0) {
-      throw new Error("Invalid ID");
+      this.notification.addError({
+        context: "customer",
+        message: "Invalid ID",
+      });
+    }
+    if (this.notification.hasErrors()) {
+      throw new NotificationError(this.notification.getErrors());
     }
   }
 
@@ -87,6 +95,10 @@ export class Customer implements CustomerInterface {
 
   deactivate() {
     this._active = false;
+  }
+
+  get id() {
+    return this._id;
   }
 
   get name() {
