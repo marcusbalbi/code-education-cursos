@@ -1,4 +1,5 @@
 import { cloneDeep } from "lodash";
+import { NotificationError } from "./notification.error";
 
 export type NotificationErrorProps = {
   message: string;
@@ -26,4 +27,13 @@ export class Notification {
   hasErrors(): boolean {
     return this.errors.length > 0;
   }
+
+  throwErrors(context?: string) {
+    throw new NotificationError(
+      this.getErrors(),
+      this.messages(context)
+    );
+  }
+
+  // TODO throwWhenErrors: check and throw or do nothing
 }

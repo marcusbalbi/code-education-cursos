@@ -74,7 +74,7 @@ export class Customer extends BaseEntity implements CustomerInterface {
       });
     }
     if (this.notification.hasErrors()) {
-      throw new NotificationError(this.notification.getErrors());
+      this.notification.throwErrors("customer")
     }
   }
 

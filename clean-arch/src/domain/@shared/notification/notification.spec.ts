@@ -56,6 +56,16 @@ describe("Unit test for notification", () => {
     notification.addError(error);
 
     expect(notification.getErrors()).toEqual([error]);
-
   })
+
+  it("should throwErrors", () => {
+    const notification = new Notification();
+    const error = {
+      message: "error message",
+      context: "customer",
+    };
+    notification.addError(error);
+
+    expect(notification.throwErrors).toThrow();
+  });
 });

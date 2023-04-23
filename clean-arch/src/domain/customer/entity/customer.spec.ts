@@ -12,6 +12,11 @@ describe("Customer unit tests", () => {
       return new Customer("1", "");
     }).toThrowError();
   });
+  test("should throw error when name is empty and has no id", () => {
+    expect(() => {
+      return new Customer("", "");
+    }).toThrowError("customer: Invalid Name, customer: Invalid ID");
+  });
   test("should throw error change name to an empty name", () => {
     expect(() => {
       const customer = new Customer("1", "Jhon");

@@ -1,11 +1,13 @@
+import { BaseEntity } from "../../@shared/entity/entity.abstract";
 import ProductInterface from "./product.interface";
 
-export default class Product implements ProductInterface {
+export default class Product extends BaseEntity implements ProductInterface {
   private _id: string;
   private _name: string;
   private _price: number;
 
   constructor(id: string, name: string, price: number) {
+    super();
     this._id = id;
     this._name = name;
     this._price = price;
@@ -21,26 +23,35 @@ export default class Product implements ProductInterface {
     this.validate();
   }
 
-  get id () {
+  get id() {
     return this._id;
   }
 
-  get name () {
+  get name() {
     return this._name;
   }
-  get price () {
+  get price() {
     return this._price;
   }
 
   validate() {
     if (this._id.length === 0) {
-      throw new Error("Invalid ID");
+      this.notification.addError({ context: "product", message: "Invalid ID" });
     }
     if (this._name.length === 0) {
-      throw new Error("Invalid Name");
+      this.notification.addError({
+        context: "product",
+        message: "Invalid Name",
+      });
     }
     if (this._price <= 0) {
-      throw new Error("Price should be a positive number");
+      this.notification.addError({
+        context: "product",
+        message: "Price should be a positive number",
+      });
+    }
+    if (this.notification.hasErrors()) {
+      this.notification.throwErrors("product");
     }
   }
 }
