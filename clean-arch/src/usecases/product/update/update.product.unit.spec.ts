@@ -31,7 +31,7 @@ describe("unit test update product use case", () => {
       const invalidInput = cloneDeep(input);
       invalidInput.name = "";
       await expect(usecase.execute(invalidInput)).rejects.toThrow(
-        "Invalid Name"
+        "product: Name is required"
       );
     });
 });

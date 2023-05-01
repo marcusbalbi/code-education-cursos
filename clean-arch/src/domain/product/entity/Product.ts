@@ -1,4 +1,5 @@
 import { BaseEntity } from "../../@shared/entity/entity.abstract";
+import { ProductValidatorFactory } from "../factory/product.validator.factory";
 import ProductInterface from "./product.interface";
 
 export default class Product extends BaseEntity implements ProductInterface {
@@ -35,21 +36,7 @@ export default class Product extends BaseEntity implements ProductInterface {
   }
 
   validate() {
-    if (this._id.length === 0) {
-      this.notification.addError({ context: "product", message: "Invalid ID" });
-    }
-    if (this._name.length === 0) {
-      this.notification.addError({
-        context: "product",
-        message: "Invalid Name",
-      });
-    }
-    if (this._price <= 0) {
-      this.notification.addError({
-        context: "product",
-        message: "Price should be a positive number",
-      });
-    }
+    ProductValidatorFactory.create().validate(this);
     if (this.notification.hasErrors()) {
       this.notification.throwErrors("product");
     }

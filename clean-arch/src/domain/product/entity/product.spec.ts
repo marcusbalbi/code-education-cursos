@@ -15,7 +15,7 @@ describe("Product unit tests", () => {
     expect(() => {
       return new Product("", "", -25.0);
     }).toThrowError(
-      "product: Invalid ID, product: Invalid Name, product: Price should be a positive number"
+      "product: ID is required, product: Name is required, product: Price should be a positive number"
     );
   });
   test("should throw error when price is not a number", () => {

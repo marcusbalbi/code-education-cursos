@@ -31,6 +31,8 @@ describe("unit test create product use case", () => {
     const usecase = new CreateProductUseCase(MockRepository());
     const invalidInput = cloneDeep(input);
     invalidInput.name = "";
-    await expect(usecase.execute(invalidInput)).rejects.toThrow("Invalid Name");
+    await expect(usecase.execute(invalidInput)).rejects.toThrow(
+      "product: Name is required"
+    );
   })
 });
