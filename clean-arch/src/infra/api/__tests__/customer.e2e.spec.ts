@@ -59,4 +59,30 @@ describe("E2E test for customer", () => {
     expect(response.body.customers.length).toBe(1)
     expect(response.body.customers[0].name).toBe("Jhon Doe")
   })
+
+  it("should list customers (XML)", async () => {
+    await request(app)
+      .post("/customer")
+      .send({
+        name: "Jhon Doe",
+        address: {
+          street: "Rua Souza Cardozo",
+          number: 23,
+          zip: "28777666",
+          city: "Rio de Janeiro",
+        },
+      });
+
+    const response = await request(app).get("/customer").set("Accept", "application/xml").send();
+    expect(response.status).toBe(200);
+    expect(response.text).toContain(`<?xml version="1.0" encoding="UTF-8"?>`)
+    expect(response.text).toContain(`<customers>`);
+    expect(response.text).toContain(`<customer>`);
+    expect(response.text).toContain(`<name>Jhon Doe</name>`);
+    expect(response.text).toContain(`<address>`);
+    expect(response.text).toContain(`<street>Rua Souza Cardozo</street>`);
+    expect(response.text).toContain(`<number>23</number>`);
+    expect(response.text).toContain(`<zipcode>28777666</zipcode>`);
+    expect(response.text).toContain(`<city>Rio de Janeiro</city>`);
+  });
 });
