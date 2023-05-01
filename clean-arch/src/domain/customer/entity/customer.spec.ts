@@ -15,7 +15,7 @@ describe("Customer unit tests", () => {
   test("should throw error when name is empty and has no id", () => {
     expect(() => {
       return new Customer("", "");
-    }).toThrowError("customer: Invalid Name, customer: Invalid ID");
+    }).toThrowError("customer: ID is required, customer: Name is required");
   });
   test("should throw error change name to an empty name", () => {
     expect(() => {

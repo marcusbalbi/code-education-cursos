@@ -3,6 +3,7 @@ import EventDispatcher from "../../@shared/event/event-dispatcher";
 import { NotificationError } from "../../@shared/notification/notification.error";
 import CustomerChangedAddressEvent from "../event/customer-changed-address.event";
 import CustomerCreatedEvent from "../event/customer-created.event";
+import { CustomerValidatorFactory } from "../factory/customer.validator.factory";
 import { Address } from "./Address";
 import CustomerInterface from "./customer.interface";
 
@@ -61,18 +62,7 @@ export class Customer extends BaseEntity implements CustomerInterface {
   }
 
   validate() {
-    if (this._name.length === 0) {
-      this.notification.addError({
-        context: "customer",
-        message: "Invalid Name",
-      });
-    }
-    if (this._id.length === 0) {
-      this.notification.addError({
-        context: "customer",
-        message: "Invalid ID",
-      });
-    }
+    CustomerValidatorFactory.create().validate(this);
     if (this.notification.hasErrors()) {
       this.notification.throwErrors("customer")
     }
