@@ -4,11 +4,17 @@ import CustomerModel from "../customer/sequelize/customer.model";
 import { customerRoute } from "./routes/customer.route";
 import { productRoute } from "./routes/product.route";
 import ProductModel from "../product/sequelize/product.model";
+import { graphqlStart } from "../graphql";
 export const app  = express();
 
 app.use(express.json());
 app.use("/customer", customerRoute);
 app.use("/product", productRoute);
+
+app.use(
+  "/graphql",
+  graphqlStart
+);
 
 export let sequelize: Sequelize;
 
