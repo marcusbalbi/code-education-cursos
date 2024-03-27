@@ -1,0 +1,45 @@
+@startuml
+!include  https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+AddRelTag("async", $lineStyle = DashedLine())
+title "Digital Wallet FC"
+
+Person(client, "Client", "Digital wallet user")
+
+System_Ext(payment_gatway, "Payment Processor")
+
+System_Boundary(digital_wallet, "Digital Wallet") {
+  Container(spa, "SPA", "React", "Single Page Application")
+  Container(wallet_core, "Wallet Core", "Typescript", "Wallet Core is Responsable for the transactions")
+  Container(balance_server, "Balance MS", "Typescript", "returns customer balance")
+  Container(statement, "Statement MS", "Typescript", "returns customer statement")
+  Container(payment_acl, "Payment gateway ACL", "Typescript", "ACL payment gateway")
+
+  ContainerDb(wallet_core_db, "Wallet DB", "Mysql")
+  Rel(wallet_core, wallet_core_db, "Uses")
+
+  ContainerDb(balance_db, "Balance DB", "Mysql")
+  Rel(balance_server, balance_db, "Uses")
+
+  ContainerDb(statement_db, "Statement DB", "Mysql")
+  Rel(statement, statement_db, "Uses")
+
+  ContainerDb(payment_acl_db, "Payment ACL DB", "Mysql")
+  Rel(payment_acl, payment_acl_db, "Uses")
+
+  Rel(spa, wallet_core, "Uses")
+  Rel(spa, statement, "Uses")
+  Rel(spa, balance_server, "Uses")
+  Rel(wallet_core, payment_acl, "Uses")
+
+  Rel(wallet_core, balance_server, "TOPIC", $tags = "async")
+  Rel(wallet_core, statement, "TOPIC", $tags = "async")
+
+}
+
+Rel(payment_acl, payment_gatway, "Uses")
+Rel(client, spa, "Uses")
+
+
+
+
+@enduml
