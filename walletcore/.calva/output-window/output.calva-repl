@@ -6,7 +6,7 @@
 ; 
 
 ; Starting Jack-in Terminal: pushd /home/balbi/estudos/code-education-cursos/walletcore ; lein update-in :dependencies conj '[nrepl,"1.0.0"]' -- update-in :plugins conj '[cider/cider-nrepl,"0.28.5"]' -- update-in '[:repl-options,:nrepl-middleware]' conj '["cider.nrepl/cider-middleware"]' -- repl :headless ; popd
-; Using host:port 127.0.0.1:41999 ...
+; Using host:port 127.0.0.1:41807 ...
 ; Hooking up nREPL sessions ...
 ; Connected session: clj
 ; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
@@ -14,68 +14,187 @@ nil
 clj꞉walletcore.core꞉> 
 ; Jack-in done.
 clj꞉walletcore.core꞉> 
+; Evaluating file: account.clj
+#'walletcore.model.account/Account
+clj꞉walletcore.model.account꞉> 
 ; Evaluating file: client_test.clj
-; 
-; ; clj  walletcore.unit.logic.client-test 
-; Execution error (ExceptionInfo) at walletcore.logic.client/eval2214$->client (client.clj:8).
-; Output of ->client does not match schema: 
-; 
-; 	   {:name (not (instance? java.lang.String 12))}  
-; 
-; 
-; Evaluation of file client_test.clj failed: class clojure.lang.Compiler$CompilerException
-clj꞉walletcore.unit.logic.client-test꞉> 
-; Evaluating file: client_test.clj
-#'walletcore.unit.logic.client-test/->client-test
+#'walletcore.unit.logic.client-test/client->new-account-test
 clj꞉walletcore.unit.logic.client-test꞉> 
 ; Running tests for the following namespaces:
 ;   walletcore.unit.logic.client-test
 ;   walletcore.unit.logic.client
 
-; 3 tests finished, all passing 👍, ns: 1, vars: 1
-clj꞉walletcore.unit.logic.client-test꞉> 
-; Evaluating file: client_test.clj
-#'walletcore.unit.logic.client-test/->client-test
-clj꞉walletcore.unit.logic.client-test꞉> 
-; Running tests for the following namespaces:
-;   walletcore.unit.logic.client-test
-;   walletcore.unit.logic.client
-
-; ERROR in walletcore.unit.logic.client-test/->client-test (client.clj:9):
+; ERROR in walletcore.unit.logic.client-test/client->new-account-test (client.clj:20):
 ; Uncaught exception, not in assertion
-; error: clojure.lang.ExceptionInfo: Output of ->client does not match schema: 
+; error: clojure.lang.ExceptionInfo: Output of client->new-account does not match schema: 
 
-	   {:name (not (instance? java.lang.String 12))}  
+	   {:client-id (not (instance? java.util.UUID nil))}  
 
- {:type :schema.core/error, :schema {:id java.util.UUID, :name java.lang.String, :email java.lang.String}, :value {:id #uuid "def0c1e4-af50-4629-926c-5b6ad399ccfe", :name 12, :email "james@test.com"}, :error {:name (not (instance? java.lang.String 12))}} (client.clj:9)
-; 1 tests finished, problems found. 😭 errors: 1, failures: 0, ns: 1, vars: 1
+ {:type :schema.core/error, :schema {:id java.util.UUID, :client-id java.util.UUID, :balance Int, :created-at (pred walletcore.model.common/fn--2890), :updated-at (pred walletcore.model.common/fn--2890)}, :value {:id #uuid "e64a7bee-e312-42b9-93de-9038c1241edc", :client-id nil, :balance 0, :created-at #object[org.joda.time.DateTime 0xc9b784a "2024-04-02T00:35:15.587Z"], :updated-at #object[org.joda.time.DateTime 0xb5c2263 "2024-04-02T00:35:15.587Z"]}, :error {:client-id (not (instance? java.util.UUID nil))}} (client.clj:20)
+; 5 tests finished, problems found. 😭 errors: 1, failures: 0, ns: 1, vars: 2
 clj꞉walletcore.unit.logic.client-test꞉> 
-; Evaluating file: config.clj
-nil
-clj꞉walletcore.config꞉> 
+; Evaluating file: client.clj
+#'walletcore.logic.client/with-account
+clj꞉walletcore.logic.client꞉> 
 ; Evaluating file: client_test.clj
-#'walletcore.unit.logic.client-test/->client-test
+#'walletcore.unit.logic.client-test/client->new-account-test
 clj꞉walletcore.unit.logic.client-test꞉> 
 ; Running tests for the following namespaces:
 ;   walletcore.unit.logic.client-test
 ;   walletcore.unit.logic.client
 
-; 3 tests finished, all passing 👍, ns: 1, vars: 1
+; ; FAIL in walletcore.unit.logic.client-test/client->new-account-test (client_test.clj:22):
+; ; create new account for client
+; ; expected:
+; nil
+; 
+; ; actual:
+; {:id #uuid "85268ec2-74c5-4202-a2c1-cd82db91fb3f",
+;  :name "James",
+;  :email "james@test.com",
+;  :accounts [],
+;  :created-at
+;  #object[org.joda.time.DateTime 0x5db2aed3 "2024-04-02T00:35:43.895Z"],
+;  :updated-at
+;  #object[org.joda.time.DateTime 0x408b331b "2024-04-02T00:35:43.895Z"]}
+
+; 8 tests finished, problems found. 😭 errors: 0, failures: 1, ns: 1, vars: 2
 clj꞉walletcore.unit.logic.client-test꞉> 
 ; Evaluating file: client_test.clj
-#'walletcore.unit.logic.client-test/->client-test
+#'walletcore.unit.logic.client-test/client->new-account-test
 clj꞉walletcore.unit.logic.client-test꞉> 
 ; Running tests for the following namespaces:
 ;   walletcore.unit.logic.client-test
 ;   walletcore.unit.logic.client
 
-; ERROR in walletcore.unit.logic.client-test/->client-test (client.clj:9):
-; Uncaught exception, not in assertion
-; error: clojure.lang.ExceptionInfo: Output of ->client does not match schema: 
-
-	   {:name (not (instance? java.lang.String 12))}  
-
- {:type :schema.core/error, :schema {:id java.util.UUID, :name java.lang.String, :email java.lang.String}, :value {:id #uuid "c6f7237a-5bc8-4e72-886b-6206809e8482", :name 12, :email "james@test.com"}, :error {:name (not (instance? java.lang.String 12))}} (client.clj:9)
-; 1 tests finished, problems found. 😭 errors: 1, failures: 0, ns: 1, vars: 1
+; 8 tests finished, all passing 👍, ns: 1, vars: 2
 clj꞉walletcore.unit.logic.client-test꞉> 
-; nREPL Connection was closed
+; Evaluating file: client_test.clj
+#'walletcore.unit.logic.client-test/client->new-account-test
+clj꞉walletcore.unit.logic.client-test꞉> 
+; Running tests for the following namespaces:
+;   walletcore.unit.logic.client-test
+;   walletcore.unit.logic.client
+
+; 9 tests finished, all passing 👍, ns: 1, vars: 2
+clj꞉walletcore.unit.logic.client-test꞉> 
+; Evaluating file: account_test.clj
+#'walletcore.unit.logic.account-test/credit-test
+clj꞉walletcore.unit.logic.account-test꞉> 
+; Evaluating file: account_test.clj
+#'walletcore.unit.logic.account-test/credit-test
+clj꞉walletcore.unit.logic.account-test꞉> 
+; Running tests for the following namespaces:
+;   walletcore.unit.logic.account-test
+;   walletcore.unit.logic.account
+
+; ERROR in walletcore.unit.logic.account-test/credit-test (account.clj:15):
+; should correct credit to account
+; error: clojure.lang.ExceptionInfo: Output of credit does not match schema: 
+
+	   {:balance (not (integer? 12M))}  
+
+ {:type :schema.core/error, :schema {:id java.util.UUID, :client-id java.util.UUID, :balance Int, :created-at (pred walletcore.model.common/fn--2890), :updated-at (pred walletcore.model.common/fn--2890)}, :value {:id #uuid "c0d129ea-c007-4e59-96a2-50f76d36cacd", :client-id #uuid "b9fcf017-3855-4407-a340-5a7a90c8b934", :balance 12M, :created-at #object[org.joda.time.DateTime 0x5341e945 "2024-04-02T00:41:21.077Z"], :updated-at #object[org.joda.time.DateTime 0x7339a6d1 "2024-04-02T00:41:21.127Z"]}, :error {:balance (not (integer? 12M))}} (account.clj:15)
+; expected:
+(= 12M (logic.account/credit account 12))
+
+; 1 tests finished, problems found. 😭 errors: 1, failures: 0, ns: 1, vars: 1
+clj꞉walletcore.unit.logic.account-test꞉> 
+; Evaluating file: account.clj
+#'walletcore.model.account/Account
+clj꞉walletcore.model.account꞉> 
+; Evaluating file: account_test.clj
+#'walletcore.unit.logic.account-test/credit-test
+clj꞉walletcore.unit.logic.account-test꞉> 
+; Running tests for the following namespaces:
+;   walletcore.unit.logic.account-test
+;   walletcore.unit.logic.account
+
+; ERROR in walletcore.unit.logic.account-test/credit-test (account.clj:15):
+; should correct credit to account
+; error: clojure.lang.ExceptionInfo: Output of credit does not match schema: 
+
+	   {:balance (not (integer? 12M))}  
+
+ {:type :schema.core/error, :schema {:id java.util.UUID, :client-id java.util.UUID, :balance Int, :created-at (pred walletcore.model.common/fn--2890), :updated-at (pred walletcore.model.common/fn--2890)}, :value {:id #uuid "3b71451c-653b-4bc0-bf19-4e525dbd12a4", :client-id #uuid "6cf1d73a-7407-426c-aca1-556406c10b48", :balance 12M, :created-at #object[org.joda.time.DateTime 0x4c092f8a "2024-04-02T00:42:14.433Z"], :updated-at #object[org.joda.time.DateTime 0x52fa9d46 "2024-04-02T00:42:14.482Z"]}, :error {:balance (not (integer? 12M))}} (account.clj:15)
+; expected:
+(= 12M (logic.account/credit account 12))
+
+; 1 tests finished, problems found. 😭 errors: 1, failures: 0, ns: 1, vars: 1
+clj꞉walletcore.unit.logic.account-test꞉> 
+; Evaluating file: account.clj
+#'walletcore.model.account/Account
+clj꞉walletcore.model.account꞉> 
+; Evaluating file: client.clj
+#'walletcore.logic.client/with-account
+clj꞉walletcore.logic.client꞉> 
+; Evaluating file: account.clj
+#'walletcore.logic.account/debit
+clj꞉walletcore.logic.account꞉> 
+; Evaluating file: account_test.clj
+#'walletcore.unit.logic.account-test/credit-test
+clj꞉walletcore.unit.logic.account-test꞉> 
+; Running tests for the following namespaces:
+;   walletcore.unit.logic.account-test
+;   walletcore.unit.logic.account
+
+; ; FAIL in walletcore.unit.logic.account-test/credit-test (account_test.clj:15):
+; ; should correct credit to account
+; ; expected:
+; 12M
+; 
+; ; actual:
+; {:id #uuid "fb126ebf-08f5-422d-a0ae-95f54e26cd6d",
+;  :client-id #uuid "4bb6dff0-b642-4442-b95f-5e30ae912957",
+;  :balance 12M,
+;  :created-at
+;  #object[org.joda.time.DateTime 0x3a65848d "2024-04-02T00:42:36.852Z"],
+;  :updated-at
+;  #object[org.joda.time.DateTime 0x5a10b1ca "2024-04-02T00:42:36.907Z"]}
+
+; 1 tests finished, problems found. 😭 errors: 0, failures: 1, ns: 1, vars: 1
+clj꞉walletcore.unit.logic.account-test꞉> 
+; Evaluating file: account_test.clj
+#'walletcore.unit.logic.account-test/credit-test
+clj꞉walletcore.unit.logic.account-test꞉> 
+; Running tests for the following namespaces:
+;   walletcore.unit.logic.account-test
+;   walletcore.unit.logic.account
+
+; 1 tests finished, all passing 👍, ns: 1, vars: 1
+clj꞉walletcore.unit.logic.account-test꞉> 
+; Evaluating file: account_test.clj
+#'walletcore.unit.logic.account-test/debit-test
+clj꞉walletcore.unit.logic.account-test꞉> 
+; Running tests for the following namespaces:
+;   walletcore.unit.logic.account-test
+;   walletcore.unit.logic.account
+
+; 2 tests finished, all passing 👍, ns: 1, vars: 2
+clj꞉walletcore.unit.logic.account-test꞉> 
+; Evaluating file: client_test.clj
+#'walletcore.unit.logic.client-test/with-account-test
+clj꞉walletcore.unit.logic.client-test꞉> 
+; Running tests for the following namespaces:
+;   walletcore.unit.logic.client-test
+;   walletcore.unit.logic.client
+
+; ERROR in walletcore.unit.logic.client-test/with-account-test (client_test.clj:31):
+; adds account for client
+; error: java.lang.Exception: = expects more than one argument (client_test.clj:31)
+; expected:
+(= (count (:accounts client-w-acc) 1))
+
+; 10 tests finished, problems found. 😭 errors: 1, failures: 0, ns: 1, vars: 3
+clj꞉walletcore.unit.logic.client-test꞉> 
+#'walletcore.unit.logic.client-test/with-account-test
+clj꞉walletcore.unit.logic.client-test꞉> 
+; Evaluating file: client_test.clj
+#'walletcore.unit.logic.client-test/with-account-test
+clj꞉walletcore.unit.logic.client-test꞉> 
+; Running tests for the following namespaces:
+;   walletcore.unit.logic.client-test
+;   walletcore.unit.logic.client
+
+; 10 tests finished, all passing 👍, ns: 1, vars: 3
+clj꞉walletcore.unit.logic.client-test꞉> 

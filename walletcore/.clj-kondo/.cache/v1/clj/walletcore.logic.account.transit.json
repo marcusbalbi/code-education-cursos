@@ -1,0 +1,1 @@
+["^ ","~$credit",["^ ","~:row",6,"~:col",1,"~:fixed-arities",["~#set",[2]],"~:name","^0","~:ns","~$walletcore.logic.account","~:top-ns","^7"],"~$debit",["^ ","^1",14,"^2",1,"^3",["^4",[2]],"^5","^9","^6","^7","^8","^7"],"~:filename","/home/balbi/estudos/code-education-cursos/walletcore/src/walletcore/logic/account.clj"]
