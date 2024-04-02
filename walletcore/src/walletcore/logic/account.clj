@@ -18,3 +18,7 @@
     (update $ :balance - amount)
     (update $ :balance bigdec)
     (assoc $ :updated-at (t/now))))
+
+(s/defn has-funds? [account :- model.account/Account
+                    amount  :- s/Num]
+  (> (:balance account) amount))
