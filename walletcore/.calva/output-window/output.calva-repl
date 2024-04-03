@@ -1,0 +1,135 @@
+; Syntax error compiling at (src/walletcore/use_case/client/create_client.clj:7:1).
+; No such var: repository/MemoryRepository
+clj꞉walletcore.use-case.client.create-client꞉> 
+{}
+clj꞉walletcore.use-case.client.create-client꞉> 
+{:a "v"}
+clj꞉walletcore.use-case.client.create-client꞉> 
+; Execution error (IllegalArgumentException) at walletcore.use-case.client.create-client/eval12634 (form-init3979195340768039387.clj:8).
+; No matching method fetchAll found taking 1 args for class walletcore.infra.protocols.repository.MemoryRepository
+clj꞉walletcore.use-case.client.create-client꞉> 
+[{} {:a "v"}]
+clj꞉walletcore.use-case.client.create-client꞉> 
+{:a "v"}
+clj꞉walletcore.use-case.client.create-client꞉> 
+{:a "v"}
+clj꞉walletcore.use-case.client.create-client꞉> 
+{:a "v"}
+clj꞉walletcore.use-case.client.create-client꞉> 
+{:a "v"}
+clj꞉walletcore.use-case.client.create-client꞉> 
+{:a "v"}
+clj꞉walletcore.use-case.client.create-client꞉> 
+[{} {:a "v"} {:a "v"} {:a "v"} {:a "v"} {:a "v"} {:a "v"}]
+clj꞉walletcore.use-case.client.create-client꞉> 
+; Evaluating file: manager.clj
+#'walletcore.infra.protocols.manager/insert!
+clj꞉walletcore.infra.protocols.manager꞉> 
+; Syntax error compiling at (src/walletcore/infra/protocols/manager.clj:8:1).
+; No such namespace: repository
+clj꞉walletcore.infra.protocols.manager꞉> 
+nil
+clj꞉walletcore.infra.protocols.manager꞉> 
+#'walletcore.infra.protocols.manager/insert!
+clj꞉walletcore.infra.protocols.manager꞉> 
+{}
+clj꞉walletcore.infra.protocols.manager꞉> 
+{:d "dentro"}
+clj꞉walletcore.infra.protocols.manager꞉> 
+{:d "dentro"}
+clj꞉walletcore.infra.protocols.manager꞉> 
+{:d "dentro"}
+clj꞉walletcore.infra.protocols.manager꞉> 
+{:d "dentro"}
+clj꞉walletcore.infra.protocols.manager꞉> 
+{:d "dentro"}
+clj꞉walletcore.infra.protocols.manager꞉> 
+#'walletcore.infra.protocols.manager/fetch-all
+clj꞉walletcore.infra.protocols.manager꞉> 
+{:d "dentro"}
+clj꞉walletcore.infra.protocols.manager꞉> 
+[{}
+ {:a "v"}
+ {:a "v"}
+ {:a "v"}
+ {:a "v"}
+ {:a "v"}
+ {:a "v"}
+ {}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}]
+clj꞉walletcore.infra.protocols.manager꞉> 
+{:d "dentro"}
+clj꞉walletcore.infra.protocols.manager꞉> 
+{:d "dentro"}
+clj꞉walletcore.infra.protocols.manager꞉> 
+{:d "dentro"}
+clj꞉walletcore.infra.protocols.manager꞉> 
+{:d "dentro"}
+clj꞉walletcore.infra.protocols.manager꞉> 
+{:d "dentro"}
+clj꞉walletcore.infra.protocols.manager꞉> 
+{:d "dentro"}
+clj꞉walletcore.infra.protocols.manager꞉> 
+[{}
+ {:a "v"}
+ {:a "v"}
+ {:a "v"}
+ {:a "v"}
+ {:a "v"}
+ {:a "v"}
+ {}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}]
+clj꞉walletcore.infra.protocols.manager꞉> 
+{:d "dentross"}
+clj꞉walletcore.infra.protocols.manager꞉> 
+{:d "dentross"}
+clj꞉walletcore.infra.protocols.manager꞉> 
+[{}
+ {:a "v"}
+ {:a "v"}
+ {:a "v"}
+ {:a "v"}
+ {:a "v"}
+ {:a "v"}
+ {}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentro"}
+ {:d "dentross"}
+ {:d "dentross"}]
+clj꞉walletcore.infra.protocols.manager꞉> 
+#'walletcore.infra.protocols.manager/newclient-repo
+clj꞉walletcore.infra.protocols.manager꞉> 
+#'walletcore.infra.protocols.manager/newclient-repo
+clj꞉walletcore.infra.protocols.manager꞉> 
+[]
+clj꞉walletcore.infra.protocols.manager꞉> 
+{:d "dentross"}
+clj꞉walletcore.infra.protocols.manager꞉> 
+[{:d "dentross"}]
+clj꞉walletcore.infra.protocols.manager꞉> 
