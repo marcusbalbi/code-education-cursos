@@ -7,9 +7,10 @@
   (update!* [this item] "The Item to be Saved")
   (fetchAll* [this] "receive the query and returns a collection with results")
   (fetch* [this pk] "receive the query and returns a collection with results")
-  (cleanup!* [this] "Removes all items from collection"))
+  (cleanup!* [this new-coll] "Removes all items from collection"))
 
 (def RepositoryContract (s/protocol Repository))
+
 
 (s/defrecord MemoryRepository [config
                                coll :- s/atom]
@@ -25,8 +26,8 @@
   (fetch* [this pk]
     (->> @coll (filter #(= ((get-in config [:pk]) %) pk)) first))
   (fetchAll* [this] @coll)
-  (cleanup!* [this]
-    (reset! coll [])))
+  (cleanup!* [this new-coll]
+    (reset! coll new-coll)))
 
 (defn insert! [repository item]
   (.insert!* repository item))
@@ -37,8 +38,10 @@
 (defn fetch [repository pk]
   (.fetch* repository pk))
 
-(defn cleanup! [repository]
-  (.cleanup!* repository))
+(defn cleanup! ([repository new-coll]
+  (.cleanup!* repository new-coll))
+  ([repository]
+   (.cleanup!* repository [])))
 
 (defn update! [repository item]
   (.update!* repository item))

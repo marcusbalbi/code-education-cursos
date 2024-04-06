@@ -1,20 +1,16 @@
-[]
-clj꞉walletcore.use-case.create-transaction-test꞉> 
+; Evaluating file: repository.clj
+#'walletcore.infra.protocols.repository/update!
+clj꞉walletcore.infra.protocols.repository꞉> 
+; Evaluating file: repository.clj
+#'walletcore.infra.protocols.repository/update!
+clj꞉walletcore.infra.protocols.repository꞉> 
 ; Evaluating file: create_transaction_test.clj
-{:id "05fd4a4c-ea8a-4806-935b-4339c99cf1d2"}
+#'walletcore.use-case.create-transaction-test/create-transaction-test
 clj꞉walletcore.use-case.create-transaction-test꞉> 
-{:config {:pk :id},
- :coll
- #<Atom@44c668bb: 
-   ({:id "5dfa8d82-3269-4d1f-9c0d-9c6834cf84af",
-     :client-id "6ab3fc67-54dc-4a89-a257-b1fd7949ddc0",
-     :balance 40M,
-     :created-at "2024-04-06T21:17:54.265Z",
-     :updated-at "2024-04-06T21:17:54.273Z"}
-    {:id "9afe9660-5c1d-4009-8cc5-c185b6c8f661",
-     :client-id "6ab3fc67-54dc-4a89-a257-b1fd7949ddc0",
-     :balance 80M,
-     :created-at "2024-04-06T21:17:54.265Z",
-     :updated-at "2024-04-06T21:17:54.273Z"})>}
+; Running tests for the following namespaces:
+;   walletcore.use-case.create-transaction-test
+;   walletcore.use-case.create-transaction
+
+; teste
+; 1 tests finished, all passing 👍, ns: 1, vars: 1
 clj꞉walletcore.use-case.create-transaction-test꞉> 
-; nREPL Connection was closed

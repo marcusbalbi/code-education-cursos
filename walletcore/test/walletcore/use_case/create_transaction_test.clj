@@ -15,16 +15,18 @@
                    (logic.account/credit 120)))
 (def account-b (logic.account/->account client))
 
-#_(def client-repo (repository/->MemoryRepository {:pk :id} (atom [(-> client adapters.client/model-client->database-client)])))
+(def client-repo (repository/->MemoryRepository {:pk :id} (atom [(-> client adapters.client/model-client->database-client)])))
 
-(def account-repo (repository/->MemoryRepository {:pk :id} (atom [(-> account-a adapters.account/model-account->database-account)
-                                                                  (-> account-b adapters.account/model-account->database-account)])))
+(def account-db [(-> account-a adapters.account/model-account->database-account)
+                 (-> account-b adapters.account/model-account->database-account)])
+
+(def account-repo (repository/->MemoryRepository {:pk :id} (atom account-db)))
 
 (def transaction-repo (repository/->MemoryRepository {:pk :id} (atom [])))
 
 (use-fixtures :each (fn [f]
                       (repository/cleanup! transaction-repo)
-                      (repository/cleanup! account-repo)
+                      (repository/cleanup! account-repo account-db)
                       (f)))
 
 (s/deftest create-transaction-test
@@ -35,8 +37,3 @@
       (is (not (nil? (:id output))))
       #_(is (= (:id output) (-> (repository/fetch account-repo (:id output)) :id))))))
 
-(create-transaction-test)
-transaction-repo
-(uc.create-transaction/execute {:account-id-from (-> account-a :id str)
-                                :account-id-to (-> account-b :id str)
-                                :amount 20} account-repo transaction-repo)
