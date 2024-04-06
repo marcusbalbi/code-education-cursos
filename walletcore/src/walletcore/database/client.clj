@@ -1,6 +1,5 @@
 (ns walletcore.database.client 
-  (:require [clojure.data.json :as json]
-            [schema.core :as s]
+  (:require [schema.core :as s]
             [walletcore.infra.protocols.repository :as repository]
             [walletcore.model.client :as model.client]
             [clj-time.format :as t]
@@ -12,16 +11,14 @@
   (as-> client $
     (update $ :id str)
     (update $ :created-at str)
-    (update $ :updated-at str)
-    (update $ :accounts json/write-str)))
+    (update $ :updated-at str)))
 
 (s/defn database-client->model-client :- model.client/Client
   [client :- dto.client/DatabaseClient]
   (as-> client $
     (update $ :id parse-uuid)
     (update $ :created-at t/parse)
-    (update $ :updated-at t/parse)
-    (update $ :accounts json/read-str)))
+    (update $ :updated-at t/parse)))
 
 (s/defn insert!
   [client :- model.client/Client

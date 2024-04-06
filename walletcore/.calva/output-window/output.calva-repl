@@ -31,3 +31,4 @@ clj꞉walletcore.use-case.create-client-test꞉> 
 
 ; 5 tests finished, all passing 👍, ns: 1, vars: 1
 clj꞉walletcore.use-case.create-client-test꞉> 
+; nREPL Connection was closed
