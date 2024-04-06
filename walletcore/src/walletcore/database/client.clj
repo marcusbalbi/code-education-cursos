@@ -10,8 +10,8 @@
   (let [doc (adapters.client/model-client->database-client client)]
     (repository/insert! client-repository doc)))
 
-(s/defn fetch
-  [id :- s/Uuid
+(s/defn fetch :- (s/maybe model.client/Client)
+  [id :- s/Str
    client-repository :- repository/RepositoryContract]
   (some-> client-repository
           (repository/fetch id)
