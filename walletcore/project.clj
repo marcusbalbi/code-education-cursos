@@ -5,7 +5,8 @@
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[org.clojure/clojure "1.11.2"]
                  [prismatic/schema "1.4.1"]
-                 [clj-time "0.15.2"]]
+                 [clj-time "0.15.2"]
+                 [org.clojure/data.json "2.5.0"]]
   :main ^:skip-aot walletcore.core
   :target-path "target/%s"
   :profiles {:test {:resource-paths ["test/walletcore/config.clj"]}

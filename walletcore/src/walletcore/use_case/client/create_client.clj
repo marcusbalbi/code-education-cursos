@@ -1,18 +1,25 @@
 (ns walletcore.use-case.client.create-client 
   (:require [schema.core :as s]
+            [walletcore.database.client :as database.client]
             [walletcore.dto.client :as dto.client]
             [walletcore.infra.protocols.repository :as repository]
-            [walletcore.logic.client :as logic.client]))
+            [walletcore.logic.client :as logic.client]
+            [walletcore.model.client :as model.client]))
 
-(.insert! repository/client-repo {:a  "v"})
-(.fetchAll repository/client-repo)
+(s/defn model-client->output-new-client :- dto.client/OutputNewClient
+  [client :- model.client/Client]
+  (as-> client $
+    (update $ :id str)
+    (update $ :created-at str)
+    (update $ :updated-at str)
+    (dissoc $ :accounts)))
 
-(s/defn execute
+(s/defn execute :- dto.client/OutputNewClient
   [input :- dto.client/InputNewClient
-   client-repository]
-  (repository.Repository/insert! client-repository (logic.client/->client (:name input) (:email input))))
-
-(s/set-fn-validation! true)
-
-(execute {:name "Jonas" :email "jonas@email.com"}
-         repository/client-repo)
+   client-repository :- repository/RepositoryContract]
+  (try
+    (let [client (logic.client/->client (:name input) (:email input))]
+      (database.client/insert! client client-repository)
+      (model-client->output-new-client client))
+    (catch Exception e
+           (throw e))))

@@ -11,3 +11,10 @@
                               :created-at s/Str
                               :updated-at s/Str})
 
+(s/defschema DatabaseClient {:id s/Str
+                              :name mc/NotEmptyString
+                              :email mc/NotEmptyString
+                              :accounts mc/JsonString
+                              :created-at s/Str
+                              :updated-at s/Str})
+
