@@ -1,16 +1,863 @@
+#:clients{:id "8cbfff4d-45d0-4056-97b6-cb2aecaf315b",
+          :name "Jonas",
+          :email "jonas@gmail.com",
+          :created_at #inst "2024-04-07T18:35:11.806740000-00:00",
+          :updated_at #inst "2024-04-07T18:35:11.806740000-00:00"}
+clj꞉walletcore.core꞉> 
+java.lang.String
+clj꞉walletcore.core꞉> 
+"8cbfff4d-45d0-4056-97b6-cb2aecaf315b"
+clj꞉walletcore.core꞉> 
+nil
+clj꞉walletcore.core꞉> 
+java.sql.Timestamp
+clj꞉walletcore.core꞉> 
+#inst "2024-04-07T18:35:11.806740000-00:00"
+clj꞉walletcore.core꞉> 
+nil
+clj꞉walletcore.core꞉> 
+#'walletcore.core/db
+clj꞉walletcore.core꞉> 
+; Syntax error compiling at (src/walletcore/core.clj:12:9).
+; No such var: rs/unqualified-snake-kebab-opts
+clj꞉walletcore.core꞉> 
+#function[next.jdbc.result-set/as-unqualified-kebab-maps]
+clj꞉walletcore.core꞉> 
+#'walletcore.core/ds
+clj꞉walletcore.core꞉> 
+#'walletcore.core/result
+clj꞉walletcore.core꞉> 
+{:id "8cbfff4d-45d0-4056-97b6-cb2aecaf315b",
+ :name "Jonas",
+ :email "jonas@gmail.com",
+ :created-at #inst "2024-04-07T18:35:11.806740000-00:00",
+ :updated-at #inst "2024-04-07T18:35:11.806740000-00:00"}
+clj꞉walletcore.core꞉> 
+#'walletcore.core/result
+clj꞉walletcore.core꞉> 
+{:id "8cbfff4d-45d0-4056-97b6-cb2aecaf315b",
+ :name "Jonas",
+ :email "jonas@gmail.com",
+ :created-at #inst "2024-04-07T18:35:11.806740000-00:00",
+ :updated-at #inst "2024-04-07T18:35:11.806740000-00:00"}
+clj꞉walletcore.core꞉> 
+#'walletcore.core/result
+clj꞉walletcore.core꞉> 
+nil
+clj꞉walletcore.core꞉> 
+nil
+clj꞉walletcore.core꞉> 
+; Evaluating file: repository_postgres.clj
+; 
+; ; clj  walletcore.infra.protocols.repository-postgres 
+; Execution error (FileNotFoundException) at walletcore.infra.protocols.repository-postgres/eval13372$loading (repository_postgres.clj:1).
+; Could not locate honey/sql__init.class, honey/sql.clj or honey/sql.cljc on classpath.
+; Evaluation of file repository_postgres.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
 ; Evaluating file: repository.clj
 #'walletcore.infra.protocols.repository/update!
 clj꞉walletcore.infra.protocols.repository꞉> 
-; Evaluating file: repository.clj
-#'walletcore.infra.protocols.repository/update!
-clj꞉walletcore.infra.protocols.repository꞉> 
-; Evaluating file: create_transaction_test.clj
-#'walletcore.use-case.create-transaction-test/create-transaction-test
-clj꞉walletcore.use-case.create-transaction-test꞉> 
-; Running tests for the following namespaces:
-;   walletcore.use-case.create-transaction-test
-;   walletcore.use-case.create-transaction
+; Evaluating file: repository_postgres.clj
+; 
+; ; clj  walletcore.infra.protocols.repository-postgres 
+; Execution error (FileNotFoundException) at walletcore.infra.protocols.repository-postgres/eval13548$loading (repository_postgres.clj:1).
+; Could not locate honey/sql__init.class, honey/sql.clj or honey/sql.cljc on classpath.
+; Evaluation of file repository_postgres.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; nREPL Connection was closed
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
 
-; teste
-; 1 tests finished, all passing 👍, ns: 1, vars: 1
-clj꞉walletcore.use-case.create-transaction-test꞉> 
+; Starting Jack-in Terminal: pushd /home/balbi/estudos/code-education-cursos/walletcore ; lein update-in :dependencies conj '[nrepl,"1.0.0"]' -- update-in :plugins conj '[cider/cider-nrepl,"0.28.5"]' -- update-in '[:repl-options,:nrepl-middleware]' conj '["cider.nrepl/cider-middleware"]' -- repl :headless ; popd
+; Using host:port 127.0.0.1:33767 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉walletcore.core꞉> 
+; Jack-in done.
+clj꞉walletcore.core꞉> 
+; Evaluating file: repository_postgres.clj
+; 
+; ; clj  walletcore.infra.protocols.repository-postgres 
+; Unexpected error (NullPointerException) macroexpanding clojure.core/defrecord at (src/walletcore/infra/protocols/repository_postgres.clj:15:1).
+; Cannot read field "ns" because "sym" is null
+; Evaluation of file repository_postgres.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; Evaluating file: repository_postgres.clj
+; 
+; Unexpected error (NullPointerException) macroexpanding clojure.core/defrecord at (src/walletcore/infra/protocols/repository_postgres.clj:15:1).
+; Cannot read field "ns" because "sym" is null
+; Evaluation of file repository_postgres.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; Evaluating file: repository_postgres.clj
+; 
+; Unexpected error (NullPointerException) macroexpanding defrecord at (src/walletcore/infra/protocols/repository_postgres.clj:15:1).
+; Cannot read field "ns" because "sym" is null
+; Evaluation of file repository_postgres.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; Evaluating file: repository_postgres.clj
+; 
+; Unexpected error (NullPointerException) macroexpanding defrecord at (src/walletcore/infra/protocols/repository_postgres.clj:15:1).
+; Cannot read field "ns" because "sym" is null
+; Evaluation of file repository_postgres.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; Evaluating file: repository_postgres.clj
+; 
+; Unexpected error (NullPointerException) macroexpanding clojure.core/defrecord at (src/walletcore/infra/protocols/repository_postgres.clj:14:1).
+; Cannot read field "ns" because "sym" is null
+; Evaluation of file repository_postgres.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; nREPL Connection was closed
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Starting Jack-in Terminal: pushd /home/balbi/estudos/code-education-cursos/walletcore ; lein update-in :dependencies conj '[nrepl,"1.0.0"]' -- update-in :plugins conj '[cider/cider-nrepl,"0.28.5"]' -- update-in '[:repl-options,:nrepl-middleware]' conj '["cider.nrepl/cider-middleware"]' -- repl :headless ; popd
+; Using host:port 127.0.0.1:32917 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉walletcore.core꞉> 
+; Jack-in done.
+clj꞉walletcore.core꞉> 
+; Evaluating file: repository_postgres.clj
+; 
+; ; clj  walletcore.infra.protocols.repository-postgres 
+; Unexpected error (NullPointerException) macroexpanding clojure.core/defrecord at (src/walletcore/infra/protocols/repository_postgres.clj:14:1).
+; Cannot read field "ns" because "sym" is null
+; Evaluation of file repository_postgres.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; Evaluating file: repository_postgres.clj
+#'walletcore.infra.protocols.repository-postgres/config
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; Evaluating file: repository_postgres.clj
+; 
+; Unexpected error (NullPointerException) macroexpanding defrecord at (src/walletcore/infra/protocols/repository_postgres.clj:14:1).
+; Cannot read field "ns" because "sym" is null
+; Evaluation of file repository_postgres.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; Evaluating file: repository_postgres.clj
+; 
+; Syntax error compiling at (src/walletcore/infra/protocols/repository_postgres.clj:17:5).
+; Unable to resolve symbol: coll in this context
+; Evaluation of file repository_postgres.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; Evaluating file: repository_postgres.clj
+; 
+; Syntax error (IllegalArgumentException) compiling deftype* at (src/walletcore/infra/protocols/repository_postgres.clj:14:1).
+; Can't define method not in interfaces: cleanup_BANG__STAR_
+; Evaluation of file repository_postgres.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; Evaluating file: repository_postgres.clj
+; 
+; Syntax error (IllegalArgumentException) compiling deftype* at (src/walletcore/infra/protocols/repository_postgres.clj:14:1).
+; Can't define method not in interfaces: cleanup_BANG__STAR_
+; Evaluation of file repository_postgres.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; Evaluating file: repository_postgres.clj
+#'walletcore.infra.protocols.repository-postgres/strict-map->PostgresRepository
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; Evaluating file: repository_postgres.clj
+#'walletcore.infra.protocols.repository-postgres/strict-map->PostgresRepository
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; Running tests for the following namespaces:
+;   walletcore.infra.protocols.repository-postgres
+;   walletcore.infra.protocols.repository-postgres-test
+
+; No tests found. 😱, ns: 0, vars: 0
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; Evaluating file: repository_postgres.clj
+#'walletcore.infra.protocols.repository-postgres/strict-map->PostgresRepository
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; Syntax error compiling at (src/walletcore/infra/protocols/repository_postgres.clj:15:1).
+; No such namespace: sql
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+nil
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+["SELECT a, b, c FROM foo WHERE foo.a = ?" "baz"]
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+nil
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+{:insert-into [:clients]}
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+{:insert-into [:clients], :columns [[:id :name :email :created-at :updated-at]]}
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; Execution error (ExceptionInfo) at honey.sql/format-values (sql.cljc:1090).
+; :values expects a sequence of rows (maps) or column values (sequences)
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+["INSERT INTO clients (ID(name, email, created_at, updated_at)) VALUES (?, ?, ?, ?, ?)" "a" "b" "c" "d" "e"]
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+{:insert-into [:clients], :columns [[:id :name :email :created-at :updated-at]], :values [["a" "b" "c" "d" "e"]]}
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; Execution error (ClassNotFoundException) at java.net.URLClassLoader/findClass (URLClassLoader.java:445).
+; logic.client
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; Evaluating file: repository_postgres.clj
+#'walletcore.infra.protocols.repository-postgres/strict-map->PostgresRepository
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+{:id #uuid "0dc19c06-905f-44bf-a788-65e23f54db32",
+ :name "Joel",
+ :email "jo@email.com",
+ :created-at #object[org.joda.time.DateTime 0x112d3876 "2024-04-07T17:10:30.038Z"],
+ :updated-at #object[org.joda.time.DateTime 0x108ea518 "2024-04-07T17:10:30.038Z"]}
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; Evaluating file: repository_postgres.clj
+#'walletcore.infra.protocols.repository-postgres/strict-map->PostgresRepository
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+{:id "350654bb-47f1-4032-a3c6-d33334527dfb",
+ :name "Joel",
+ :email "jo@email.com",
+ :created-at "2024-04-07T17:10:53.829Z",
+ :updated-at "2024-04-07T17:10:53.829Z"}
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+{:insert-into [:clients],
+ :columns [[:id :name :email :created-at :updated-at]],
+ :values
+ [{:id "ca07e14e-4d95-4455-af3e-9e51a29c939d",
+   :name "Joel",
+   :email "jo@email.com",
+   :created-at "2024-04-07T17:11:02.263Z",
+   :updated-at "2024-04-07T17:11:02.263Z"}]}
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+["INSERT INTO clients (ID(name, email, created_at, updated_at)) VALUES (?, ?, ?, ?, ?)"
+ "b4847ae7-ae82-44e1-a37c-0aaf6332ae3f"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:11:20.662Z"
+ "2024-04-07T17:11:20.662Z"]
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+["INSERT INTO clients (ID(name, email, created_at, updated_at)) VALUES (?, ?, ?, ?, ?)"
+ "ce4652ac-a0ee-4c30-aa83-e8b8f987f5ab"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:11:42.149Z"
+ "2024-04-07T17:11:42.149Z"]
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+["SELECT a, b, c FROM foo WHERE foo.a = ?" "baz"]
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+["\nINSERT INTO clients (ID(name, email, created_at, updated_at))\nVALUES (?, ?, ?, ?, ?)\n"
+ "a3e28d29-401a-48a9-8ae6-94bb755293ad"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:12:44.801Z"
+ "2024-04-07T17:12:44.801Z"]
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+["INSERT INTO clients (ID(name, email, created_at, updated_at)) VALUES (?, ?, ?, ?, ?)"
+ "8c477c40-e4f6-4a97-a110-dd2d1d86cd0a"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:14:25.642Z"
+ "2024-04-07T17:14:25.642Z"]
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+["INSERT INTO clients (ID(name, email, created_at, updated_at)) VALUES (?, ?, ?, ?, ?)"
+ "45de6a49-8d88-40b0-8516-756fe1476ad1"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:17:48.917Z"
+ "2024-04-07T17:17:48.917Z"]
+clj꞉walletcore.infra.protocols.repository-postgres꞉> 
+; Syntax error compiling at (src/walletcore/core.clj:24:24).
+; Unable to resolve symbol: config in this context
+clj꞉walletcore.core꞉> 
+; Evaluating file: core.clj
+; 
+; ; clj  walletcore.core 
+; Syntax error (ClassNotFoundException) compiling at (src/walletcore/core.clj:27:24).
+; adapters.client
+; Evaluation of file core.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉walletcore.core꞉> 
+; Syntax error (ClassNotFoundException) compiling at (src/walletcore/core.clj:28:24).
+; adapters.client
+clj꞉walletcore.core꞉> 
+; Evaluating file: core.clj
+#'walletcore.core/-main
+clj꞉walletcore.core꞉> 
+["INSERT INTO clients (ID(name, email, created_at, updated_at)) VALUES (?, ?, ?, ?, ?)"
+ "53d17a06-f8bb-410d-a30a-dbb60ea0c23e"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:20:10.417Z"
+ "2024-04-07T17:20:10.417Z"]
+clj꞉walletcore.core꞉> 
+["INSERT INTO clients (ID(name, email, created_at, updated_at)) VALUES (?, ?, ?, ?, ?)"
+ "dbf19c10-0c0c-45d1-afcd-46e472f99f1e"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:20:23.930Z"
+ "2024-04-07T17:20:23.930Z"]
+clj꞉walletcore.core꞉> 
+#'walletcore.core/insert-query
+clj꞉walletcore.core꞉> 
+; Execution error (PSQLException) at org.postgresql.core.v3.QueryExecutorImpl/receiveErrorResponse (QueryExecutorImpl.java:2725).
+; ERROR: syntax error at or near "("
+;   Position: 24
+clj꞉walletcore.core꞉> 
+#'walletcore.core/insert-query
+clj꞉walletcore.core꞉> 
+; Execution error (ClassCastException) at next.jdbc.prepare/create (prepare.clj:95).
+; class clojure.lang.MapEntry cannot be cast to class java.lang.String (clojure.lang.MapEntry is in unnamed module of loader 'app'; java.lang.String is in module java.base of loader 'bootstrap')
+clj꞉walletcore.core꞉> 
+#'walletcore.core/insert-query
+clj꞉walletcore.core꞉> 
+["INSERT INTO clients (ID(name, email, created_at, updated_at)) VALUES (?, ?, ?, ?, ?)"
+ "89dfc400-f555-4afc-8352-28436a07bc6b"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:22:37.062Z"
+ "2024-04-07T17:22:37.062Z"]
+clj꞉walletcore.core꞉> 
+#'walletcore.core/config
+clj꞉walletcore.core꞉> 
+#'walletcore.core/insert-query
+clj꞉walletcore.core꞉> 
+["INSERT INTO clients (IDS(name, email, created_at, updated_at)) VALUES (?, ?, ?, ?, ?)"
+ "c524879f-ead0-4199-b1fb-5a0c8822dd6b"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:22:53.957Z"
+ "2024-04-07T17:22:53.957Z"]
+clj꞉walletcore.core꞉> 
+#'walletcore.core/config
+clj꞉walletcore.core꞉> 
+#'walletcore.core/insert-query
+clj꞉walletcore.core꞉> 
+["INSERT INTO clients (ID(name, email, created_at, updated_at)) VALUES (?, ?, ?, ?, ?)"
+ "23414e26-799e-4f56-ab9e-4bda160e2cb8"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:23:14.147Z"
+ "2024-04-07T17:23:14.147Z"]
+clj꞉walletcore.core꞉> 
+#'walletcore.core/config
+clj꞉walletcore.core꞉> 
+#'walletcore.core/insert-query
+clj꞉walletcore.core꞉> 
+["INSERT INTO clients (NAME(email, created_at, updated_at)) VALUES (?, ?, ?, ?, ?)"
+ "e47cb1d8-5e04-411b-82ef-621ffdcaa695"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:23:32.569Z"
+ "2024-04-07T17:23:32.569Z"]
+clj꞉walletcore.core꞉> 
+[:name :email :created-at :updated-at]
+clj꞉walletcore.core꞉> 
+#'walletcore.core/config
+clj꞉walletcore.core꞉> 
+[:id :name :email :created-at :updated-at]
+clj꞉walletcore.core꞉> 
+#'walletcore.core/insert-query
+clj꞉walletcore.core꞉> 
+["INSERT INTO clients (id, name, email, created_at, updated_at) VALUES (?, ?, ?, ?, ?)"
+ "77840299-81cc-42d4-b4bb-032a57283d6e"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:24:43.858Z"
+ "2024-04-07T17:24:43.858Z"]
+clj꞉walletcore.core꞉> 
+[:id :name :email :created-at :updated-at]
+clj꞉walletcore.core꞉> 
+[:id :name :email :created-at :updated-at]
+clj꞉walletcore.core꞉> 
+(:id :name :email :created-at :updated-at)
+clj꞉walletcore.core꞉> 
+#'walletcore.core/insert-query
+clj꞉walletcore.core꞉> 
+["INSERT INTO clients (ID(name, email, created_at, updated_at)) VALUES (?, ?, ?, ?, ?)"
+ "e5f331d4-afef-48df-a115-db433fc4bed8"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:25:40.810Z"
+ "2024-04-07T17:25:40.810Z"]
+clj꞉walletcore.core꞉> 
+#'walletcore.core/insert-query
+clj꞉walletcore.core꞉> 
+["INSERT INTO clients (ID(name, email, created_at, updated_at)) VALUES (?, ?, ?, ?, ?)"
+ "21f78361-98e7-4908-baca-679da9c8d55e"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:26:19.134Z"
+ "2024-04-07T17:26:19.134Z"]
+clj꞉walletcore.core꞉> 
+; Execution error (ArityException) at nrepl.middleware.interruptible-eval/evaluate$fn$fn (interruptible_eval.clj:87).
+; Wrong number of args (6) passed to: clojure.lang.PersistentArrayMap
+clj꞉walletcore.core꞉> 
+; Execution error (IllegalArgumentException) at walletcore.core/eval15786 (form-init4152955811933551999.clj:32).
+; Don't know how to create ISeq from: java.lang.Long
+clj꞉walletcore.core꞉> 
+; Execution error (ClassCastException) at walletcore.core/eval15788 (form-init4152955811933551999.clj:32).
+; class java.lang.Long cannot be cast to class clojure.lang.IFn (java.lang.Long is in module java.base of loader 'bootstrap'; clojure.lang.IFn is in unnamed module of loader 'app')
+clj꞉walletcore.core꞉> 
+#'walletcore.core/insert-query
+clj꞉walletcore.core꞉> 
+["INSERT INTO clients (id, name, email, created_at, updated_at) VALUES (?, ?, ?, ?, ?)"
+ "7cb8c267-9cf9-4769-979a-7e3a63126c8a"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:28:00.434Z"
+ "2024-04-07T17:28:00.434Z"]
+clj꞉walletcore.core꞉> 
+#'walletcore.core/insert-query
+clj꞉walletcore.core꞉> 
+["INSERT INTO clients (id, name, email, created_at, updated_at) VALUES (?, ?, ?, ?, ?)"
+ "e3dc6c7d-9b66-43ff-ada8-621f0ddee06c"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:28:18.238Z"
+ "2024-04-07T17:28:18.239Z"]
+clj꞉walletcore.core꞉> 
+; Execution error (PSQLException) at org.postgresql.core.v3.QueryExecutorImpl/receiveErrorResponse (QueryExecutorImpl.java:2725).
+; ERROR: column "created_at" is of type timestamp without time zone but expression is of type character varying
+;   Hint: You will need to rewrite or cast the expression.
+;   Position: 83
+clj꞉walletcore.core꞉> 
+#'walletcore.core/insert-query
+clj꞉walletcore.core꞉> 
+["INSERT INTO clients (id, name, email, created_at, updated_at) VALUES (?, ?, ?, ?, ?)"
+ "6144a152-bdb3-40a0-b65f-7bf4df1bb513"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:29:41.767Z"
+ "2024-04-07T17:29:41.767Z"]
+clj꞉walletcore.core꞉> 
+; Execution error (PSQLException) at org.postgresql.core.v3.QueryExecutorImpl/receiveErrorResponse (QueryExecutorImpl.java:2725).
+; ERROR: column "created_at" is of type timestamp with time zone but expression is of type character varying
+;   Hint: You will need to rewrite or cast the expression.
+;   Position: 83
+clj꞉walletcore.core꞉> 
+{:id "75e6d06c-73a9-4bbd-8f63-bb974ef55807",
+ :name "Joel",
+ :email "jo@email.com",
+ :created-at "2024-04-07T17:31:44.555Z",
+ :updated-at "2024-04-07T17:31:44.555Z"}
+clj꞉walletcore.core꞉> 
+["INSERT INTO clients (id, name, email, created_at, updated_at) VALUES (?, ?, ?, ?, ?)"
+ "6144a152-bdb3-40a0-b65f-7bf4df1bb513"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:29:41.767Z"
+ "2024-04-07T17:29:41.767Z"]
+clj꞉walletcore.core꞉> 
+#'walletcore.core/result
+clj꞉walletcore.core꞉> 
+[{:id "6144a152-bdb3-40a0-b65f-7bf4df1bb513",
+  :name "Joel",
+  :email "jo@email.com",
+  :created-at #inst "2024-04-07T17:29:41.767000000-00:00",
+  :updated-at #inst "2024-04-07T17:29:41.767000000-00:00"}]
+clj꞉walletcore.core꞉> 
+; Evaluating file: core.clj
+; 
+; Execution error (PSQLException) at org.postgresql.core.v3.QueryExecutorImpl/receiveErrorResponse (QueryExecutorImpl.java:2725).
+; ERROR: column "created_at" is of type timestamp with time zone but expression is of type character varying
+;   Hint: You will need to rewrite or cast the expression.
+;   Position: 83
+; Evaluation of file core.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉walletcore.core꞉> 
+nil
+clj꞉walletcore.core꞉> 
+#inst "2024-04-07T17:29:41.767000000-00:00"
+clj꞉walletcore.core꞉> 
+nil
+clj꞉walletcore.core꞉> 
+#inst "2024-04-07T17:29:41.767000000-00:00"
+clj꞉walletcore.core꞉> 
+; Execution error (IllegalArgumentException) at clj-time.format/eval15538$fn$G (format.clj:234).
+; No implementation of method: :instant->map of protocol: #'clj-time.format/Mappable found for class: java.sql.Timestamp
+clj꞉walletcore.core꞉> 
+#inst "2024-04-07T17:29:41.767000000-00:00"
+clj꞉walletcore.core꞉> 
+nil
+clj꞉walletcore.core꞉> 
+; Syntax error compiling at (src/walletcore/core.clj:1:7934).
+; Unable to resolve symbol: ti in this context
+clj꞉walletcore.core꞉> 
+nil
+clj꞉walletcore.core꞉> 
+; Syntax error compiling at (src/walletcore/core.clj:1:7934).
+; Unable to resolve symbol: ti in this context
+clj꞉walletcore.core꞉> 
+; Syntax error compiling at (src/walletcore/core.clj:12:1).
+; No such var: ti/test
+clj꞉walletcore.core꞉> 
+nil
+clj꞉walletcore.core꞉> 
+#clj-time/date-time "2024-04-07T17:29:41.767Z"
+clj꞉walletcore.core꞉> 
+#inst "2024-04-07T17:29:41.767000000-00:00"
+clj꞉walletcore.core꞉> 
+#clj-time/date-time "2024-04-07T17:29:41.767Z"
+clj꞉walletcore.core꞉> 
+#'walletcore.core/insert-query
+clj꞉walletcore.core꞉> 
+["INSERT INTO clients (id, name, email, created_at, updated_at) VALUES (?, ?, ?, ?, ?)"
+ "cc561a68-6b08-4e3b-9ed3-666765399f78"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:40:29.530Z"
+ "2024-04-07T17:40:29.530Z"]
+clj꞉walletcore.core꞉> 
+#'walletcore.core/insert-query
+clj꞉walletcore.core꞉> 
+["INSERT INTO clients (id, name, email, created_at, updated_at) VALUES (?, ?, ?, ?, ?)"
+ "33286861-5aa8-45ca-8a2b-88c80f1a16ec"
+ "Joel"
+ "jo@email.com"
+ "2024-04-07T17:44:07.642Z"
+ "2024-04-07T17:44:07.642Z"]
+clj꞉walletcore.core꞉> 
+; Execution error (PSQLException) at org.postgresql.core.v3.QueryExecutorImpl/receiveErrorResponse (QueryExecutorImpl.java:2725).
+; ERROR: column "created_at" is of type timestamp without time zone but expression is of type character varying
+;   Hint: You will need to rewrite or cast the expression.
+;   Position: 83
+clj꞉walletcore.core꞉> 
+; Execution error (FileNotFoundException) at walletcore.adapters.client/eval16010$loading (form-init4152955811933551999.clj:1).
+; Could not locate clj_time/jdbc/j__init.class, clj_time/jdbc/j.clj or clj_time/jdbc/j.cljc on classpath. Please check that namespaces with dashes use underscores in the Clojure file name.
+clj꞉walletcore.adapters.client꞉> 
+; Execution error (FileNotFoundException) at clj-time.jdbc/eval16024$loading (jdbc.clj:1).
+; Could not locate clojure/java/jdbc__init.class, clojure/java/jdbc.clj or clojure/java/jdbc.cljc on classpath.
+clj꞉walletcore.adapters.client꞉> 
+nil
+clj꞉walletcore.adapters.client꞉> 
+; Execution error (IllegalStateException) at walletcore.adapters.client/eval16040$loading (form-init4152955811933551999.clj:1).
+; Alias t already exists in namespace walletcore.adapters.client, aliasing clj-time.format
+clj꞉walletcore.adapters.client꞉> 
+; nREPL Connection was closed
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Starting Jack-in Terminal: pushd /home/balbi/estudos/code-education-cursos/walletcore ; lein update-in :dependencies conj '[nrepl,"1.0.0"]' -- update-in :plugins conj '[cider/cider-nrepl,"0.28.5"]' -- update-in '[:repl-options,:nrepl-middleware]' conj '["cider.nrepl/cider-middleware"]' -- repl :headless ; popd
+; Using host:port 127.0.0.1:45627 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉walletcore.core꞉> 
+; Jack-in done.
+clj꞉walletcore.core꞉> 
+; Evaluating file: client.clj
+; 
+; ; clj  walletcore.adapters.client 
+; Execution error (IllegalStateException) at walletcore.adapters.client/eval12952$loading (client.clj:1).
+; Alias t already exists in namespace walletcore.adapters.client, aliasing clj-time.format
+; Evaluation of file client.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉walletcore.adapters.client꞉> 
+; Execution error (IllegalStateException) at walletcore.adapters.client/eval12958$loading (form-init855482997904506261.clj:1).
+; Alias t already exists in namespace walletcore.adapters.client, aliasing clj-time.format
+clj꞉walletcore.adapters.client꞉> 
+; Execution error (IllegalStateException) at walletcore.adapters.client/eval12964$loading (form-init855482997904506261.clj:1).
+; Alias t already exists in namespace walletcore.adapters.client, aliasing clj-time.format
+clj꞉walletcore.adapters.client꞉> 
+; Execution error (IllegalStateException) at walletcore.adapters.client/eval12970$loading (form-init855482997904506261.clj:1).
+; Alias t already exists in namespace walletcore.adapters.client, aliasing clj-time.format
+clj꞉walletcore.adapters.client꞉> 
+; Execution error (IllegalStateException) at walletcore.adapters.client/eval12976$loading (form-init855482997904506261.clj:1).
+; Alias t already exists in namespace walletcore.adapters.client, aliasing clj-time.format
+clj꞉walletcore.adapters.client꞉> 
+; nREPL Connection was closed
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Starting Jack-in Terminal: pushd /home/balbi/estudos/code-education-cursos/walletcore ; lein update-in :dependencies conj '[nrepl,"1.0.0"]' -- update-in :plugins conj '[cider/cider-nrepl,"0.28.5"]' -- update-in '[:repl-options,:nrepl-middleware]' conj '["cider.nrepl/cider-middleware"]' -- repl :headless ; popd
+; Using host:port 127.0.0.1:39813 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉walletcore.core꞉> 
+; Jack-in done.
+clj꞉walletcore.core꞉> 
+; Evaluating file: client.clj
+; 
+; ; clj  walletcore.adapters.client 
+; Syntax error compiling at (src/walletcore/adapters/client.clj:8:1).
+; No such var: t/formatter
+; Evaluation of file client.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉walletcore.adapters.client꞉> 
+; Execution error (ClassCastException) at clj-time.format/formatter (format.clj:46).
+; class org.joda.time.DateTime cannot be cast to class org.joda.time.format.DateTimeFormatter (org.joda.time.DateTime and org.joda.time.format.DateTimeFormatter are in unnamed module of loader 'app')
+clj꞉walletcore.adapters.client꞉> 
+; Execution error (ClassCastException) at clj-time.format/formatter (format.clj:46).
+; class org.joda.time.DateTime cannot be cast to class org.joda.time.format.DateTimeFormatter (org.joda.time.DateTime and org.joda.time.format.DateTimeFormatter are in unnamed module of loader 'app')
+clj꞉walletcore.adapters.client꞉> 
+; :basic-date                             20240407
+; :basic-date-time                        20240407T174845.758Z
+; :basic-date-time-no-ms                  20240407T174845Z
+; :basic-ordinal-date                     2024098
+; :basic-ordinal-date-time                2024098T174845.758Z
+; :basic-ordinal-date-time-no-ms          2024098T174845Z
+; :basic-t-time                           T174845.758Z
+; :basic-t-time-no-ms                     T174845Z
+; :basic-time                             174845.758Z
+; :basic-time-no-ms                       174845Z
+; :basic-week-date                        2024W147
+; :basic-week-date-time                   2024W147T174845.758Z
+; :basic-week-date-time-no-ms             2024W147T174845Z
+; :date                                   2024-04-07
+; :date-hour                              2024-04-07T17
+; :date-hour-minute                       2024-04-07T17:48
+; :date-hour-minute-second                2024-04-07T17:48:45
+; :date-hour-minute-second-fraction       2024-04-07T17:48:45.758
+; :date-hour-minute-second-ms             2024-04-07T17:48:45.758
+; :date-time                              2024-04-07T17:48:45.758Z
+; :date-time-no-ms                        2024-04-07T17:48:45Z
+; :hour                                   17
+; :hour-minute                            17:48
+; :hour-minute-second                     17:48:45
+; :hour-minute-second-fraction            17:48:45.758
+; :hour-minute-second-ms                  17:48:45.758
+; :mysql                                  2024-04-07 17:48:45
+; :ordinal-date                           2024-098
+; :ordinal-date-time                      2024-098T17:48:45.758Z
+; :ordinal-date-time-no-ms                2024-098T17:48:45Z
+; :rfc822                                 Sun, 07 Apr 2024 17:48:45 +0000
+; :t-time                                 T17:48:45.758Z
+; :t-time-no-ms                           T17:48:45Z
+; :time                                   17:48:45.758Z
+; :time-no-ms                             17:48:45Z
+; :week-date                              2024-W14-7
+; :week-date-time                         2024-W14-7T17:48:45.758Z
+; :week-date-time-no-ms                   2024-W14-7T17:48:45Z
+; :weekyear                               2024
+; :weekyear-week                          2024-W14
+; :weekyear-week-day                      2024-W14-7
+; :year                                   2024
+; :year-month                             2024-04
+; :year-month-day                         2024-04-07
+nil
+clj꞉walletcore.adapters.client꞉> 
+; Syntax error compiling at (src/walletcore/adapters/client.clj:8:1).
+; No such var: tf/show-formatter
+clj꞉walletcore.adapters.client꞉> 
+; Syntax error compiling at (src/walletcore/adapters/client.clj:9:1).
+; No such namespace: tc
+clj꞉walletcore.adapters.client꞉> 
+nil
+clj꞉walletcore.adapters.client꞉> 
+#inst "2024-04-07T17:50:42.878000000-00:00"
+clj꞉walletcore.adapters.client꞉> 
+#inst "2024-04-07T17:51:05.346-00:00"
+clj꞉walletcore.adapters.client꞉> 
+; Evaluating file: client.clj
+#'walletcore.adapters.client/database-client->model-client
+clj꞉walletcore.adapters.client꞉> 
+; Syntax error compiling at (src/walletcore/core.clj:32:42).
+; Unable to resolve symbol: config in this context
+clj꞉walletcore.core꞉> 
+; Evaluating file: core.clj
+#'walletcore.core/-main
+clj꞉walletcore.core꞉> 
+#'walletcore.core/insert-query
+clj꞉walletcore.core꞉> 
+["INSERT INTO clients (id, name, email, created_at, updated_at) VALUES (?, ?, ?, ?, ?)"
+ "6341dbc7-58b8-45b3-9f7c-28fd9fe1bf27"
+ "Joel"
+ "jo@email.com"
+ #inst "2024-04-07T17:51:36.714000000-00:00"
+ #inst "2024-04-07T17:51:36.714000000-00:00"]
+clj꞉walletcore.core꞉> 
+[#:next.jdbc{:update-count 1}]
+clj꞉walletcore.core꞉> 
+#'walletcore.core/result
+clj꞉walletcore.core꞉> 
+[{:id "fad578be-ca7c-47b0-a8e6-42c07efcff07",
+  :name "Joel",
+  :email "jo@email.com",
+  :created-at #inst "2024-04-07T17:51:35.553000000-00:00",
+  :updated-at #inst "2024-04-07T17:51:35.553000000-00:00"}
+ {:id "6341dbc7-58b8-45b3-9f7c-28fd9fe1bf27",
+  :name "Joel",
+  :email "jo@email.com",
+  :created-at #inst "2024-04-07T17:51:36.714000000-00:00",
+  :updated-at #inst "2024-04-07T17:51:36.714000000-00:00"}]
+clj꞉walletcore.core꞉> 
+#'walletcore.core/insert-query
+clj꞉walletcore.core꞉> 
+[#:next.jdbc{:update-count 1}]
+clj꞉walletcore.core꞉> 
+#'walletcore.core/result
+clj꞉walletcore.core꞉> 
+[{:id "2af2257a-fc3d-496b-b28e-fca0b62e934e",
+  :name "Joel",
+  :email "jo@email.com",
+  :created-at #inst "2024-04-07T17:52:10.078000000-00:00",
+  :updated-at #inst "2024-04-07T17:52:10.078000000-00:00"}]
+clj꞉walletcore.core꞉> 
+#clj-time/date-time "2024-04-07T17:52:10.078Z"
+clj꞉walletcore.core꞉> 
+{:id #uuid "2af2257a-fc3d-496b-b28e-fca0b62e934e",
+ :name "Joel",
+ :email "jo@email.com",
+ :created-at nil,
+ :updated-at nil}
+clj꞉walletcore.core꞉> 
+{:id #uuid "2af2257a-fc3d-496b-b28e-fca0b62e934e",
+ :name "Joel",
+ :email "jo@email.com",
+ :created-at nil,
+ :updated-at nil}
+clj꞉walletcore.core꞉> 
+; Evaluating file: client.clj
+#'walletcore.adapters.client/database-client->model-client
+clj꞉walletcore.adapters.client꞉> 
+{:id #uuid "2af2257a-fc3d-496b-b28e-fca0b62e934e",
+ :name "Joel",
+ :email "jo@email.com",
+ :created-at #clj-time/date-time "2024-04-07T17:52:10.078Z",
+ :updated-at #clj-time/date-time "2024-04-07T17:52:10.078Z"}
+clj꞉walletcore.core꞉> 
+#'walletcore.core/insert-query
+clj꞉walletcore.core꞉> 
+["INSERT INTO clients (id, name, email, created_at, updated_at) VALUES (?, ?, ?, ?, ?)"
+ "26b74bc8-fc70-457e-9c33-4971b6fc7de1"
+ "Joel"
+ "jo@email.com"
+ #inst "2024-04-07T17:54:35.312000000-00:00"
+ #inst "2024-04-07T17:54:35.312000000-00:00"]
+clj꞉walletcore.core꞉> 
+[#:next.jdbc{:update-count 1}]
+clj꞉walletcore.core꞉> 
+#'walletcore.core/result
+clj꞉walletcore.core꞉> 
+[{:id "26b74bc8-fc70-457e-9c33-4971b6fc7de1",
+  :name "Joel",
+  :email "jo@email.com",
+  :created-at #inst "2024-04-07T17:54:35.312000000-00:00",
+  :updated-at #inst "2024-04-07T17:54:35.312000000-00:00"}]
+clj꞉walletcore.core꞉> 
+{:id #uuid "26b74bc8-fc70-457e-9c33-4971b6fc7de1",
+ :name "Joel",
+ :email "jo@email.com",
+ :created-at #clj-time/date-time "2024-04-07T17:54:35.312Z",
+ :updated-at #clj-time/date-time "2024-04-07T17:54:35.312Z"}
+clj꞉walletcore.core꞉> 
+{:id #uuid "26b74bc8-fc70-457e-9c33-4971b6fc7de1",
+ :name "Joel",
+ :email "jo@email.com",
+ :created-at #clj-time/date-time "2024-04-07T17:54:35.312Z",
+ :updated-at #clj-time/date-time "2024-04-07T17:54:35.312Z"}
+clj꞉walletcore.core꞉> 
+{:id #uuid "26b74bc8-fc70-457e-9c33-4971b6fc7de1",
+ :name "Joel",
+ :email "jo@email.com",
+ :created-at #clj-time/date-time "2024-04-07T17:54:35.312Z",
+ :updated-at #clj-time/date-time "2024-04-07T17:54:35.312Z"}
+clj꞉walletcore.core꞉> 
+nil
+clj꞉walletcore.core꞉> 
+#inst "2024-04-07T17:54:35.312000000-00:00"
+clj꞉walletcore.core꞉> 
+#clj-time/date-time "2024-04-07T17:54:35.312Z"
+clj꞉walletcore.core꞉> 
+nil
+clj꞉walletcore.core꞉> 
+#clj-time/date-time "2024-04-07T17:54:35.312Z"
+clj꞉walletcore.core꞉> 
+; Syntax error compiling at (src/walletcore/core.clj:52:1).
+; No such var: t/default-time-zone
+clj꞉walletcore.core꞉> 
+; Syntax error compiling at (src/walletcore/core.clj:52:1).
+; No such var: tc/default-time-zone
+clj꞉walletcore.core꞉> 
+; Syntax error compiling at (src/walletcore/core.clj:52:1).
+; No such var: t/default-time-zone
+clj꞉walletcore.core꞉> 
+; Syntax error compiling at (src/walletcore/core.clj:1:7933).
+; No such var: t/default-time-zone
+clj꞉walletcore.core꞉> 
+; Evaluating file: core.clj
+; 
+; Execution error (IllegalStateException) at walletcore.core/eval15162$loading (core.clj:1).
+; Alias t already exists in namespace walletcore.core, aliasing clj-time.format
+; Evaluation of file core.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉walletcore.core꞉> 
+; Syntax error compiling at (src/walletcore/core.clj:1:7933).
+; No such var: t/default-time-zone
+clj꞉walletcore.core꞉> 
+; Syntax error compiling at (src/walletcore/core.clj:53:1).
+; No such var: t/default-time-zone
+clj꞉walletcore.core꞉> 
+; Syntax error compiling at (src/walletcore/core.clj:53:1).
+; No such var: t/default-time-zone
+clj꞉walletcore.core꞉> 
+; nREPL Connection was closed
+; Jacking in...
+; Connecting using "Leiningen" project type.
+; You can make Calva auto-select this.
+;   - See https://calva.io/connect-sequences/
+; 
+
+; Starting Jack-in Terminal: pushd /home/balbi/estudos/code-education-cursos/walletcore ; lein update-in :dependencies conj '[nrepl,"1.0.0"]' -- update-in :plugins conj '[cider/cider-nrepl,"0.28.5"]' -- update-in '[:repl-options,:nrepl-middleware]' conj '["cider.nrepl/cider-middleware"]' -- repl :headless ; popd
+; Using host:port 127.0.0.1:46193 ...
+; Hooking up nREPL sessions ...
+; Connected session: clj
+; Evaluating code from settings: 'calva.autoEvaluateCode.onConnect.clj'
+nil
+clj꞉walletcore.core꞉> 
+; Jack-in done.
+clj꞉walletcore.core꞉> 
+; Evaluating file: core.clj
+#'walletcore.core/-main
+clj꞉walletcore.core꞉> 
+#function[clj-time.core/default-time-zone]
+clj꞉walletcore.core꞉> 
+#object[org.joda.time.tz.CachedDateTimeZone 0x1343cacb "America/Sao_Paulo"]
+clj꞉walletcore.core꞉> 
+#object[org.joda.time.LocalTime 0x1167f496 "14:59:39.950"]
+clj꞉walletcore.core꞉> 
+#object[org.joda.time.tz.CachedDateTimeZone 0x1343cacb "America/Sao_Paulo"]
+clj꞉walletcore.core꞉> 
+#clj-time/date-time "2024-04-07T18:00:16.626Z"
+clj꞉walletcore.core꞉> 
+; Execution error (ArityException) at walletcore.core/eval14967 (form-init7607475085273441294.clj:52).
+; Wrong number of args (1) passed to: clj-time.core/from-time-zone
+clj꞉walletcore.core꞉> 
+#clj-time/date-time "2024-04-07T18:01:22.166Z"
+clj꞉walletcore.core꞉> 
+#clj-time/date-time "2024-04-07T18:01:24.154Z"
+clj꞉walletcore.core꞉> 
+#object[org.joda.time.tz.CachedDateTimeZone 0x1343cacb "America/Sao_Paulo"]
+clj꞉walletcore.core꞉> 
+#object[org.joda.time.UTCDateTimeZone 0x38d3d54f "UTC"]
+clj꞉walletcore.core꞉> 
+; Execution error (ClassCastException) at walletcore.core/eval14973 (form-init7607475085273441294.clj:55).
+; class org.joda.time.UTCDateTimeZone cannot be cast to class clojure.lang.IFn (org.joda.time.UTCDateTimeZone and clojure.lang.IFn are in unnamed module of loader 'app')
+clj꞉walletcore.core꞉> 
+#clj-time/date-time "2024-04-07T18:02:11.353Z"
+clj꞉walletcore.core꞉> 
+#clj-time/date-time "2024-04-07T18:02:13.101Z"
+clj꞉walletcore.core꞉> 
+#clj-time/date-time "2024-04-07T18:02:15.841Z"
+clj꞉walletcore.core꞉> 
+#clj-time/date-time "2024-04-07T18:02:16.720Z"
+clj꞉walletcore.core꞉> 
+#object[org.joda.time.tz.CachedDateTimeZone 0x1343cacb "America/Sao_Paulo"]
+clj꞉walletcore.core꞉> 
+#clj-time/date-time "2024-04-07T18:02:27.050Z"
+clj꞉walletcore.core꞉> 
+{:id #uuid "26b74bc8-fc70-457e-9c33-4971b6fc7de1",
+ :name "Joel",
+ :email "jo@email.com",
+ :created-at #clj-time/date-time "2024-04-07T17:54:35.312Z",
+ :updated-at #clj-time/date-time "2024-04-07T17:54:35.312Z"}
+clj꞉walletcore.core꞉> 
+#'walletcore.core/result
+clj꞉walletcore.core꞉> 
+{:id #uuid "26b74bc8-fc70-457e-9c33-4971b6fc7de1",
+ :name "Joel",
+ :email "jo@email.com",
+ :created-at #clj-time/date-time "2024-04-07T17:54:35.312Z",
+ :updated-at #clj-time/date-time "2024-04-07T17:54:35.312Z"}
+clj꞉walletcore.core꞉> 

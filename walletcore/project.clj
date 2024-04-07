@@ -6,6 +6,9 @@
   :dependencies [[org.clojure/clojure "1.11.2"]
                  [prismatic/schema "1.4.1"]
                  [clj-time "0.15.2"]
+                 [com.github.seancorfield/next.jdbc "1.3.925"]
+                 [org.postgresql/postgresql "42.7.3"]
+                 [com.github.seancorfield/honeysql "2.6.1126"]
                  [org.clojure/data.json "2.5.0"]]
   :main ^:skip-aot walletcore.core
   :target-path "target/%s"
