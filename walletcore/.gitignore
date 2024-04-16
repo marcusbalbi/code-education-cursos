@@ -13,5 +13,7 @@ pom.xml.asc
 .hg/
 .clj-kondo/.cache/
 .lsp/.cache/
+.env
 .metals/
 .vscode/
+profiles.clj

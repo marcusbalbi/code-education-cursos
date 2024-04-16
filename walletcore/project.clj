@@ -9,7 +9,9 @@
                  [com.github.seancorfield/next.jdbc "1.3.925"]
                  [org.postgresql/postgresql "42.7.3"]
                  [com.github.seancorfield/honeysql "2.6.1126"]
-                 [org.clojure/data.json "2.5.0"]]
+                 [org.clojure/data.json "2.5.0"]
+                 [environ "1.2.0"]]
+  :plugins [[lein-environ "1.2.0"]]
   :main ^:skip-aot walletcore.core
   :target-path "target/%s"
   :profiles {:test {:resource-paths ["test/walletcore/config.clj"]}

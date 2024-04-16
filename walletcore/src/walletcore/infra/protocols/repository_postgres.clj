@@ -3,15 +3,54 @@
             [honey.sql :as sql]
             [honey.sql.helpers :as sql.h]
             [walletcore.infra.protocols.repository :as repository]
-            [walletcore.logic.client :as logic.client]
-            [walletcore.adapters.client :as adapters.client]))
+            [next.jdbc :as jdbc]))
 
-(s/defrecord PostgresRepository [config]
+#_(s/defrecord PostgresRepository [config]
+  repository/Repository
+  (insert!* [this ds item]
+    (let [query (-> (sql.h/insert-into (:table config))
+                    (sql.h/values [item])
+                    (sql/format))]
+      (jdbc/execute! ds query)))
+  (update!* [this ds item]
+    item)
+  (fetch* [this ds pk]
+    (let [sql (-> (sql.h/select :*)
+                  (sql.h/from (:table config))
+                  (sql.h/where [:= (:pk config) pk])
+                  (sql/format))]
+      (-> ds
+          (jdbc/execute! sql)
+          first)))
+  (fetchAll* [this ds]
+    (let [sql (-> (sql.h/select :*)
+                  (sql.h/from (:table config))
+                  (sql/format))]
+      (jdbc/execute! ds sql)))
+  (cleanup!* [this ds]
+    (jdbc/execute! ds (str "truncate table" (:table config)))))
+
+#_(s/defrecord PostgresRepository [ds config]
   repository/Repository
   (insert!* [this item]
-    item)
+    (let [query (-> (sql.h/insert-into (:table config))
+              (sql.h/values [item])
+              (sql/format))]
+      (jdbc/execute! ds query)))
   (update!* [this item]
     item)
-  (fetch* [this pk] pk)
-  (fetchAll* [this] [])
-  (cleanup!* [this k] k))
+  (fetch* [this pk]
+     (let [sql (-> (sql.h/select :*)
+                   (sql.h/from (:table config))
+                   (sql.h/where [:= (:pk config) pk])
+                   (sql/format))]
+       (-> ds 
+           (jdbc/execute! sql)
+           first)))
+  (fetchAll* [this]
+    (let [sql (-> (sql.h/select :*)
+                  (sql.h/from (:table config))
+                  (sql/format))]
+       (jdbc/execute! ds sql)))
+  (cleanup!* [this] 
+             (jdbc/execute! ds (str "truncate table" (:table config)))))

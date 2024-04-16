@@ -14,6 +14,6 @@
 (s/defschema DatabaseClient {:id s/Str
                              :name mc/NotEmptyString
                              :email mc/NotEmptyString
-                             :created-at s/Str
-                             :updated-at s/Str})
+                             :created-at mc/DatabaseDateTime
+                             :updated-at mc/DatabaseDateTime})
 

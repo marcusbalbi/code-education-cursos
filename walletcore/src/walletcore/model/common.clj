@@ -1,6 +1,8 @@
 (ns walletcore.model.common
   (:require [schema.core :as s]
-            [clojure.data.json :as json]))
+            [clojure.data.json :as json]
+            [clj-time.coerce :as tc]
+            [clj-time.core :as t]))
 
 (def NotEmptyString (s/pred (fn [v]
                               (and (string? v)
@@ -14,3 +16,6 @@
 
 (def LocalDateTime (s/pred (fn [v]
                     (instance? org.joda.time.DateTime v))))
+
+(def DatabaseDateTime (s/pred (fn [v]
+                                (instance? java.sql.Timestamp v))))
